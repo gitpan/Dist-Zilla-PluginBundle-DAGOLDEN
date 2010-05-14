@@ -1,0 +1,130 @@
+NAME
+    Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way
+    DAGOLDEN does it
+
+VERSION
+    version 0.006
+
+SYNOPSIS
+       # in dist.ini
+       [@DAGOLDEN]
+
+DESCRIPTION
+    This is a Dist::Zilla PluginBundle. It is roughly equivalent to the
+    following dist.ini:
+
+       ; version provider
+       [BumpVersionFromGit]
+       version_regexp = ^release-(.+)$
+ 
+       ; choose files to include
+       [GatherDir]
+       [PruneCruft]
+       [ManifestSkip]
+ 
+       ; file modifications
+       [PkgVersion]
+       [Prepender]
+       [PodWeaver]
+ 
+       ; generated files
+       [License]
+       [ReadmeFromPod]
+ 
+       ; t tests
+       [CompileTests]
+       fake_home = 1
+ 
+       ; xt tests
+       [MetaTests]
+       [PodSyntaxTests]
+       [PodCoverageTests]
+       [PortabilityTests]
+ 
+       ; metadata
+       [AutoPrereq]
+       [MinimumPerl]
+       [MetaProvides::Package]
+ 
+       [Repository]
+       git_remote = origin
+ 
+       [MetaNoIndex]
+       directory = t
+       directory = xt
+       directory = examples
+       directory = corpus
+ 
+       [MetaYAML]
+ 
+       ; build system
+       [ExecDir]
+       [ShareDir]
+       [MakeMaker]
+ 
+       ; manifest (after all generated files)
+       [Manifest]
+ 
+       ; before release
+       [Git::Check]
+       [CheckChangesHasContent]
+       [CheckExtraTests]
+       [TestRelease]
+       [ConfirmRelease]
+ 
+       ; releaser
+       [UploadToCPAN]
+ 
+       ; after release
+       [Git::Commit / Commit_Dirty_Files]
+ 
+       [Git::Tag]
+       tag_format = release-%v
+ 
+       [NextRelease]
+       [Git::Commit / Commit_Changes]
+ 
+       [Git::Push]
+       push_to = origin
+
+USAGE
+    To use this PluginBundle, just add it to your dist.ini. You can provide
+    the following options:
+
+    *   "is_task" -- this indicates whether TaskWeaver or PodWeaver should
+        be used. Default is 0.
+
+    *   "auto_prereq" -- this indicates whether AutoPrereq should be used or
+        not. Default is 1.
+
+    *   "tag_format" -- given to "Git::Tag". Default is 'release-%v' to be
+        more robust than just the version number when parsing versions for
+        "BumpVersionFromGit"
+
+    *   "version_regexp" -- given to "BumpVersionFromGit". Default is
+        '^release-(.+)$'
+
+    *   "git_remote" -- given to "Repository". Defaults to 'origin'. If set
+        to something other than 'origin', it is also added as a "push_to"
+        argument for "Git::Push"
+
+    *   "fake_release" -- swaps FakeRelease for UploadToCPAN. Mostly useful
+        for testing a dist.ini without risking a real release.
+
+SEE ALSO
+    *   Dist::Zilla
+
+    *   Dist::Zilla::Plugin::PodWeaver
+
+    *   Dist::Zilla::Plugin::TaskWeaver
+
+AUTHOR
+      David Golden <dagolden@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is Copyright (c) 2010 by David Golden.
+
+    This is free software, licensed under:
+
+      The Apache License, Version 2.0, January 2004
+
