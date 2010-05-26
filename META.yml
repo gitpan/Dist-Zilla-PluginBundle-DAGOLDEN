@@ -9,7 +9,8 @@ build_requires:
   Test::More: 0.88
 configure_requires:
   ExtUtils::MakeMaker: 6.31
-generated_by: 'Dist::Zilla version 2.101310'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 3.101460, CPAN::Meta::Converter version 2.101460'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -24,10 +25,9 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.006
-recommends: {}
+    version: 0.007
 requires:
-  Dist::Zilla: 2.101040
+  Dist::Zilla: 3.101450
   Dist::Zilla::Plugin::BumpVersionFromGit: 0
   Dist::Zilla::Plugin::CheckChangesHasContent: 0
   Dist::Zilla::Plugin::CheckExtraTests: 0
@@ -40,7 +40,7 @@ requires:
   Dist::Zilla::Plugin::PortabilityTests: 0
   Dist::Zilla::Plugin::Prepender: 0
   Dist::Zilla::Plugin::ReadmeFromPod: 0
-  Dist::Zilla::Plugin::Repository: 0
+  Dist::Zilla::Plugin::Repository: 0.13
   Dist::Zilla::Plugin::TaskWeaver: 0
   Dist::Zilla::PluginBundle::Filter: 0
   Dist::Zilla::PluginBundle::Git: 0
@@ -52,4 +52,4 @@ requires:
   perl: 5.006
 resources:
   repository: http://github.com/dagolden/dist-zilla-pluginbundle-dagolden
-version: 0.006
+version: 0.007

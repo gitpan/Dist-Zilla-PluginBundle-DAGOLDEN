@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.006';
+  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.007';
 }
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
@@ -21,7 +21,7 @@ use Moose 0.99;
 use Moose::Autobox;
 use namespace::autoclean 0.09;
 
-use Dist::Zilla 2.101040; # DZRPB::Easy
+use Dist::Zilla 3.101450; # Use CPAN::Meta
 
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git ();
@@ -39,7 +39,7 @@ use Dist::Zilla::Plugin::TaskWeaver ();
 use Dist::Zilla::Plugin::PortabilityTests ();
 use Dist::Zilla::Plugin::Prepender ();
 use Dist::Zilla::Plugin::ReadmeFromPod ();
-use Dist::Zilla::Plugin::Repository ();
+use Dist::Zilla::Plugin::Repository 0.13 ();  # version 2 Meta Spec
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -136,6 +136,7 @@ sub configure {
     [ Repository => { git_remote => $self->git_remote } ],
     [ MetaNoIndex => { directory => [qw/t xt examples corpus/] } ],
     'MetaYAML',           # core
+    'MetaJSON',           # core
 
   # build system
     'ExecDir',            # core
@@ -187,7 +188,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 SYNOPSIS
 
@@ -242,6 +243,7 @@ following dist.ini:
    directory = corpus
  
    [MetaYAML]
+   [MetaJSON]
  
    ; build system
    [ExecDir]

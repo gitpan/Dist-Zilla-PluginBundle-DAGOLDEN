@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.006
+    version 0.007
 
 SYNOPSIS
        # in dist.ini
@@ -56,6 +56,7 @@ DESCRIPTION
        directory = corpus
  
        [MetaYAML]
+       [MetaJSON]
  
        ; build system
        [ExecDir]
