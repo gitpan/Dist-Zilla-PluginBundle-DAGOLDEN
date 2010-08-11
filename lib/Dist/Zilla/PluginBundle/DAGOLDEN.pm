@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.007';
+  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.008';
 }
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
@@ -21,7 +21,7 @@ use Moose 0.99;
 use Moose::Autobox;
 use namespace::autoclean 0.09;
 
-use Dist::Zilla 3.101450; # Use CPAN::Meta
+use Dist::Zilla 2.101040; # DZRPB::Easy
 
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git ();
@@ -35,11 +35,13 @@ use Dist::Zilla::Plugin::MetaProvides::Package ();
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::PodSpellingTests ();
 use Dist::Zilla::Plugin::PodWeaver ();
+use Pod::Weaver::Plugin::WikiDoc ();
 use Dist::Zilla::Plugin::TaskWeaver ();
 use Dist::Zilla::Plugin::PortabilityTests ();
 use Dist::Zilla::Plugin::Prepender ();
 use Dist::Zilla::Plugin::ReadmeFromPod ();
-use Dist::Zilla::Plugin::Repository 0.13 ();  # version 2 Meta Spec
+use Dist::Zilla::Plugin::Repository ();
+
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -84,6 +86,13 @@ has version_regexp => (
   },
 );
 
+has weaver_config => (
+  is      => 'ro',
+  isa     => 'Str',
+  lazy    => 1,
+  default => sub { $_[0]->payload->{weaver_config} || '@DAGOLDEN' },
+);
+
 has git_remote => (
   is      => 'ro',
   isa     => 'Str',
@@ -113,7 +122,10 @@ sub configure {
   # file munging
     'PkgVersion',         # core
     'Prepender',
-    ( $self->is_task ? 'TaskWeaver' : 'PodWeaver' ),
+    ( $self->is_task  
+      ?  'TaskWeaver' 
+      : [ 'PodWeaver' => { config_plugin => $self->weaver_config } ] 
+    ),
 
   # generated distribution files
     'ReadmeFromPod',
@@ -188,7 +200,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
@@ -213,6 +225,8 @@ following dist.ini:
    [PkgVersion]
    [Prepender]
    [PodWeaver]
+   config_plugin = @DAGOLDEN
+ 
  
    ; generated files
    [License]
@@ -318,6 +332,10 @@ C<<< Git::Push >>>
 
 C<<< fake_release >>> -- swaps FakeRelease for UploadToCPAN. Mostly useful for
 testing a dist.ini without risking a real release.
+
+=item *
+
+C<<< weaver_config >>> -- specifies a Pod::Weaver bundle.  Defaults to @DAGOLDEN.
 
 =back
 

@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.007
+    version 0.008
 
 SYNOPSIS
        # in dist.ini
@@ -26,6 +26,8 @@ DESCRIPTION
        [PkgVersion]
        [Prepender]
        [PodWeaver]
+       config_plugin = @DAGOLDEN
+ 
  
        ; generated files
        [License]
@@ -111,6 +113,9 @@ USAGE
 
     *   "fake_release" -- swaps FakeRelease for UploadToCPAN. Mostly useful
         for testing a dist.ini without risking a real release.
+
+    *   "weaver_config" -- specifies a Pod::Weaver bundle. Defaults to
+        @DAGOLDEN.
 
 SEE ALSO
     *   Dist::Zilla

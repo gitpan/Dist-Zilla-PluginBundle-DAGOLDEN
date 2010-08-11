@@ -10,7 +10,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 3.101460, CPAN::Meta::Converter version 2.101460'
+generated_by: 'Dist::Zilla version 4.101900, CPAN::Meta::Converter version 2.102160'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -25,9 +25,12 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.007
+    version: 0.008
+  Pod::Weaver::PluginBundle::DAGOLDEN:
+    file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
+    version: 0.008
 requires:
-  Dist::Zilla: 3.101450
+  Dist::Zilla: 2.101040
   Dist::Zilla::Plugin::BumpVersionFromGit: 0
   Dist::Zilla::Plugin::CheckChangesHasContent: 0
   Dist::Zilla::Plugin::CheckExtraTests: 0
@@ -40,16 +43,18 @@ requires:
   Dist::Zilla::Plugin::PortabilityTests: 0
   Dist::Zilla::Plugin::Prepender: 0
   Dist::Zilla::Plugin::ReadmeFromPod: 0
-  Dist::Zilla::Plugin::Repository: 0.13
+  Dist::Zilla::Plugin::Repository: 0
   Dist::Zilla::Plugin::TaskWeaver: 0
   Dist::Zilla::PluginBundle::Filter: 0
   Dist::Zilla::PluginBundle::Git: 0
   Dist::Zilla::Role::PluginBundle::Easy: 0
   Moose: 0.99
   Moose::Autobox: 0
+  Pod::Weaver::Config::Assembler: 0
+  Pod::Weaver::Plugin::WikiDoc: 0
   autodie: 2.00
   namespace::autoclean: 0.09
   perl: 5.006
 resources:
   repository: http://github.com/dagolden/dist-zilla-pluginbundle-dagolden
-version: 0.007
+version: 0.008

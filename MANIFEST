@@ -1,15 +1,16 @@
 Changes
 LICENSE
 MANIFEST
+META.json
 META.yml
 Makefile.PL
 README
 Todo
 dist.ini
 lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
+lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
 t/00-compile.t
 t/dagolden.t
-weaver.ini
 xt/release/distmeta.t
 xt/release/pod-coverage.t
 xt/release/pod-syntax.t
