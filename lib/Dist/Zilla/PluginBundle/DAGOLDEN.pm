@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.008';
+  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.009';
 }
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
@@ -21,7 +21,7 @@ use Moose 0.99;
 use Moose::Autobox;
 use namespace::autoclean 0.09;
 
-use Dist::Zilla 2.101040; # DZRPB::Easy
+use Dist::Zilla 3.101450; # Use CPAN::Meta
 
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git ();
@@ -35,13 +35,13 @@ use Dist::Zilla::Plugin::MetaProvides::Package ();
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::PodSpellingTests ();
 use Dist::Zilla::Plugin::PodWeaver ();
-use Pod::Weaver::Plugin::WikiDoc ();
-use Dist::Zilla::Plugin::TaskWeaver ();
+use Dist::Zilla::Plugin::TaskWeaver 0.101620 ();
 use Dist::Zilla::Plugin::PortabilityTests ();
 use Dist::Zilla::Plugin::Prepender ();
 use Dist::Zilla::Plugin::ReadmeFromPod ();
-use Dist::Zilla::Plugin::Repository ();
+use Dist::Zilla::Plugin::Repository 0.13 ();  # version 2 Meta Spec
 
+use Pod::Weaver::Plugin::WikiDoc ();
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -200,7 +200,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
@@ -359,7 +359,7 @@ L<Dist::Zilla::Plugin::TaskWeaver>
 
 =head1 AUTHOR
 
-  David Golden <dagolden@cpan.org>
+David Golden <dagolden@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

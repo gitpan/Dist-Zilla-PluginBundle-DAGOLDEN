@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Pod::Weaver::PluginBundle::DAGOLDEN::VERSION = '0.008';
+  $Pod::Weaver::PluginBundle::DAGOLDEN::VERSION = '0.009';
 }
 # ABSTRACT: DAGOLDEN's default Pod::Weaver config
 
@@ -66,13 +66,13 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =for Pod::Coverage mvp_bundle_config
 
 =head1 AUTHOR
 
-  David Golden <dagolden@cpan.org>
+David Golden <dagolden@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
