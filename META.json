@@ -4,7 +4,7 @@
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.101900, CPAN::Meta::Converter version 2.102160",
+   "generated_by" : "Dist::Zilla version 4.102341, CPAN::Meta::Converter version 2.102400",
    "license" : [
       "apache_2_0"
    ],
@@ -29,11 +29,12 @@
       },
       "runtime" : {
          "requires" : {
-            "Dist::Zilla" : "3.101450",
+            "Dist::Zilla" : "4.102341",
             "Dist::Zilla::Plugin::BumpVersionFromGit" : 0,
             "Dist::Zilla::Plugin::CheckChangesHasContent" : 0,
             "Dist::Zilla::Plugin::CheckExtraTests" : 0,
             "Dist::Zilla::Plugin::CompileTests" : 0,
+            "Dist::Zilla::Plugin::GithubMeta" : "0.10",
             "Dist::Zilla::Plugin::MetaNoIndex" : 0,
             "Dist::Zilla::Plugin::MetaProvides::Package" : 0,
             "Dist::Zilla::Plugin::MinimumPerl" : 0,
@@ -68,11 +69,11 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.009"
+         "version" : "0.010"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.009"
+         "version" : "0.010"
       }
    },
    "release_status" : "stable",
@@ -81,6 +82,6 @@
          "url" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden"
       }
    },
-   "version" : "0.009"
+   "version" : "0.010"
 }
 

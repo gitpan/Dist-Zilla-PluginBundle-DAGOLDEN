@@ -1,17 +1,17 @@
-# 
+#
 # This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
-# 
+#
 # This software is Copyright (c) 2010 by David Golden.
-# 
+#
 # This is free software, licensed under:
-# 
+#
 #   The Apache License, Version 2.0, January 2004
-# 
+#
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.009';
+  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.010';
 }
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
@@ -21,7 +21,7 @@ use Moose 0.99;
 use Moose::Autobox;
 use namespace::autoclean 0.09;
 
-use Dist::Zilla 3.101450; # Use CPAN::Meta
+use Dist::Zilla 4.102341; # authordeps
 
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git ();
@@ -30,6 +30,7 @@ use Dist::Zilla::Plugin::BumpVersionFromGit ();
 use Dist::Zilla::Plugin::CheckChangesHasContent ();
 use Dist::Zilla::Plugin::CheckExtraTests ();
 use Dist::Zilla::Plugin::CompileTests ();
+use Dist::Zilla::Plugin::GithubMeta 0.10 ();
 use Dist::Zilla::Plugin::MetaNoIndex ();
 use Dist::Zilla::Plugin::MetaProvides::Package ();
 use Dist::Zilla::Plugin::MinimumPerl ();
@@ -143,9 +144,11 @@ sub configure {
 
   # metadata
     'MinimumPerl',
-    ( $self->auto_prereq ? 'AutoPrereq' : () ),
+    ( $self->auto_prereq ? 'AutoPrereqs' : () ),
     'MetaProvides::Package',
-    [ Repository => { git_remote => $self->git_remote } ],
+    [ Repository => { git_remote => $self->git_remote, github_http => 0 } ],
+    # overrides Repository if github based
+    [ GithubMeta => { remote => $self->git_remote } ], 
     [ MetaNoIndex => { directory => [qw/t xt examples corpus/] } ],
     'MetaYAML',           # core
     'MetaJSON',           # core
@@ -200,7 +203,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
@@ -227,7 +230,6 @@ following dist.ini:
    [PodWeaver]
    config_plugin = @DAGOLDEN
  
- 
    ; generated files
    [License]
    [ReadmeFromPod]
@@ -243,12 +245,17 @@ following dist.ini:
    [PortabilityTests]
  
    ; metadata
-   [AutoPrereq]
+   [AutoPrereqs]
    [MinimumPerl]
    [MetaProvides::Package]
  
    [Repository]
    git_remote = origin
+   github_http = 0
+ 
+   ; overrides [Repository] if repository is on github
+   [GithubMeta]
+   remote = origin
  
    [MetaNoIndex]
    directory = t

@@ -1,5 +1,11 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.010     2010-10-07 13:42:21 EST5EDT
+
+    - adds GithubMeta to override Repository if repo is on github
+
+    - replaces AutoPrereq (deprecated) with AutoPrereqs
+
 0.009     2010-08-17 08:04:05 EST5EDT
 
     - set a minimum TaskWeaver prereq to work with Dist::Zilla 2.X

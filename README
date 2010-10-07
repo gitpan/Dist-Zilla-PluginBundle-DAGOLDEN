@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.009
+    version 0.010
 
 SYNOPSIS
        # in dist.ini
@@ -28,7 +28,6 @@ DESCRIPTION
        [PodWeaver]
        config_plugin = @DAGOLDEN
  
- 
        ; generated files
        [License]
        [ReadmeFromPod]
@@ -44,12 +43,17 @@ DESCRIPTION
        [PortabilityTests]
  
        ; metadata
-       [AutoPrereq]
+       [AutoPrereqs]
        [MinimumPerl]
        [MetaProvides::Package]
  
        [Repository]
        git_remote = origin
+       github_http = 0
+ 
+       ; overrides [Repository] if repository is on github
+       [GithubMeta]
+       remote = origin
  
        [MetaNoIndex]
        directory = t

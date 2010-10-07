@@ -25,11 +25,12 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'apache',
   'NAME' => 'Dist::Zilla::PluginBundle::DAGOLDEN',
   'PREREQ_PM' => {
-    'Dist::Zilla' => '3.101450',
+    'Dist::Zilla' => '4.102341',
     'Dist::Zilla::Plugin::BumpVersionFromGit' => '0',
     'Dist::Zilla::Plugin::CheckChangesHasContent' => '0',
     'Dist::Zilla::Plugin::CheckExtraTests' => '0',
     'Dist::Zilla::Plugin::CompileTests' => '0',
+    'Dist::Zilla::Plugin::GithubMeta' => '0.10',
     'Dist::Zilla::Plugin::MetaNoIndex' => '0',
     'Dist::Zilla::Plugin::MetaProvides::Package' => '0',
     'Dist::Zilla::Plugin::MinimumPerl' => '0',
@@ -50,7 +51,7 @@ my %WriteMakefileArgs = (
     'autodie' => '2.00',
     'namespace::autoclean' => '0.09'
   },
-  'VERSION' => '0.009',
+  'VERSION' => '0.010',
   'test' => {
     'TESTS' => 't/*.t'
   }
