@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.010';
+  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.011';
 }
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
@@ -26,7 +26,7 @@ use Dist::Zilla 4.102341; # authordeps
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git ();
 
-use Dist::Zilla::Plugin::BumpVersionFromGit ();
+use Dist::Zilla::Plugin::Git::NextVersion ();
 use Dist::Zilla::Plugin::CheckChangesHasContent ();
 use Dist::Zilla::Plugin::CheckExtraTests ();
 use Dist::Zilla::Plugin::CompileTests ();
@@ -113,7 +113,7 @@ sub configure {
   $self->add_plugins (
 
   # version number
-    [ BumpVersionFromGit => { version_regexp => $self->version_regexp } ],
+    [ 'Git::NextVersion' => { version_regexp => $self->version_regexp } ],
 
   # gather and prune
     'GatherDir',          # core
@@ -203,7 +203,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -216,7 +216,7 @@ This is a L<Dist::Zilla> PluginBundle.  It is roughly equivalent to the
 following dist.ini:
 
    ; version provider
-   [BumpVersionFromGit]
+   [Git::NextVersion]
    version_regexp = ^release-(.+)$
  
    ; choose files to include
@@ -322,11 +322,11 @@ Default is 1.
 
 C<<< tag_format >>> -- given to C<<< Git::Tag >>>.  Default is 'release-%v' to be more
 robust than just the version number when parsing versions for
-C<<< BumpVersionFromGit >>>
+C<<< Git::NextVersion >>>
 
 =item *
 
-C<<< version_regexp >>> -- given to C<<< BumpVersionFromGit >>>.  Default
+C<<< version_regexp >>> -- given to C<<< Git::NextVersion >>>.  Default
 is '^release-(.+)$'
 
 =item *

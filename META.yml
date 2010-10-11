@@ -25,16 +25,16 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.010
+    version: 0.011
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.010
+    version: 0.011
 requires:
   Dist::Zilla: 4.102341
-  Dist::Zilla::Plugin::BumpVersionFromGit: 0
   Dist::Zilla::Plugin::CheckChangesHasContent: 0
   Dist::Zilla::Plugin::CheckExtraTests: 0
   Dist::Zilla::Plugin::CompileTests: 0
+  Dist::Zilla::Plugin::Git::NextVersion: 0
   Dist::Zilla::Plugin::GithubMeta: 0.10
   Dist::Zilla::Plugin::MetaNoIndex: 0
   Dist::Zilla::Plugin::MetaProvides::Package: 0
@@ -57,5 +57,6 @@ requires:
   namespace::autoclean: 0.09
   perl: 5.006
 resources:
-  repository: http://github.com/dagolden/dist-zilla-pluginbundle-dagolden
-version: 0.010
+  homepage: http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree
+  repository: git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
+version: 0.011

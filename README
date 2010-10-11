@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.010
+    version 0.011
 
 SYNOPSIS
        # in dist.ini
@@ -14,7 +14,7 @@ DESCRIPTION
     following dist.ini:
 
        ; version provider
-       [BumpVersionFromGit]
+       [Git::NextVersion]
        version_regexp = ^release-(.+)$
  
        ; choose files to include
@@ -106,9 +106,9 @@ USAGE
 
     *   "tag_format" -- given to "Git::Tag". Default is 'release-%v' to be
         more robust than just the version number when parsing versions for
-        "BumpVersionFromGit"
+        "Git::NextVersion"
 
-    *   "version_regexp" -- given to "BumpVersionFromGit". Default is
+    *   "version_regexp" -- given to "Git::NextVersion". Default is
         '^release-(.+)$'
 
     *   "git_remote" -- given to "Repository". Defaults to 'origin'. If set
