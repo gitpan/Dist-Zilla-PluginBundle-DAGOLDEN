@@ -69,11 +69,11 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.011"
+         "version" : "0.012"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.011"
+         "version" : "0.012"
       }
    },
    "release_status" : "stable",
@@ -85,6 +85,6 @@
          "web" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree"
       }
    },
-   "version" : "0.011"
+   "version" : "0.012"
 }
 

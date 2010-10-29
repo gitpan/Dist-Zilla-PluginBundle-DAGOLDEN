@@ -25,10 +25,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.011
+    version: 0.012
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.011
+    version: 0.012
 requires:
   Dist::Zilla: 4.102341
   Dist::Zilla::Plugin::CheckChangesHasContent: 0
@@ -59,4 +59,4 @@ requires:
 resources:
   homepage: http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree
   repository: git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.011
+version: 0.012
