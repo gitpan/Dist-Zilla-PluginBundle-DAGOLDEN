@@ -1,5 +1,10 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.013     2010-11-02 21:52:50 EST5EDT
+
+    - bump MetaProvides::Package prereq and tell it to honor MetaNoIndex
+    - add package 'DB' to MetaNoIndex
+
 0.012     2010-10-29 16:42:37 EST5EDT
 
     - annotate example dist.ini in documents (suggeston from Tim Bunce)

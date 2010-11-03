@@ -32,7 +32,7 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::Git::NextVersion' => '0',
     'Dist::Zilla::Plugin::GithubMeta' => '0.10',
     'Dist::Zilla::Plugin::MetaNoIndex' => '0',
-    'Dist::Zilla::Plugin::MetaProvides::Package' => '0',
+    'Dist::Zilla::Plugin::MetaProvides::Package' => '1.11044404',
     'Dist::Zilla::Plugin::MinimumPerl' => '0',
     'Dist::Zilla::Plugin::PodSpellingTests' => '0',
     'Dist::Zilla::Plugin::PodWeaver' => '0',
@@ -51,7 +51,7 @@ my %WriteMakefileArgs = (
     'autodie' => '2.00',
     'namespace::autoclean' => '0.09'
   },
-  'VERSION' => '0.012',
+  'VERSION' => '0.013',
   'test' => {
     'TESTS' => 't/*.t'
   }

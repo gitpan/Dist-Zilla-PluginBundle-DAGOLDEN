@@ -22,13 +22,15 @@ no_index:
     - xt
     - examples
     - corpus
+  package:
+    - DB
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.012
+    version: 0.013
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.012
+    version: 0.013
 requires:
   Dist::Zilla: 4.102341
   Dist::Zilla::Plugin::CheckChangesHasContent: 0
@@ -37,7 +39,7 @@ requires:
   Dist::Zilla::Plugin::Git::NextVersion: 0
   Dist::Zilla::Plugin::GithubMeta: 0.10
   Dist::Zilla::Plugin::MetaNoIndex: 0
-  Dist::Zilla::Plugin::MetaProvides::Package: 0
+  Dist::Zilla::Plugin::MetaProvides::Package: 1.11044404
   Dist::Zilla::Plugin::MinimumPerl: 0
   Dist::Zilla::Plugin::PodSpellingTests: 0
   Dist::Zilla::Plugin::PodWeaver: 0
@@ -59,4 +61,4 @@ requires:
 resources:
   homepage: http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree
   repository: git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.012
+version: 0.013

@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.012
+    version 0.013
 
 SYNOPSIS
        # in dist.ini
@@ -45,7 +45,6 @@ DESCRIPTION
        ; metadata
        [AutoPrereqs]       ; find prereqs from code
        [MinimumPerl]       ; determine minimum perl version
-       [MetaProvides::Package] ; add 'provides' to META files
  
        [Repository]        ; set 'repository' in META
        git_remote = origin ;   - remote to choose
@@ -60,6 +59,10 @@ DESCRIPTION
        directory = xt
        directory = examples
        directory = corpus
+       package = DB        ; just in case
+ 
+       [MetaProvides::Package] ; add 'provides' to META files
+       meta_noindex = 1        ; respect prior no_index directives
  
        [MetaYAML]          ; generate META.yml (v1.4)
        [MetaJSON]          ; generate META.json (v2)
