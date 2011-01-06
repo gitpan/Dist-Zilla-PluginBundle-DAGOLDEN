@@ -1,7 +1,7 @@
 #
 # This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
 #
-# This software is Copyright (c) 2010 by David Golden.
+# This software is Copyright (c) 2011 by David Golden.
 #
 # This is free software, licensed under:
 #
@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Pod::Weaver::PluginBundle::DAGOLDEN::VERSION = '0.013';
+  $Pod::Weaver::PluginBundle::DAGOLDEN::VERSION = '0.014';
 }
 # ABSTRACT: DAGOLDEN's default Pod::Weaver config
 
@@ -66,7 +66,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =for Pod::Coverage mvp_bundle_config
 
@@ -76,7 +76,7 @@ David Golden <dagolden@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2010 by David Golden.
+This software is Copyright (c) 2011 by David Golden.
 
 This is free software, licensed under:
 

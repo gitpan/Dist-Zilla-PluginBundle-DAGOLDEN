@@ -1,5 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.014     2011-01-06 16:59:44 EST5EDT
+
+    - bump Repository prereq to 0.17
+
 0.013     2010-11-02 21:52:50 EST5EDT
 
     - bump MetaProvides::Package prereq and tell it to honor MetaNoIndex

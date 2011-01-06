@@ -2,7 +2,7 @@
 #
 # This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
 #
-# This software is Copyright (c) 2010 by David Golden.
+# This software is Copyright (c) 2011 by David Golden.
 #
 # This is free software, licensed under:
 #
@@ -13,6 +13,9 @@ use strict;
 use warnings;
 
 use Test::More;
+
+
+
 use File::Find;
 use File::Temp qw{ tempdir };
 

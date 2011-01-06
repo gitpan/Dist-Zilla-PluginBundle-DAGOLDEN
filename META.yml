@@ -10,7 +10,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.102341, CPAN::Meta::Converter version 2.102400'
+generated_by: 'Dist::Zilla version 4.200001, CPAN::Meta::Converter version 2.102400'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -27,10 +27,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.013
+    version: 0.014
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.013
+    version: 0.014
 requires:
   Dist::Zilla: 4.102341
   Dist::Zilla::Plugin::CheckChangesHasContent: 0
@@ -46,7 +46,7 @@ requires:
   Dist::Zilla::Plugin::PortabilityTests: 0
   Dist::Zilla::Plugin::Prepender: 0
   Dist::Zilla::Plugin::ReadmeFromPod: 0
-  Dist::Zilla::Plugin::Repository: 0.13
+  Dist::Zilla::Plugin::Repository: 0.17
   Dist::Zilla::Plugin::TaskWeaver: 0.101620
   Dist::Zilla::PluginBundle::Filter: 0
   Dist::Zilla::PluginBundle::Git: 0
@@ -61,4 +61,4 @@ requires:
 resources:
   homepage: http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree
   repository: git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.013
+version: 0.014
