@@ -46,12 +46,13 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Role::PluginBundle::Easy' => '0',
     'Moose' => '0.99',
     'Moose::Autobox' => '0',
+    'Pod::Elemental::Transformer::List' => '0.101620',
     'Pod::Weaver::Config::Assembler' => '0',
     'Pod::Weaver::Plugin::WikiDoc' => '0',
     'autodie' => '2.00',
     'namespace::autoclean' => '0.09'
   },
-  'VERSION' => '0.014',
+  'VERSION' => '0.015',
   'test' => {
     'TESTS' => 't/*.t'
   }

@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.014';
+  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.015';
 }
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
@@ -41,8 +41,6 @@ use Dist::Zilla::Plugin::PortabilityTests ();
 use Dist::Zilla::Plugin::Prepender ();
 use Dist::Zilla::Plugin::ReadmeFromPod ();
 use Dist::Zilla::Plugin::Repository 0.17 ();  # safe for missing github
-
-use Pod::Weaver::Plugin::WikiDoc ();
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -207,7 +205,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
