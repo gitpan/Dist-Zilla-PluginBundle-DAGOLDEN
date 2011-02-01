@@ -26,6 +26,7 @@ my %WriteMakefileArgs = (
   'NAME' => 'Dist::Zilla::PluginBundle::DAGOLDEN',
   'PREREQ_PM' => {
     'Dist::Zilla' => '4.102341',
+    'Dist::Zilla::Plugin::Bugtracker' => '1.102670',
     'Dist::Zilla::Plugin::CheckChangesHasContent' => '0',
     'Dist::Zilla::Plugin::CheckExtraTests' => '0',
     'Dist::Zilla::Plugin::CompileTests' => '0',
@@ -49,10 +50,11 @@ my %WriteMakefileArgs = (
     'Pod::Elemental::Transformer::List' => '0.101620',
     'Pod::Weaver::Config::Assembler' => '0',
     'Pod::Weaver::Plugin::WikiDoc' => '0',
+    'Pod::Weaver::Section::Support' => '1.001',
     'autodie' => '2.00',
     'namespace::autoclean' => '0.09'
   },
-  'VERSION' => '0.015',
+  'VERSION' => '0.016',
   'test' => {
     'TESTS' => 't/*.t'
   }

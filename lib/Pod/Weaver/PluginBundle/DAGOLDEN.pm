@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Pod::Weaver::PluginBundle::DAGOLDEN::VERSION = '0.015';
+  $Pod::Weaver::PluginBundle::DAGOLDEN::VERSION = '0.016';
 }
 # ABSTRACT: DAGOLDEN's default Pod::Weaver config
 
@@ -20,8 +20,14 @@ use Pod::Weaver::Config::Assembler;
 # Dependencies
 use Pod::Weaver::Plugin::WikiDoc ();
 use Pod::Elemental::Transformer::List 0.101620 ();
+use Pod::Weaver::Section::Support 1.001 ();
 
 sub _exp { Pod::Weaver::Config::Assembler->expand_package($_[0]) }
+
+my $repo_intro = <<'END';
+This is open source software.  The code repository is available for
+public review and contribution under the terms of the license.
+END
 
 sub mvp_bundle_config {
   my @plugins;
@@ -51,6 +57,15 @@ sub mvp_bundle_config {
   push @plugins, (
     [ '@DAGOLDEN/Leftovers', _exp('Leftovers'), {} ],
     [ '@DAGOLDEN/postlude',  _exp('Region'),    { region_name => 'postlude' } ],
+    [ '@DAGOLDEN/Support',   _exp('Support'),
+      {
+        perldoc => 0,
+        websites => 'none',
+        bugs => 'metadata',
+        repository_link => 'both',
+        repository_content => $repo_intro
+      }
+    ],
     [ '@DAGOLDEN/Authors',   _exp('Authors'),   {} ],
     [ '@DAGOLDEN/Legal',     _exp('Legal'),     {} ],
     [ '@DAGOLDEN/List',      _exp('-Transformer'), { 'transformer' => 'List' } ],
@@ -62,6 +77,7 @@ sub mvp_bundle_config {
 1;
 
 
+
 __END__
 =pod
 
@@ -71,9 +87,55 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.015
+version 0.016
+
+=head1 DESCRIPTION
+
+This is a L<Pod::Weaver> PluginBundle.  It is roughly equivalent to the
+following weaver.ini:
+
+   [-WikiDoc]
+ 
+   [@Default]
+ 
+   [Support]
+   perldoc = 0
+   websites = none
+   bugs = metadata
+   repository_link = both
+   repository_content = ...stuff...
+ 
+   [-Transformer]
+   transfomer = List
 
 =for Pod::Coverage mvp_bundle_config
+
+=head1 USAGE
+
+This PluginBundle is used automatically with the CE<lt>@DAGOLDENE<gt> L<Dist::Zilla>
+plugin bundle.
+
+=head1 SEE ALSO
+
+=over
+
+=item *
+
+L<Pod::Weaver>
+
+=item *
+
+L<Pod::Weaver::Plugin::WikiDoc>
+
+=item *
+
+L<Pod::Elemental::Transformer::List>
+
+=item *
+
+L<Dist::Zilla::Plugin::PodWeaver>
+
+=back
 
 =head1 AUTHOR
 

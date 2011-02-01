@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.015';
+  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.016';
 }
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
@@ -27,6 +27,7 @@ use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git ();
 
 use Dist::Zilla::Plugin::Git::NextVersion ();
+use Dist::Zilla::Plugin::Bugtracker 1.102670 ();
 use Dist::Zilla::Plugin::CheckChangesHasContent ();
 use Dist::Zilla::Plugin::CheckExtraTests ();
 use Dist::Zilla::Plugin::CompileTests ();
@@ -152,6 +153,7 @@ sub configure {
       } 
     ],
     ['MetaProvides::Package' => { meta_noindex => 1 } ], # AFTER MetaNoIndex
+    ['Bugtracker'],
     'MetaYAML',           # core
     'MetaJSON',           # core
 
@@ -205,7 +207,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.015
+version 0.016
 
 =head1 SYNOPSIS
 
@@ -264,6 +266,8 @@ following dist.ini:
    directory = examples
    directory = corpus
    package = DB        ; just in case
+ 
+   [Bugtracker]        ; defaults to RT
  
    [MetaProvides::Package] ; add 'provides' to META files
    meta_noindex = 1        ; respect prior no_index directives
@@ -375,6 +379,23 @@ L<Dist::Zilla::Plugin::PodWeaver>
 L<Dist::Zilla::Plugin::TaskWeaver>
 
 =back
+
+=for :stopwords CPAN AnnoCPAN RT CPANTS Kwalitee diff IRC
+
+=head1 SUPPORT
+
+=head2 Bugs / Feature Requests
+
+Please report any bugs or feature requests on the bugtracker website L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN> or by email to 'bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org'. I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
+
+=head2 Source Code
+
+This is open source software.  The code repository is available for
+public review and contribution under the terms of the license.
+
+L<http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree>
+
+  git clone git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
 
 =head1 AUTHOR
 

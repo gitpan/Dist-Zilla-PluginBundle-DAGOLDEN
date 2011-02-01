@@ -33,6 +33,7 @@
       "runtime" : {
          "requires" : {
             "Dist::Zilla" : "4.102341",
+            "Dist::Zilla::Plugin::Bugtracker" : "1.102670",
             "Dist::Zilla::Plugin::CheckChangesHasContent" : 0,
             "Dist::Zilla::Plugin::CheckExtraTests" : 0,
             "Dist::Zilla::Plugin::CompileTests" : 0,
@@ -56,6 +57,7 @@
             "Pod::Elemental::Transformer::List" : "0.101620",
             "Pod::Weaver::Config::Assembler" : 0,
             "Pod::Weaver::Plugin::WikiDoc" : 0,
+            "Pod::Weaver::Section::Support" : "1.001",
             "autodie" : "2.00",
             "namespace::autoclean" : "0.09",
             "perl" : "5.006"
@@ -73,15 +75,19 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.015"
+         "version" : "0.016"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.015"
+         "version" : "0.016"
       }
    },
    "release_status" : "stable",
    "resources" : {
+      "bugtracker" : {
+         "mailto" : "bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org",
+         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN"
+      },
       "homepage" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree",
       "repository" : {
          "type" : "git",
@@ -89,6 +95,6 @@
          "web" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree"
       }
    },
-   "version" : "0.015"
+   "version" : "0.016"
 }
 

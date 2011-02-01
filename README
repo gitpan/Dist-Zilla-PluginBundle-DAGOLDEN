@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.015
+    version 0.016
 
 SYNOPSIS
        # in dist.ini
@@ -60,6 +60,8 @@ DESCRIPTION
        directory = examples
        directory = corpus
        package = DB        ; just in case
+ 
+       [Bugtracker]        ; defaults to RT
  
        [MetaProvides::Package] ; add 'provides' to META files
        meta_noindex = 1        ; respect prior no_index directives
@@ -137,6 +139,22 @@ SEE ALSO
     *   Dist::Zilla::Plugin::PodWeaver
 
     *   Dist::Zilla::Plugin::TaskWeaver
+
+SUPPORT
+  Bugs / Feature Requests
+    Please report any bugs or feature requests on the bugtracker website
+    <http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundl
+    e-DAGOLDEN> or by email to 'bug-dist-zilla-pluginbundle-dagolden at
+    rt.cpan.org'. I will be notified, and then you'll automatically be
+    notified of progress on your bug as I make changes.
+
+  Source Code
+    This is open source software. The code repository is available for
+    public review and contribution under the terms of the license.
+
+    <http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree>
+
+      git clone git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
 
 AUTHOR
     David Golden <dagolden@cpan.org>
