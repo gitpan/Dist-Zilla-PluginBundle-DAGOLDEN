@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.016
+    version 0.017
 
 SYNOPSIS
        # in dist.ini
@@ -79,6 +79,7 @@ DESCRIPTION
  
        ; before release
        [Git::Check]        ; ensure all files checked in
+       [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
        [CheckChangesHasContent] ; ensure Changes has been updated
        [CheckExtraTests]   ; ensure xt/ tests pass
        [TestRelease]       ; ensure t/ tests pass
@@ -142,11 +143,12 @@ SEE ALSO
 
 SUPPORT
   Bugs / Feature Requests
-    Please report any bugs or feature requests on the bugtracker website
+    Please report any bugs or feature requests by email to
+    "bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org", or through the
+    web interface at
     <http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundl
-    e-DAGOLDEN> or by email to 'bug-dist-zilla-pluginbundle-dagolden at
-    rt.cpan.org'. I will be notified, and then you'll automatically be
-    notified of progress on your bug as I make changes.
+    e-DAGOLDEN>. You will be automatically notified of any progress on the
+    request by the system.
 
   Source Code
     This is open source software. The code repository is available for

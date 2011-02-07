@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.016';
+  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.017';
 }
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
@@ -30,6 +30,7 @@ use Dist::Zilla::Plugin::Git::NextVersion ();
 use Dist::Zilla::Plugin::Bugtracker 1.102670 ();
 use Dist::Zilla::Plugin::CheckChangesHasContent ();
 use Dist::Zilla::Plugin::CheckExtraTests ();
+use Dist::Zilla::Plugin::CheckPrereqsIndexed 0.002 ();
 use Dist::Zilla::Plugin::CompileTests ();
 use Dist::Zilla::Plugin::GithubMeta 0.10 ();
 use Dist::Zilla::Plugin::MetaNoIndex ();
@@ -167,6 +168,7 @@ sub configure {
 
   # before release
     'Git::Check',
+    'CheckPrereqsIndexed',
     'CheckChangesHasContent',
     'CheckExtraTests',
     'TestRelease',        # core
@@ -207,7 +209,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 
@@ -285,6 +287,7 @@ following dist.ini:
  
    ; before release
    [Git::Check]        ; ensure all files checked in
+   [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
    [CheckChangesHasContent] ; ensure Changes has been updated
    [CheckExtraTests]   ; ensure xt/ tests pass
    [TestRelease]       ; ensure t/ tests pass
@@ -380,13 +383,15 @@ L<Dist::Zilla::Plugin::TaskWeaver>
 
 =back
 
-=for :stopwords CPAN AnnoCPAN RT CPANTS Kwalitee diff IRC
+=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders
 
 =head1 SUPPORT
 
 =head2 Bugs / Feature Requests
 
-Please report any bugs or feature requests on the bugtracker website L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN> or by email to 'bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org'. I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
+Please report any bugs or feature requests by email to C<bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN>. You will be automatically notified of any
+progress on the request by the system.
 
 =head2 Source Code
 

@@ -11,7 +11,7 @@ use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
 BEGIN {
-  $Pod::Weaver::PluginBundle::DAGOLDEN::VERSION = '0.016';
+  $Pod::Weaver::PluginBundle::DAGOLDEN::VERSION = '0.017';
 }
 # ABSTRACT: DAGOLDEN's default Pod::Weaver config
 
@@ -87,7 +87,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 DESCRIPTION
 

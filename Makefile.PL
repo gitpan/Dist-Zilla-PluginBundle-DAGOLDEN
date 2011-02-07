@@ -29,6 +29,7 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::Bugtracker' => '1.102670',
     'Dist::Zilla::Plugin::CheckChangesHasContent' => '0',
     'Dist::Zilla::Plugin::CheckExtraTests' => '0',
+    'Dist::Zilla::Plugin::CheckPrereqsIndexed' => '0.002',
     'Dist::Zilla::Plugin::CompileTests' => '0',
     'Dist::Zilla::Plugin::Git::NextVersion' => '0',
     'Dist::Zilla::Plugin::GithubMeta' => '0.10',
@@ -54,7 +55,7 @@ my %WriteMakefileArgs = (
     'autodie' => '2.00',
     'namespace::autoclean' => '0.09'
   },
-  'VERSION' => '0.016',
+  'VERSION' => '0.017',
   'test' => {
     'TESTS' => 't/*.t'
   }
