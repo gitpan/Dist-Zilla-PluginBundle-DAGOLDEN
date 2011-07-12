@@ -1,5 +1,11 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.018     2011-07-11 21:52:26 America/New_York
+
+    - swapped in InsertCopyright for Prepender
+    - swapped in OurPkgVersion for PkgVersion
+    - removed Repository to rely soly on GithubMeta
+
 0.017     2011-02-06 21:57:53 EST5EDT
 
     - added Dist::Zilla::Plugin::CheckPrereqsIndexed

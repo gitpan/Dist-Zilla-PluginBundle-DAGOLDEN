@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.017
+    version 0.018
 
 SYNOPSIS
        # in dist.ini
@@ -23,8 +23,8 @@ DESCRIPTION
        [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
  
        ; file modifications
-       [PkgVersion]        ; add $VERSION = ... to all files
-       [Prepender]         ; prepend a copyright statement to all files
+       [OurPkgVersion]     ; add $VERSION = ... to all files
+       [InsertCopyright    ; add copyright at "# COPYRIGHT"
        [PodWeaver]         ; generate Pod
        config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
  
@@ -45,14 +45,7 @@ DESCRIPTION
        ; metadata
        [AutoPrereqs]       ; find prereqs from code
        [MinimumPerl]       ; determine minimum perl version
- 
-       [Repository]        ; set 'repository' in META
-       git_remote = origin ;   - remote to choose
-       github_http = 0     ;   - for github, use git:// not http://
- 
-       ; overrides [Repository] if repository is on github
        [GithubMeta]
-       remote = origin     ; better than [Repository]; sets homepage, too
  
        [MetaNoIndex]       ; sets 'no_index' in META
        directory = t
@@ -124,10 +117,6 @@ USAGE
     *   "version_regexp" -- given to "Git::NextVersion". Default is
         '^release-(.+)$'
 
-    *   "git_remote" -- given to "Repository". Defaults to 'origin'. If set
-        to something other than 'origin', it is also added as a "push_to"
-        argument for "Git::Push"
-
     *   "fake_release" -- swaps FakeRelease for UploadToCPAN. Mostly useful
         for testing a dist.ini without risking a real release.
 
@@ -154,9 +143,9 @@ SUPPORT
     This is open source software. The code repository is available for
     public review and contribution under the terms of the license.
 
-    <http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree>
+    <http://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
 
-      git clone git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
+      git clone http://github.com/dagolden/dist-zilla-pluginbundle-dagolden
 
 AUTHOR
     David Golden <dagolden@cpan.org>

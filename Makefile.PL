@@ -2,9 +2,9 @@
 use strict;
 use warnings;
 
-BEGIN { require 5.006; }
+use 5.006;
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -18,7 +18,7 @@ my %WriteMakefileArgs = (
     'Test::More' => '0.88'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'Dist-Zilla-PluginBundle-DAGOLDEN',
   'EXE_FILES' => [],
@@ -33,13 +33,14 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::CompileTests' => '0',
     'Dist::Zilla::Plugin::Git::NextVersion' => '0',
     'Dist::Zilla::Plugin::GithubMeta' => '0.10',
+    'Dist::Zilla::Plugin::InsertCopyright' => '0.001',
     'Dist::Zilla::Plugin::MetaNoIndex' => '0',
     'Dist::Zilla::Plugin::MetaProvides::Package' => '1.11044404',
     'Dist::Zilla::Plugin::MinimumPerl' => '0',
+    'Dist::Zilla::Plugin::OurPkgVersion' => '0.001008',
     'Dist::Zilla::Plugin::PodSpellingTests' => '0',
     'Dist::Zilla::Plugin::PodWeaver' => '0',
     'Dist::Zilla::Plugin::PortabilityTests' => '0',
-    'Dist::Zilla::Plugin::Prepender' => '0',
     'Dist::Zilla::Plugin::ReadmeFromPod' => '0',
     'Dist::Zilla::Plugin::Repository' => '0.17',
     'Dist::Zilla::Plugin::TaskWeaver' => '0.101620',
@@ -55,7 +56,7 @@ my %WriteMakefileArgs = (
     'autodie' => '2.00',
     'namespace::autoclean' => '0.09'
   },
-  'VERSION' => '0.017',
+  'VERSION' => '0.018',
   'test' => {
     'TESTS' => 't/*.t'
   }

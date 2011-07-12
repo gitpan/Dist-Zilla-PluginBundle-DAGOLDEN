@@ -1,19 +1,7 @@
-#
-# This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
-#
-# This software is Copyright (c) 2011 by David Golden.
-#
-# This is free software, licensed under:
-#
-#   The Apache License, Version 2.0, January 2004
-#
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-BEGIN {
-  $Dist::Zilla::PluginBundle::DAGOLDEN::VERSION = '0.017';
-}
-# ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
+our $VERSION = '0.018'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -40,7 +28,8 @@ use Dist::Zilla::Plugin::PodSpellingTests ();
 use Dist::Zilla::Plugin::PodWeaver ();
 use Dist::Zilla::Plugin::TaskWeaver 0.101620 ();
 use Dist::Zilla::Plugin::PortabilityTests ();
-use Dist::Zilla::Plugin::Prepender ();
+use Dist::Zilla::Plugin::OurPkgVersion 0.001008 ();
+use Dist::Zilla::Plugin::InsertCopyright 0.001 ();
 use Dist::Zilla::Plugin::ReadmeFromPod ();
 use Dist::Zilla::Plugin::Repository 0.17 ();  # safe for missing github
 
@@ -121,8 +110,8 @@ sub configure {
     'ManifestSkip',       # core
 
   # file munging
-    'PkgVersion',         # core
-    'Prepender',
+    'OurPkgVersion',
+    'InsertCopyright',
     ( $self->is_task
       ?  'TaskWeaver'
       : [ 'PodWeaver' => { config_plugin => $self->weaver_config } ]
@@ -145,8 +134,6 @@ sub configure {
   # metadata
     'MinimumPerl',
     ( $self->auto_prereq ? 'AutoPrereqs' : () ),
-    [ Repository => { git_remote => $self->git_remote, github_http => 0 } ],
-    # overrides Repository if github based
     [ GithubMeta => { remote => $self->git_remote } ],
     [ MetaNoIndex => { 
         directory => [qw/t xt examples corpus/],
@@ -199,6 +186,17 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
+# ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
+#
+# This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
+#
+# This software is Copyright (c) 2011 by David Golden.
+#
+# This is free software, licensed under:
+#
+#   The Apache License, Version 2.0, January 2004
+#
+
 
 
 =pod
@@ -209,7 +207,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.017
+version 0.018
 
 =head1 SYNOPSIS
 
@@ -231,8 +229,8 @@ following dist.ini:
    [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
  
    ; file modifications
-   [PkgVersion]        ; add $VERSION = ... to all files
-   [Prepender]         ; prepend a copyright statement to all files
+   [OurPkgVersion]     ; add $VERSION = ... to all files
+   [InsertCopyright    ; add copyright at "# COPYRIGHT"
    [PodWeaver]         ; generate Pod
    config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
  
@@ -253,14 +251,7 @@ following dist.ini:
    ; metadata
    [AutoPrereqs]       ; find prereqs from code
    [MinimumPerl]       ; determine minimum perl version
- 
-   [Repository]        ; set 'repository' in META
-   git_remote = origin ;   - remote to choose
-   github_http = 0     ;   - for github, use git:// not http://
- 
-   ; overrides [Repository] if repository is on github
    [GithubMeta]
-   remote = origin     ; better than [Repository]; sets homepage, too
  
    [MetaNoIndex]       ; sets 'no_index' in META
    directory = t
@@ -350,12 +341,6 @@ is '^release-(.+)$'
 
 =item *
 
-C<<< git_remote >>> -- given to C<<< Repository >>>.  Defaults to 'origin'.  If set to
-something other than 'origin', it is also added as a C<<< push_to >>> argument for
-C<<< Git::Push >>>
-
-=item *
-
 C<<< fake_release >>> -- swaps FakeRelease for UploadToCPAN. Mostly useful for
 testing a dist.ini without risking a real release.
 
@@ -398,9 +383,9 @@ progress on the request by the system.
 This is open source software.  The code repository is available for
 public review and contribution under the terms of the license.
 
-L<http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree>
+L<http://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
 
-  git clone git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
+  git clone http://github.com/dagolden/dist-zilla-pluginbundle-dagolden
 
 =head1 AUTHOR
 

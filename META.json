@@ -4,7 +4,7 @@
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200002, CPAN::Meta::Converter version 2.110330",
+   "generated_by" : "Dist::Zilla version 4.200009, CPAN::Meta::Converter version 2.110930",
    "license" : [
       "apache_2_0"
    ],
@@ -27,7 +27,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.31"
+            "ExtUtils::MakeMaker" : "6.30"
          }
       },
       "runtime" : {
@@ -40,13 +40,14 @@
             "Dist::Zilla::Plugin::CompileTests" : 0,
             "Dist::Zilla::Plugin::Git::NextVersion" : 0,
             "Dist::Zilla::Plugin::GithubMeta" : "0.10",
+            "Dist::Zilla::Plugin::InsertCopyright" : "0.001",
             "Dist::Zilla::Plugin::MetaNoIndex" : 0,
             "Dist::Zilla::Plugin::MetaProvides::Package" : "1.11044404",
             "Dist::Zilla::Plugin::MinimumPerl" : 0,
+            "Dist::Zilla::Plugin::OurPkgVersion" : "0.001008",
             "Dist::Zilla::Plugin::PodSpellingTests" : 0,
             "Dist::Zilla::Plugin::PodWeaver" : 0,
             "Dist::Zilla::Plugin::PortabilityTests" : 0,
-            "Dist::Zilla::Plugin::Prepender" : 0,
             "Dist::Zilla::Plugin::ReadmeFromPod" : 0,
             "Dist::Zilla::Plugin::Repository" : "0.17",
             "Dist::Zilla::Plugin::TaskWeaver" : "0.101620",
@@ -76,11 +77,11 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.017"
+         "version" : "0.018"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.017"
+         "version" : "0.018"
       }
    },
    "release_status" : "stable",
@@ -89,13 +90,13 @@
          "mailto" : "bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org",
          "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN"
       },
-      "homepage" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree",
+      "homepage" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git",
-         "web" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden/tree"
+         "url" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden",
+         "web" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden"
       }
    },
-   "version" : "0.017"
+   "version" : "0.018"
 }
 
