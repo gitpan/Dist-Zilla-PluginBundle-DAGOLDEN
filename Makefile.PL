@@ -42,8 +42,8 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::PodWeaver' => '0',
     'Dist::Zilla::Plugin::PortabilityTests' => '0',
     'Dist::Zilla::Plugin::ReadmeFromPod' => '0',
-    'Dist::Zilla::Plugin::Repository' => '0.17',
     'Dist::Zilla::Plugin::TaskWeaver' => '0.101620',
+    'Dist::Zilla::Plugin::Test::Version' => '0',
     'Dist::Zilla::PluginBundle::Filter' => '0',
     'Dist::Zilla::PluginBundle::Git' => '0',
     'Dist::Zilla::Role::PluginBundle::Easy' => '0',
@@ -56,7 +56,7 @@ my %WriteMakefileArgs = (
     'autodie' => '2.00',
     'namespace::autoclean' => '0.09'
   },
-  'VERSION' => '0.018',
+  'VERSION' => '0.019',
   'test' => {
     'TESTS' => 't/*.t'
   }

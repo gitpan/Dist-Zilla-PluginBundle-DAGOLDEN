@@ -1,5 +1,10 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.019     2011-07-18 17:23:28 America/New_York
+
+    - added Test::Version
+    - removed unused prereqs
+
 0.018     2011-07-11 21:52:26 America/New_York
 
     - swapped in InsertCopyright for Prepender
