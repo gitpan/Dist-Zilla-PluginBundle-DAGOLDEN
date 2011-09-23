@@ -4,7 +4,7 @@
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200009, CPAN::Meta::Converter version 2.110930",
+   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112580",
    "license" : [
       "apache_2_0"
    ],
@@ -32,12 +32,13 @@
       },
       "runtime" : {
          "requires" : {
-            "Dist::Zilla" : "4.102341",
+            "Dist::Zilla" : "4.3",
             "Dist::Zilla::Plugin::Bugtracker" : "1.102670",
             "Dist::Zilla::Plugin::CheckChangesHasContent" : 0,
             "Dist::Zilla::Plugin::CheckExtraTests" : 0,
             "Dist::Zilla::Plugin::CheckPrereqsIndexed" : "0.002",
             "Dist::Zilla::Plugin::CompileTests" : 0,
+            "Dist::Zilla::Plugin::CopyFilesFromBuild" : 0,
             "Dist::Zilla::Plugin::Git::NextVersion" : 0,
             "Dist::Zilla::Plugin::GithubMeta" : "0.10",
             "Dist::Zilla::Plugin::InsertCopyright" : "0.001",
@@ -48,6 +49,7 @@
             "Dist::Zilla::Plugin::PodSpellingTests" : 0,
             "Dist::Zilla::Plugin::PodWeaver" : 0,
             "Dist::Zilla::Plugin::PortabilityTests" : 0,
+            "Dist::Zilla::Plugin::ReadmeAnyFromPod" : 0,
             "Dist::Zilla::Plugin::ReadmeFromPod" : 0,
             "Dist::Zilla::Plugin::TaskWeaver" : "0.101620",
             "Dist::Zilla::Plugin::Test::Version" : 0,
@@ -62,7 +64,9 @@
             "Pod::Weaver::Section::Support" : "1.001",
             "autodie" : "2.00",
             "namespace::autoclean" : "0.09",
-            "perl" : "5.006"
+            "perl" : "5.006",
+            "strict" : 0,
+            "warnings" : 0
          }
       },
       "test" : {
@@ -77,11 +81,11 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.019"
+         "version" : "0.020"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.019"
+         "version" : "0.020"
       }
    },
    "release_status" : "stable",
@@ -90,13 +94,13 @@
          "mailto" : "bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org",
          "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN"
       },
-      "homepage" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden",
+      "homepage" : "https://github.com/dagolden/dist-zilla-pluginbundle-dagolden",
       "repository" : {
          "type" : "git",
-         "url" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden",
-         "web" : "http://github.com/dagolden/dist-zilla-pluginbundle-dagolden"
+         "url" : "https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git",
+         "web" : "https://github.com/dagolden/dist-zilla-pluginbundle-dagolden"
       }
    },
-   "version" : "0.019"
+   "version" : "0.020"
 }
 

@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.019
+    version 0.020
 
 SYNOPSIS
        # in dist.ini
@@ -19,6 +19,9 @@ DESCRIPTION
  
        ; choose files to include
        [GatherDir]         ; everything under top dir
+       exclude_filename = README.pod   ; skip this generated file
+       exclude_filename = META.json    ; skip this generated file
+ 
        [PruneCruft]        ; default stuff to skip
        [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
  
@@ -31,6 +34,10 @@ DESCRIPTION
        ; generated files
        [License]           ; boilerplate license
        [ReadmeFromPod]     ; from Pod (runs after PodWeaver)
+       [ReadmeAnyFromPod]  ; create README.pod in repo directory
+       type = pod
+       filename = README.pod
+       location = root
  
        ; t tests
        [CompileTests]      ; make sure .pm files all compile
@@ -70,6 +77,10 @@ DESCRIPTION
  
        ; manifest (after all generated files)
        [Manifest]          ; create MANIFEST
+ 
+       ; copy META.json back to repo dis
+       [CopyFilesFromBuild]
+       copy = META.json
  
        ; before release
        [Git::Check]        ; ensure all files checked in
@@ -144,9 +155,9 @@ SUPPORT
     This is open source software. The code repository is available for
     public review and contribution under the terms of the license.
 
-    <http://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
+    <https://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
 
-      git clone http://github.com/dagolden/dist-zilla-pluginbundle-dagolden
+      git clone https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
 
 AUTHOR
     David Golden <dagolden@cpan.org>
