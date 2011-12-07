@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.020
+    version 0.021
 
 SYNOPSIS
        # in dist.ini
@@ -144,12 +144,10 @@ SEE ALSO
 
 SUPPORT
   Bugs / Feature Requests
-    Please report any bugs or feature requests by email to
-    "bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org", or through the
-    web interface at
+    Please report any bugs or feature requests through the issue tracker at
     <http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundl
-    e-DAGOLDEN>. You will be automatically notified of any progress on the
-    request by the system.
+    e-DAGOLDEN>. You will be notified automatically of any progress on your
+    issue.
 
   Source Code
     This is open source software. The code repository is available for

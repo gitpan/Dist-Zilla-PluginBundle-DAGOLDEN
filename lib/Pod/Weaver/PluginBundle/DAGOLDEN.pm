@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.020'; # VERSION
+our $VERSION = '0.021'; # VERSION
 
 use Pod::Weaver::Config::Assembler;
 
@@ -15,6 +15,12 @@ sub _exp { Pod::Weaver::Config::Assembler->expand_package($_[0]) }
 my $repo_intro = <<'END';
 This is open source software.  The code repository is available for
 public review and contribution under the terms of the license.
+END
+
+my $bugtracker_content = <<'END';
+Please report any bugs or feature requests through the issue tracker
+at {WEB}.
+You will be notified automatically of any progress on your issue.
 END
 
 sub mvp_bundle_config {
@@ -50,6 +56,7 @@ sub mvp_bundle_config {
         perldoc => 0,
         websites => 'none',
         bugs => 'metadata',
+        bugs_content => $bugtracker_content,
         repository_link => 'both',
         repository_content => $repo_intro
       }
@@ -86,7 +93,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.020
+version 0.021
 
 =head1 DESCRIPTION
 
@@ -101,8 +108,9 @@ following weaver.ini:
    perldoc = 0
    websites = none
    bugs = metadata
+   bugs_content = ... stuff (web only, email omitted) ...
    repository_link = both
-   repository_content = ...stuff...
+   repository_content = ... stuff ...
  
    [-Transformer]
    transfomer = List

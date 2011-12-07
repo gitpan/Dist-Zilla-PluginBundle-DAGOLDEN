@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.020'; # VERSION
+our $VERSION = '0.021'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -231,7 +231,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.020
+version 0.021
 
 =head1 SYNOPSIS
 
@@ -410,9 +410,9 @@ L<Dist::Zilla::Plugin::TaskWeaver>
 
 =head2 Bugs / Feature Requests
 
-Please report any bugs or feature requests by email to C<bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN>. You will be automatically notified of any
-progress on the request by the system.
+Please report any bugs or feature requests through the issue tracker
+at L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN>.
+You will be notified automatically of any progress on your issue.
 
 =head2 Source Code
 
