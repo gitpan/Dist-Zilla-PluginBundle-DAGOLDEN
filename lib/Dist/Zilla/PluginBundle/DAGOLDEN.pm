@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.021'; # VERSION
+our $VERSION = '0.022'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -27,7 +27,8 @@ use Dist::Zilla::Plugin::MetaNoIndex ();
 use Dist::Zilla::Plugin::MetaProvides::Package 1.11044404 ();
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::OurPkgVersion 0.001008 ();
-use Dist::Zilla::Plugin::PodSpellingTests ();
+use Dist::Zilla::Plugin::Test::PodSpelling 2.001002 ();
+use Dist::Zilla::Plugin::Test::Perl::Critic ();
 use Dist::Zilla::Plugin::PodWeaver ();
 use Dist::Zilla::Plugin::PortabilityTests ();
 use Dist::Zilla::Plugin::ReadmeAnyFromPod ();
@@ -37,11 +38,34 @@ use Dist::Zilla::Plugin::Test::Version ();
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
+sub mvp_multivalue_args { qw/stopwords/ }
+
+has stopwords => (
+  is      => 'ro',
+  isa     => 'ArrayRef',
+  lazy    => 1,
+  default => sub {
+    exists $_[0]->payload->{stopwords} ? $_[0]->payload->{stopwords} : []
+  },
+);
+
 has fake_release => (
   is      => 'ro',
   isa     => 'Bool',
   lazy    => 1,
   default => sub { $_[0]->payload->{fake_release} },
+);
+
+has no_critic => (
+  is      => 'ro',
+  isa     => 'Bool',
+  default => 0,
+);
+
+has no_spellcheck => (
+  is      => 'ro',
+  isa     => 'Bool',
+  default => 0,
 );
 
 has is_task => (
@@ -133,10 +157,11 @@ sub configure {
     [ CompileTests => { fake_home => 1 } ],
 
   # generated xt/ tests
+    [ 'Test::PodSpelling' => { stopwords => $self->stopwords } ],  
+    'Test::Perl::Critic',  
     'MetaTests',          # core
     'PodSyntaxTests',     # core
     'PodCoverageTests',   # core
-#    'PodSpellingTests', # XXX disabled until stopwords and weaving fixed
     'PortabilityTests',
     'Test::Version',
 
@@ -231,7 +256,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.021
+version 0.022
 
 =head1 SYNOPSIS
 
@@ -274,6 +299,8 @@ following dist.ini:
    fake_home = 1       ; fakes $ENV{HOME} just in case
  
    ; xt tests
+   [Test::PodSpelling] ; xt/author/pod-spell.t
+   [Test::Perl::Critic]; xt/author/critic.t
    [MetaTests]         ; xt/release/meta-yaml.t
    [PodSyntaxTests]    ; xt/release/pod-syntax.t
    [PodCoverageTests]  ; xt/release/pod-coverage.t
@@ -345,7 +372,7 @@ following dist.ini:
 =for stopwords autoprereq dagolden fakerelease pluginbundle podweaver
 taskweaver uploadtocpan dist ini
 
-=for Pod::Coverage configure
+=for Pod::Coverage configure mvp_multivalue_args
 
 =head1 USAGE
 
@@ -383,6 +410,18 @@ testing a dist.ini without risking a real release.
 =item *
 
 C<<< weaver_config >>> -- specifies a Pod::Weaver bundle.  Defaults to @DAGOLDEN.
+
+=item *
+
+C<<< stopwords >>> -- add stopword for Test::PodSpelling (can be repeated)
+
+=item *
+
+C<<< no_critic >>> -- omit Test::Perl::Critic tests
+
+=item *
+
+C<<< no_spellcheck >>> -- omit Test::PodSpelling tests
 
 =back
 

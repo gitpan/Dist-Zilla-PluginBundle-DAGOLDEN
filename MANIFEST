@@ -12,6 +12,8 @@ lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
 lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
 t/00-compile.t
 t/dagolden.t
+xt/author/critic.t
+xt/author/pod-spell.t
 xt/release/distmeta.t
 xt/release/pod-coverage.t
 xt/release/pod-syntax.t
