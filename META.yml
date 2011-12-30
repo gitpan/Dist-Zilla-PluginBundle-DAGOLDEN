@@ -10,7 +10,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112580'
+generated_by: 'Dist::Zilla version 4.300005, CPAN::Meta::Converter version 2.112621'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -27,17 +27,16 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.022
+    version: 0.023
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.022
+    version: 0.023
 requires:
   Dist::Zilla: 4.3
   Dist::Zilla::Plugin::Bugtracker: 1.102670
   Dist::Zilla::Plugin::CheckChangesHasContent: 0
   Dist::Zilla::Plugin::CheckExtraTests: 0
   Dist::Zilla::Plugin::CheckPrereqsIndexed: 0.002
-  Dist::Zilla::Plugin::CompileTests: 0
   Dist::Zilla::Plugin::CopyFilesFromBuild: 0
   Dist::Zilla::Plugin::Git::NextVersion: 0
   Dist::Zilla::Plugin::GithubMeta: 0.10
@@ -47,12 +46,13 @@ requires:
   Dist::Zilla::Plugin::MinimumPerl: 0
   Dist::Zilla::Plugin::OurPkgVersion: 0.001008
   Dist::Zilla::Plugin::PodWeaver: 0
-  Dist::Zilla::Plugin::PortabilityTests: 0
   Dist::Zilla::Plugin::ReadmeAnyFromPod: 0
   Dist::Zilla::Plugin::ReadmeFromPod: 0
   Dist::Zilla::Plugin::TaskWeaver: 0.101620
+  Dist::Zilla::Plugin::Test::Compile: 0
   Dist::Zilla::Plugin::Test::Perl::Critic: 0
   Dist::Zilla::Plugin::Test::PodSpelling: 2.001002
+  Dist::Zilla::Plugin::Test::Portability: 0
   Dist::Zilla::Plugin::Test::Version: 0
   Dist::Zilla::PluginBundle::Filter: 0
   Dist::Zilla::PluginBundle::Git: 0
@@ -72,4 +72,4 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN
   homepage: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden
   repository: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.022
+version: 0.023
