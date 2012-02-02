@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.023
+    version 0.024
 
 SYNOPSIS
        # in dist.ini
@@ -40,7 +40,7 @@ DESCRIPTION
        location = root
  
        ; t tests
-       [CompileTests]      ; make sure .pm files all compile
+       [Test::Compile]     ; make sure .pm files all compile
        fake_home = 1       ; fakes $ENV{HOME} just in case
  
        ; xt tests
@@ -49,11 +49,13 @@ DESCRIPTION
        [MetaTests]         ; xt/release/meta-yaml.t
        [PodSyntaxTests]    ; xt/release/pod-syntax.t
        [PodCoverageTests]  ; xt/release/pod-coverage.t
-       [PortabilityTests]  ; xt/release/portability.t (of file name)
+       [Test::Portability] ; xt/release/portability.t (of file name)
        [Test::Version]     ; xt/release/test-version.t
  
        ; metadata
        [AutoPrereqs]       ; find prereqs from code
+       skip = ^t::lib
+ 
        [MinimumPerl]       ; determine minimum perl version
        [GithubMeta]
  
@@ -86,6 +88,11 @@ DESCRIPTION
  
        ; before release
        [Git::Check]        ; ensure all files checked in
+       allow_dirty = dist.ini
+       allow_dirty = Changes
+       allow_dirty = README.pod
+       allow_dirty = META.json
+ 
        [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
        [CheckChangesHasContent] ; ensure Changes has been updated
        [CheckExtraTests]   ; ensure xt/ tests pass
@@ -169,7 +176,7 @@ AUTHOR
     David Golden <dagolden@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is Copyright (c) 2011 by David Golden.
+    This software is Copyright (c) 2012 by David Golden.
 
     This is free software, licensed under:
 

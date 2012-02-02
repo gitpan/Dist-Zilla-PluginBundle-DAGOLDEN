@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.023'; # VERSION
+our $VERSION = '0.024'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -31,7 +31,7 @@ use Dist::Zilla::Plugin::Test::PodSpelling 2.001002 ();
 use Dist::Zilla::Plugin::Test::Perl::Critic ();
 use Dist::Zilla::Plugin::PodWeaver ();
 use Dist::Zilla::Plugin::Test::Portability ();
-use Dist::Zilla::Plugin::ReadmeAnyFromPod ();
+use Dist::Zilla::Plugin::ReadmeAnyFromPod 0.120051 ();
 use Dist::Zilla::Plugin::ReadmeFromPod ();
 use Dist::Zilla::Plugin::TaskWeaver 0.101620 ();
 use Dist::Zilla::Plugin::Test::Version ();
@@ -157,8 +157,8 @@ sub configure {
     [ 'Test::Compile' => { fake_home => 1 } ],
 
   # generated xt/ tests
-    [ 'Test::PodSpelling' => { stopwords => $self->stopwords } ],  
-    'Test::Perl::Critic',  
+    [ 'Test::PodSpelling' => { stopwords => $self->stopwords } ],
+    'Test::Perl::Critic',
     'MetaTests',          # core
     'PodSyntaxTests',     # core
     'PodCoverageTests',   # core
@@ -167,12 +167,15 @@ sub configure {
 
   # metadata
     'MinimumPerl',
-    ( $self->auto_prereq ? 'AutoPrereqs' : () ),
+    ( $self->auto_prereq
+      ? [ 'AutoPrereqs' => { skip => "^t::lib" } ]
+      : ()
+    ),
     [ GithubMeta => { remote => $self->git_remote } ],
-    [ MetaNoIndex => { 
+    [ MetaNoIndex => {
         directory => [qw/t xt examples corpus/],
         'package' => [qw/DB/]
-      } 
+      }
     ],
     ['MetaProvides::Package' => { meta_noindex => 1 } ], # AFTER MetaNoIndex
     ['Bugtracker'],
@@ -239,7 +242,7 @@ __PACKAGE__->meta->make_immutable;
 #
 # This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
 #
-# This software is Copyright (c) 2011 by David Golden.
+# This software is Copyright (c) 2012 by David Golden.
 #
 # This is free software, licensed under:
 #
@@ -256,7 +259,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.023
+version 0.024
 
 =head1 SYNOPSIS
 
@@ -295,7 +298,7 @@ following dist.ini:
    location = root
  
    ; t tests
-   [CompileTests]      ; make sure .pm files all compile
+   [Test::Compile]     ; make sure .pm files all compile
    fake_home = 1       ; fakes $ENV{HOME} just in case
  
    ; xt tests
@@ -304,11 +307,13 @@ following dist.ini:
    [MetaTests]         ; xt/release/meta-yaml.t
    [PodSyntaxTests]    ; xt/release/pod-syntax.t
    [PodCoverageTests]  ; xt/release/pod-coverage.t
-   [PortabilityTests]  ; xt/release/portability.t (of file name)
+   [Test::Portability] ; xt/release/portability.t (of file name)
    [Test::Version]     ; xt/release/test-version.t
  
    ; metadata
    [AutoPrereqs]       ; find prereqs from code
+   skip = ^t::lib
+ 
    [MinimumPerl]       ; determine minimum perl version
    [GithubMeta]
  
@@ -341,6 +346,11 @@ following dist.ini:
  
    ; before release
    [Git::Check]        ; ensure all files checked in
+   allow_dirty = dist.ini
+   allow_dirty = Changes
+   allow_dirty = README.pod
+   allow_dirty = META.json
+ 
    [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
    [CheckChangesHasContent] ; ensure Changes has been updated
    [CheckExtraTests]   ; ensure xt/ tests pass
@@ -468,7 +478,7 @@ David Golden <dagolden@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2011 by David Golden.
+This software is Copyright (c) 2012 by David Golden.
 
 This is free software, licensed under:
 
@@ -478,6 +488,5 @@ This is free software, licensed under:
 
 
 __END__
-
 
 

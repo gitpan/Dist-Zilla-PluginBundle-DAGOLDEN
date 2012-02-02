@@ -46,7 +46,7 @@
             "Dist::Zilla::Plugin::MinimumPerl" : 0,
             "Dist::Zilla::Plugin::OurPkgVersion" : "0.001008",
             "Dist::Zilla::Plugin::PodWeaver" : 0,
-            "Dist::Zilla::Plugin::ReadmeAnyFromPod" : 0,
+            "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.120051",
             "Dist::Zilla::Plugin::ReadmeFromPod" : 0,
             "Dist::Zilla::Plugin::TaskWeaver" : "0.101620",
             "Dist::Zilla::Plugin::Test::Compile" : 0,
@@ -82,11 +82,11 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.023"
+         "version" : "0.024"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.023"
+         "version" : "0.024"
       }
    },
    "release_status" : "stable",
@@ -102,6 +102,6 @@
          "web" : "https://github.com/dagolden/dist-zilla-pluginbundle-dagolden"
       }
    },
-   "version" : "0.023"
+   "version" : "0.024"
 }
 
