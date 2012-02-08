@@ -53,6 +53,7 @@ my %WriteMakefileArgs = (
     "Moose" => "0.99",
     "Moose::Autobox" => 0,
     "Pod::Elemental::Transformer::List" => "0.101620",
+    "Pod::Weaver" => "3.101635",
     "Pod::Weaver::Config::Assembler" => 0,
     "Pod::Weaver::Plugin::WikiDoc" => 0,
     "Pod::Weaver::Section::Support" => "1.001",
@@ -61,7 +62,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.025",
+  "VERSION" => "0.026",
   "test" => {
     "TESTS" => "t/*.t"
   }

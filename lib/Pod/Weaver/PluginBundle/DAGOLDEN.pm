@@ -1,8 +1,9 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.025'; # VERSION
+our $VERSION = '0.026'; # VERSION
 
+use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
 
 # Dependencies
@@ -92,7 +93,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.025
+version 0.026
 
 =head1 DESCRIPTION
 
