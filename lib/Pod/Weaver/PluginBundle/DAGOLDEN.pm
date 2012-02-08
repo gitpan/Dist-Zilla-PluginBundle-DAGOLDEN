@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.024'; # VERSION
+our $VERSION = '0.025'; # VERSION
 
 use Pod::Weaver::Config::Assembler;
 
@@ -92,7 +92,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.024
+version 0.025
 
 =head1 DESCRIPTION
 

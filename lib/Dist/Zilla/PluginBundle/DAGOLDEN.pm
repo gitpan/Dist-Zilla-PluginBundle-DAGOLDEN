@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.024'; # VERSION
+our $VERSION = '0.025'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -24,7 +24,7 @@ use Dist::Zilla::Plugin::Git::NextVersion ();
 use Dist::Zilla::Plugin::GithubMeta 0.10 ();
 use Dist::Zilla::Plugin::InsertCopyright 0.001 ();
 use Dist::Zilla::Plugin::MetaNoIndex ();
-use Dist::Zilla::Plugin::MetaProvides::Package 1.11044404 ();
+use Dist::Zilla::Plugin::MetaProvides::Package 1.14 (); # hides DB/main/private packages
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::OurPkgVersion 0.001008 ();
 use Dist::Zilla::Plugin::Test::PodSpelling 2.001002 ();
@@ -259,7 +259,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.024
+version 0.025
 
 =head1 SYNOPSIS
 
