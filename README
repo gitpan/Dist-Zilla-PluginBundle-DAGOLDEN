@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.027
+    version 0.028
 
 SYNOPSIS
        # in dist.ini
@@ -58,6 +58,7 @@ DESCRIPTION
  
        [MinimumPerl]       ; determine minimum perl version
        [GithubMeta]
+       issues = 1          ; c.f. no_bugtracker
  
        [MetaNoIndex]       ; sets 'no_index' in META
        directory = t
@@ -149,6 +150,9 @@ USAGE
     *   "no_critic" -- omit Test::Perl::Critic tests
 
     *   "no_spellcheck" -- omit Test::PodSpelling tests
+
+    *   "no_bugtracker" -- omit Bugtracker. The issue tracker becomes Github
+        instead of RT.
 
 SEE ALSO
     *   Dist::Zilla

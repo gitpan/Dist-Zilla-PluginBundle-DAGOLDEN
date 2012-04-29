@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.027'; # VERSION
+our $VERSION = '0.028'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -118,6 +118,13 @@ has git_remote => (
   },
 );
 
+has no_bugtracker => (
+  is      => 'ro',
+  isa     => 'Bool',
+  lazy    => 1,
+  default => sub { $_[0]->payload->{no_bugtracker} || 0 },
+);
+
 
 sub configure {
   my $self = shift;
@@ -171,14 +178,14 @@ sub configure {
       ? [ 'AutoPrereqs' => { skip => "^t::lib" } ]
       : ()
     ),
-    [ GithubMeta => { remote => $self->git_remote } ],
+    [ GithubMeta => { remote => $self->git_remote, issues => 1 } ],
     [ MetaNoIndex => {
         directory => [qw/t xt examples corpus/],
         'package' => [qw/DB/]
       }
     ],
     ['MetaProvides::Package' => { meta_noindex => 1 } ], # AFTER MetaNoIndex
-    ['Bugtracker'],
+    ($self->no_bugtracker ? () : ['Bugtracker']),
     'MetaYAML',           # core
     'MetaJSON',           # core
 
@@ -259,7 +266,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.027
+version 0.028
 
 =head1 SYNOPSIS
 
@@ -316,6 +323,7 @@ following dist.ini:
  
    [MinimumPerl]       ; determine minimum perl version
    [GithubMeta]
+   issues = 1          ; c.f. no_bugtracker
  
    [MetaNoIndex]       ; sets 'no_index' in META
    directory = t
@@ -433,6 +441,11 @@ C<<< no_critic >>> -- omit Test::Perl::Critic tests
 
 C<<< no_spellcheck >>> -- omit Test::PodSpelling tests
 
+=item *
+
+C<<< no_bugtracker >>> -- omit L<Bugtracker>.  The issue tracker becomes Github
+instead of RT.
+
 =back
 
 =head1 SEE ALSO
@@ -453,7 +466,7 @@ L<Dist::Zilla::Plugin::TaskWeaver>
 
 =back
 
-=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders
+=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
 
 =head1 SUPPORT
 
