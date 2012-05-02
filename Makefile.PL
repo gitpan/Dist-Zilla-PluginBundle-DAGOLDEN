@@ -48,7 +48,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::Test::Portability" => 0,
     "Dist::Zilla::Plugin::Test::Version" => 0,
     "Dist::Zilla::PluginBundle::Filter" => 0,
-    "Dist::Zilla::PluginBundle::Git" => 0,
+    "Dist::Zilla::PluginBundle::Git" => "1.121010",
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "Moose" => "0.99",
     "Moose::Autobox" => 0,
@@ -63,7 +63,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.028",
+  "VERSION" => "0.029",
   "test" => {
     "TESTS" => "t/*.t"
   }

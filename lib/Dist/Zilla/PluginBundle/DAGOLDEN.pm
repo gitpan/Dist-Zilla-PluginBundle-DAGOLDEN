@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.028'; # VERSION
+our $VERSION = '0.029'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -12,7 +12,7 @@ use namespace::autoclean 0.09;
 use Dist::Zilla 4.3; # authordeps
 
 use Dist::Zilla::PluginBundle::Filter ();
-use Dist::Zilla::PluginBundle::Git ();
+use Dist::Zilla::PluginBundle::Git 1.121010 ();
 
 use Dist::Zilla::Plugin::Bugtracker 1.102670 ();
 use Dist::Zilla::Plugin::CheckChangesHasContent ();
@@ -138,7 +138,7 @@ sub configure {
     [ 'Git::NextVersion' => { version_regexp => $self->version_regexp } ],
 
   # gather and prune
-    [ GatherDir => { exclude_filename => [qw/README.pod META.json/] }], # core
+    [ 'Git::GatherDir' => { exclude_filename => [qw/README.pod META.json/] }], # core
     'PruneCruft',         # core
     'ManifestSkip',       # core
 
@@ -266,7 +266,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.028
+version 0.029
 
 =head1 SYNOPSIS
 
@@ -283,7 +283,7 @@ following dist.ini:
    version_regexp = ^release-(.+)$
  
    ; choose files to include
-   [GatherDir]         ; everything under top dir
+   [Git::GatherDir]         ; everything from git ls-files
    exclude_filename = README.pod   ; skip this generated file
    exclude_filename = META.json    ; skip this generated file
  
