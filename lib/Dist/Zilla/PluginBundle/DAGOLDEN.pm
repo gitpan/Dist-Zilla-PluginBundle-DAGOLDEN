@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.029'; # VERSION
+our $VERSION = '0.030'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -59,13 +59,21 @@ has fake_release => (
 has no_critic => (
   is      => 'ro',
   isa     => 'Bool',
-  default => 0,
+  lazy    => 1,
+  default => sub {
+    exists $_[0]->payload->{no_critic} ? $_[0]->payload->{no_critic} : 0
+  },
 );
 
 has no_spellcheck => (
   is      => 'ro',
   isa     => 'Bool',
-  default => 0,
+  lazy    => 1,
+  default => sub {
+    exists $_[0]->payload->{no_spellcheck}
+         ? $_[0]->payload->{no_spellcheck}
+         : 0
+  },
 );
 
 has is_task => (
@@ -164,7 +172,9 @@ sub configure {
     [ 'Test::Compile' => { fake_home => 1 } ],
 
   # generated xt/ tests
-    [ 'Test::PodSpelling' => { stopwords => $self->stopwords } ],
+    ( $self->no_spellcheck
+        ? ()
+        : [ 'Test::PodSpelling' => { stopwords => $self->stopwords } ] ),
     'Test::Perl::Critic',
     'MetaTests',          # core
     'PodSyntaxTests',     # core
@@ -266,7 +276,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.029
+version 0.030
 
 =head1 SYNOPSIS
 
