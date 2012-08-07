@@ -10,7 +10,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300016, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Zilla version 4.300018, CPAN::Meta::Converter version 2.120921'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -27,10 +27,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.030
+    version: 0.031
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.030
+    version: 0.031
 requires:
   Dist::Zilla: 4.3
   Dist::Zilla::Plugin::Bugtracker: 1.102670
@@ -44,7 +44,7 @@ requires:
   Dist::Zilla::Plugin::MetaNoIndex: 0
   Dist::Zilla::Plugin::MetaProvides::Package: 1.14
   Dist::Zilla::Plugin::MinimumPerl: 0
-  Dist::Zilla::Plugin::OurPkgVersion: 0.001008
+  Dist::Zilla::Plugin::OurPkgVersion: 0.004
   Dist::Zilla::Plugin::PodWeaver: 0
   Dist::Zilla::Plugin::ReadmeAnyFromPod: 0.120051
   Dist::Zilla::Plugin::ReadmeFromPod: 0
@@ -74,4 +74,4 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN
   homepage: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden
   repository: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.030
+version: 0.031

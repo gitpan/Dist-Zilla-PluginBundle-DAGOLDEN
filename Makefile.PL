@@ -37,7 +37,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::MetaNoIndex" => 0,
     "Dist::Zilla::Plugin::MetaProvides::Package" => "1.14",
     "Dist::Zilla::Plugin::MinimumPerl" => 0,
-    "Dist::Zilla::Plugin::OurPkgVersion" => "0.001008",
+    "Dist::Zilla::Plugin::OurPkgVersion" => "0.004",
     "Dist::Zilla::Plugin::PodWeaver" => 0,
     "Dist::Zilla::Plugin::ReadmeAnyFromPod" => "0.120051",
     "Dist::Zilla::Plugin::ReadmeFromPod" => 0,
@@ -63,7 +63,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.030",
+  "VERSION" => "0.031",
   "test" => {
     "TESTS" => "t/*.t"
   }
