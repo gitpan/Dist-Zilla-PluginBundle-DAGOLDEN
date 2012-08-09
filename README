@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.031
+    version 0.032
 
 SYNOPSIS
        # in dist.ini
@@ -57,8 +57,6 @@ DESCRIPTION
        skip = ^t::lib
  
        [MinimumPerl]       ; determine minimum perl version
-       [GithubMeta]
-       issues = 1          ; c.f. no_bugtracker
  
        [MetaNoIndex]       ; sets 'no_index' in META
        directory = t
@@ -67,7 +65,10 @@ DESCRIPTION
        directory = corpus
        package = DB        ; just in case
  
-       [Bugtracker]        ; defaults to RT
+       [AutoMetaResources] ; set META resources
+       bugtracker.rt      = 1
+       repository.github  = user:dagolden
+       homepage           = https://metacpan.org/release/%{dist}
  
        [MetaProvides::Package] ; add 'provides' to META files
        meta_noindex = 1        ; respect prior no_index directives
@@ -94,6 +95,7 @@ DESCRIPTION
        allow_dirty = README.pod
        allow_dirty = META.json
  
+       [CheckMetaResources]     ; ensure META has 'resources' data
        [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
        [CheckChangesHasContent] ; ensure Changes has been updated
        [CheckExtraTests]   ; ensure xt/ tests pass
@@ -151,8 +153,13 @@ USAGE
 
     *   "no_spellcheck" -- omit Test::PodSpelling tests
 
-    *   "no_bugtracker" -- omit Bugtracker. The issue tracker becomes Github
-        instead of RT.
+    *   "no_bugtracker" -- DEPRECATED
+
+    This PluginBundle now supports ConfigSlicer, so you can pass in options
+    to the plugins used like this:
+
+       [@DAGOLDEN]
+       ExecDir.dir = scripts ; overrides ExecDir
 
 SEE ALSO
     *   Dist::Zilla
@@ -164,8 +171,8 @@ SEE ALSO
 SUPPORT
   Bugs / Feature Requests
     Please report any bugs or feature requests through the issue tracker at
-    <http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundl
-    e-DAGOLDEN>. You will be notified automatically of any progress on your
+    <https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBund
+    le-DAGOLDEN>. You will be notified automatically of any progress on your
     issue.
 
   Source Code
@@ -174,7 +181,7 @@ SUPPORT
 
     <https://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
 
-      git clone https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
+      git clone git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
 
 AUTHOR
     David Golden <dagolden@cpan.org>
