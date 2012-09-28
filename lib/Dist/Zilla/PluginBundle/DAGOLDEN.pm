@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.032'; # VERSION
+our $VERSION = '0.033'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -272,7 +272,7 @@ __PACKAGE__->meta->make_immutable;
 #   The Apache License, Version 2.0, January 2004
 #
 
-
+__END__
 
 =pod
 
@@ -282,7 +282,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.032
+version 0.033
 
 =head1 SYNOPSIS
 
@@ -471,6 +471,15 @@ plugins used like this:
    [@DAGOLDEN]
    ExecDir.dir = scripts ; overrides ExecDir
 
+=head1 COMMON PATTERNS
+
+=head2 use github instead of RT
+
+   [@DAGOLDEN]
+   :version = 0.32
+   AutoMetaResources.bugtracker.github = user:dagolden
+   AutoMetaResources.bugtracker.rt = 0
+
 =head1 SEE ALSO
 
 =over
@@ -521,8 +530,3 @@ This is free software, licensed under:
   The Apache License, Version 2.0, January 2004
 
 =cut
-
-
-__END__
-
-
