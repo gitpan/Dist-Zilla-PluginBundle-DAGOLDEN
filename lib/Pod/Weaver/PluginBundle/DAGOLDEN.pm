@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.033'; # VERSION
+our $VERSION = '0.034'; # VERSION
 
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
@@ -93,7 +93,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.033
+version 0.034
 
 =head1 DESCRIPTION
 
@@ -113,7 +113,7 @@ following weaver.ini:
    repository_content = ... stuff ...
  
    [-Transformer]
-   transfomer = List
+   transformer = List
 
 =for Pod::Coverage mvp_bundle_config
 
