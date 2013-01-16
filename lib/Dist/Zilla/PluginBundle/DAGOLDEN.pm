@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.034'; # VERSION
+our $VERSION = '0.035'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -33,6 +33,7 @@ use Dist::Zilla::Plugin::TaskWeaver 0.101620 ();
 use Dist::Zilla::Plugin::Test::Compile ();
 use Dist::Zilla::Plugin::Test::Perl::Critic ();
 use Dist::Zilla::Plugin::Test::PodSpelling 2.001002 ();
+use Test::Portability::Files 0.06 (); # buggy before that
 use Dist::Zilla::Plugin::Test::Portability ();
 use Dist::Zilla::Plugin::Test::Version ();
 
@@ -179,7 +180,7 @@ sub configure {
     'MetaTests',          # core
     'PodSyntaxTests',     # core
     'PodCoverageTests',   # core
-    'Test::Portability',
+    [ 'Test::Portability' => { options => "test_one_dot = 0" } ],
     'Test::Version',
 
   # metadata
@@ -265,7 +266,7 @@ __PACKAGE__->meta->make_immutable;
 #
 # This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
 #
-# This software is Copyright (c) 2012 by David Golden.
+# This software is Copyright (c) 2013 by David Golden.
 #
 # This is free software, licensed under:
 #
@@ -282,7 +283,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.034
+version 0.035
 
 =head1 SYNOPSIS
 
@@ -331,6 +332,7 @@ following dist.ini:
    [PodSyntaxTests]    ; xt/release/pod-syntax.t
    [PodCoverageTests]  ; xt/release/pod-coverage.t
    [Test::Portability] ; xt/release/portability.t (of file name)
+   options = test_one_dot = 0
    [Test::Version]     ; xt/release/test-version.t
  
    ; metadata
@@ -523,7 +525,7 @@ David Golden <dagolden@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by David Golden.
+This software is Copyright (c) 2013 by David Golden.
 
 This is free software, licensed under:
 

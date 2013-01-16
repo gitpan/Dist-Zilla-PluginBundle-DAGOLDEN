@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.034'; # VERSION
+our $VERSION = '0.035'; # VERSION
 
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
@@ -74,7 +74,7 @@ sub mvp_bundle_config {
 #
 # This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
 #
-# This software is Copyright (c) 2012 by David Golden.
+# This software is Copyright (c) 2013 by David Golden.
 #
 # This is free software, licensed under:
 #
@@ -93,7 +93,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.034
+version 0.035
 
 =head1 DESCRIPTION
 
@@ -150,7 +150,7 @@ David Golden <dagolden@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by David Golden.
+This software is Copyright (c) 2013 by David Golden.
 
 This is free software, licensed under:
 

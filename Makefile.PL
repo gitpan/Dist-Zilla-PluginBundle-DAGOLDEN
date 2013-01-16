@@ -59,12 +59,13 @@ my %WriteMakefileArgs = (
     "Pod::Weaver::Plugin::WikiDoc" => 0,
     "Pod::Weaver::Section::Support" => "1.001",
     "Pod::Wordlist::hanekomu" => "1.121370",
+    "Test::Portability::Files" => "0.06",
     "autodie" => "2.00",
     "namespace::autoclean" => "0.09",
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.034",
+  "VERSION" => "0.035",
   "test" => {
     "TESTS" => "t/*.t"
   }
