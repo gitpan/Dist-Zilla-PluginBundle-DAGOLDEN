@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.035'; # VERSION
+our $VERSION = '0.036'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -74,6 +74,17 @@ has no_spellcheck => (
   default => sub {
     exists $_[0]->payload->{no_spellcheck}
          ? $_[0]->payload->{no_spellcheck}
+         : 0
+  },
+);
+
+has no_coverage => (
+  is      => 'ro',
+  isa     => 'Bool',
+  lazy    => 1,
+  default => sub {
+    exists $_[0]->payload->{no_coverage}
+         ? $_[0]->payload->{no_coverage}
          : 0
   },
 );
@@ -179,7 +190,10 @@ sub configure {
     'Test::Perl::Critic',
     'MetaTests',          # core
     'PodSyntaxTests',     # core
-    'PodCoverageTests',   # core
+    ( $self->no_coverage
+        ? ()
+        : ('PodCoverageTests') # core
+    ),
     [ 'Test::Portability' => { options => "test_one_dot = 0" } ],
     'Test::Version',
 
@@ -283,7 +297,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.035
+version 0.036
 
 =head1 SYNOPSIS
 
@@ -460,6 +474,10 @@ C<<< no_critic >>> -- omit Test::Perl::Critic tests
 =item *
 
 C<<< no_spellcheck >>> -- omit Test::PodSpelling tests
+
+=item *
+
+C<<< no_coverage >>> -- omit PodCoverage tests
 
 =item *
 

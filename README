@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.035
+    version 0.036
 
 SYNOPSIS
        # in dist.ini
@@ -153,6 +153,8 @@ USAGE
     *   "no_critic" -- omit Test::Perl::Critic tests
 
     *   "no_spellcheck" -- omit Test::PodSpelling tests
+
+    *   "no_coverage" -- omit PodCoverage tests
 
     *   "no_bugtracker" -- DEPRECATED
 

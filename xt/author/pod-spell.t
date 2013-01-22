@@ -14,6 +14,7 @@ DAGOLDEN's
 PluginBundle
 ini
 ConfigSlicer
+PodCoverage
 David
 Golden
 lib
