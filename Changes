@@ -1,5 +1,10 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.037     2013-01-30 14:51:07 America/New_York
+
+    - tweaked Pod::Weaver settings.  Reordered "=func" sections.
+      Added "=usage" and "=construct" as new collectors
+
 0.036     2013-01-22 06:20:57 America/New_York
 
     - add no_coverage option
