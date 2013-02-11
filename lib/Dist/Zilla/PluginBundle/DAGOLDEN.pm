@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.037'; # VERSION
+our $VERSION = '0.038'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -35,6 +35,7 @@ use Dist::Zilla::Plugin::Test::Perl::Critic ();
 use Dist::Zilla::Plugin::Test::PodSpelling 2.001002 ();
 use Test::Portability::Files 0.06 (); # buggy before that
 use Dist::Zilla::Plugin::Test::Portability ();
+use Dist::Zilla::Plugin::Test::ReportPrereqs ();
 use Dist::Zilla::Plugin::Test::Version ();
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
@@ -56,6 +57,13 @@ has fake_release => (
   isa     => 'Bool',
   lazy    => 1,
   default => sub { $_[0]->payload->{fake_release} },
+);
+
+has no_git_gather => (
+  is      => 'ro',
+  isa     => 'Bool',
+  lazy    => 1,
+  default => sub { $_[0]->payload->{no_git_gather} },
 );
 
 has no_critic => (
@@ -158,7 +166,10 @@ sub configure {
     [ 'Git::NextVersion' => { version_regexp => $self->version_regexp } ],
 
   # gather and prune
-    [ 'Git::GatherDir' => { exclude_filename => [qw/README.pod META.json/] }], # core
+    ( $self->no_git_gather
+        ? [ 'GatherDir' => { exclude_filename => [qw/README.pod META.json/] }] # core
+        : [ 'Git::GatherDir' => { exclude_filename => [qw/README.pod META.json/] }]
+    ),
     'PruneCruft',         # core
     'ManifestSkip',       # core
 
@@ -182,6 +193,7 @@ sub configure {
 
   # generated t/ tests
     [ 'Test::Compile' => { fake_home => 1 } ],
+    'Test::ReportPrereqs',
 
   # generated xt/ tests
     ( $self->no_spellcheck
@@ -297,7 +309,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.037
+version 0.038
 
 =head1 SYNOPSIS
 
@@ -338,6 +350,8 @@ following dist.ini:
    ; t tests
    [Test::Compile]     ; make sure .pm files all compile
    fake_home = 1       ; fakes $ENV{HOME} just in case
+ 
+   [Test::ReportPrereqs] ; show prereqs in automated test output
  
    ; xt tests
    [Test::PodSpelling] ; xt/author/pod-spell.t
@@ -466,6 +480,10 @@ C<<< weaver_config >>> -- specifies a Pod::Weaver bundle.  Defaults to @DAGOLDEN
 =item *
 
 C<<< stopwords >>> -- add stopword for Test::PodSpelling (can be repeated)
+
+=item *
+
+C<<< no_git_gather >>> -- use GatherDir instead of Git::GatherDir
 
 =item *
 

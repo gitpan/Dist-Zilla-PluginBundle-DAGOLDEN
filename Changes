@@ -1,5 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.038     2013-02-11 12:16:15 America/New_York
+
+    - Add [Test::ReportPrereqs]
+
 0.037     2013-01-30 14:51:07 America/New_York
 
     - tweaked Pod::Weaver settings.  Reordered "=func" sections.

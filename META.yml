@@ -5,8 +5,9 @@ author:
 build_requires:
   File::Find: 0
   File::Temp: 0
-  Test::Exception: 0.29
-  Test::More: 0.88
+  Test::DZil: 0
+  Test::More: 0.96
+  perl: 5.008001
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -27,10 +28,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.037
+    version: 0.038
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.037
+    version: 0.038
 requires:
   Dist::Zilla: 4.3
   Dist::Zilla::Plugin::AutoMetaResources: 0
@@ -53,6 +54,7 @@ requires:
   Dist::Zilla::Plugin::Test::Perl::Critic: 0
   Dist::Zilla::Plugin::Test::PodSpelling: 2.001002
   Dist::Zilla::Plugin::Test::Portability: 0
+  Dist::Zilla::Plugin::Test::ReportPrereqs: 0
   Dist::Zilla::Plugin::Test::Version: 0
   Dist::Zilla::PluginBundle::Filter: 0
   Dist::Zilla::PluginBundle::Git: 1.121010
@@ -69,11 +71,11 @@ requires:
   Test::Portability::Files: 0.06
   autodie: 2.00
   namespace::autoclean: 0.09
-  perl: 5.006
+  perl: 5.008001
   strict: 0
   warnings: 0
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN
   homepage: https://metacpan.org/release/Dist-Zilla-PluginBundle-DAGOLDEN
   repository: git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.037
+version: 0.038

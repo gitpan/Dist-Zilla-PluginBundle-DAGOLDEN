@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.037
+    version 0.038
 
 SYNOPSIS
        # in dist.ini
@@ -42,6 +42,8 @@ DESCRIPTION
        ; t tests
        [Test::Compile]     ; make sure .pm files all compile
        fake_home = 1       ; fakes $ENV{HOME} just in case
+ 
+       [Test::ReportPrereqs] ; show prereqs in automated test output
  
        ; xt tests
        [Test::PodSpelling] ; xt/author/pod-spell.t
@@ -149,6 +151,8 @@ USAGE
         @DAGOLDEN.
 
     *   "stopwords" -- add stopword for Test::PodSpelling (can be repeated)
+
+    *   "no_git_gather" -- use GatherDir instead of Git::GatherDir
 
     *   "no_critic" -- omit Test::Perl::Critic tests
 

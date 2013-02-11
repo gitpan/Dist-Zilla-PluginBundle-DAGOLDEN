@@ -15,6 +15,7 @@ PluginBundle
 ini
 ConfigSlicer
 PodCoverage
+GatherDir
 David
 Golden
 lib
