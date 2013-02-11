@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.038'; # VERSION
+our $VERSION = '0.039'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -28,7 +28,6 @@ use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::OurPkgVersion 0.004 (); # TRIAL comment support
 use Dist::Zilla::Plugin::PodWeaver ();
 use Dist::Zilla::Plugin::ReadmeAnyFromPod 0.120051 ();
-use Dist::Zilla::Plugin::ReadmeFromPod ();
 use Dist::Zilla::Plugin::TaskWeaver 0.101620 ();
 use Dist::Zilla::Plugin::Test::Compile ();
 use Dist::Zilla::Plugin::Test::Perl::Critic ();
@@ -182,14 +181,14 @@ sub configure {
     ),
 
   # generated distribution files
-    'ReadmeFromPod',
-    'License',            # core
-    [ ReadmeAnyFromPod => { # generate in root for github, etc.
+    'ReadmeAnyFromPod',     # in build dir
+    [ ReadmeAnyFromPod => ReadmeInRoot => { # also generate in root for github, etc.
         type => 'pod',
         filename => 'README.pod',
         location => 'root',
       }
     ],
+    'License',            # core
 
   # generated t/ tests
     [ 'Test::Compile' => { fake_home => 1 } ],
@@ -309,7 +308,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.038
+version 0.039
 
 =head1 SYNOPSIS
 
