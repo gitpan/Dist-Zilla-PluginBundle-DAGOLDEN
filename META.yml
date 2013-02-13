@@ -7,7 +7,9 @@ build_requires:
   File::Find: 0
   File::Spec::Functions: 0
   File::Temp: 0
+  File::pushd: 0
   List::Util: 0
+  Path::Tiny: 0
   Test::DZil: 0
   Test::More: 0.96
   perl: 5.008001
@@ -31,10 +33,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.039
+    version: 0.040
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.039
+    version: 0.040
 requires:
   Dist::Zilla: 4.3
   Dist::Zilla::Plugin::AutoMetaResources: 0
@@ -80,4 +82,4 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN
   homepage: https://metacpan.org/release/Dist-Zilla-PluginBundle-DAGOLDEN
   repository: git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.039
+version: 0.040

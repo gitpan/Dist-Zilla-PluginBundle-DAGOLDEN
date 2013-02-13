@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.039
+    version 0.040
 
 SYNOPSIS
        # in dist.ini
@@ -152,7 +152,7 @@ USAGE
 
     *   "stopwords" -- add stopword for Test::PodSpelling (can be repeated)
 
-    *   "no_git_gather" -- use GatherDir instead of Git::GatherDir
+    *   "no_git" -- bypass all git-dependent plugins
 
     *   "no_critic" -- omit Test::Perl::Critic tests
 
@@ -161,6 +161,11 @@ USAGE
     *   "no_coverage" -- omit PodCoverage tests
 
     *   "no_bugtracker" -- DEPRECATED
+
+    When running without git, C<GatherDir> is used instead of
+    C<Git::GatherDir>, C<AutoVersion> is used instead of
+    C<Git::NextVersion>, and all git check and commit operations are
+    disabled.
 
     This PluginBundle now supports ConfigSlicer, so you can pass in options
     to the plugins used like this:

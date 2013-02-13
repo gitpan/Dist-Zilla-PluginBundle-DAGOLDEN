@@ -40,21 +40,19 @@ my @modules = qw(
   File::Find
   File::Spec::Functions
   File::Temp
+  File::pushd
   List::Util
   Moose
   Moose::Autobox
-  Pod::Coverage::TrustPod
+  Path::Tiny
   Pod::Elemental::Transformer::List
   Pod::Weaver
   Pod::Weaver::Config::Assembler
   Pod::Weaver::Plugin::WikiDoc
   Pod::Weaver::Section::Support
   Pod::Wordlist::hanekomu
-  Test::CPAN::Meta
   Test::DZil
   Test::More
-  Test::Pod
-  Test::Pod::Coverage
   Test::Portability::Files
   autodie
   namespace::autoclean
@@ -69,6 +67,7 @@ my $cpan_meta = "CPAN::Meta";
 if ( -f "MYMETA.json" && eval "require $cpan_meta" ) { ## no critic
   if ( my $meta = eval { CPAN::Meta->load_file("MYMETA.json") } ) {
     my $prereqs = $meta->prereqs;
+    delete $prereqs->{develop};
     my %uniq = map {$_ => 1} map { keys %$_ } map { values %$_ } values %$prereqs;
     $uniq{$_} = 1 for @modules; # don't lose any static ones
     @modules = sort keys %uniq;
