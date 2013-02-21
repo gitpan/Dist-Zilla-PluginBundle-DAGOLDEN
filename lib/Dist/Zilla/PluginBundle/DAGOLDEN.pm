@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.040'; # VERSION
+our $VERSION = '0.041'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -211,7 +211,11 @@ sub configure {
             ? ()
             : [ 'Test::PodSpelling' => { stopwords => $self->stopwords } ]
         ),
-        'Test::Perl::Critic',
+        (
+            $self->no_critic
+            ? ()
+            : ('Test::Perl::Critic')
+        ),
         'MetaTests',      # core
         'PodSyntaxTests', # core
         (
@@ -337,7 +341,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.040
+version 0.041
 
 =head1 SYNOPSIS
 
