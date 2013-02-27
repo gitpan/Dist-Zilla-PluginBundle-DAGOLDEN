@@ -36,6 +36,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::CheckExtraTests" => 0,
     "Dist::Zilla::Plugin::CheckMetaResources" => "0.001",
     "Dist::Zilla::Plugin::CheckPrereqsIndexed" => "0.002",
+    "Dist::Zilla::Plugin::ContributorsFromGit" => "0.004",
     "Dist::Zilla::Plugin::CopyFilesFromBuild" => 0,
     "Dist::Zilla::Plugin::Git::NextVersion" => 0,
     "Dist::Zilla::Plugin::InsertCopyright" => "0.001",
@@ -62,6 +63,7 @@ my %WriteMakefileArgs = (
     "Pod::Weaver" => "3.101635",
     "Pod::Weaver::Config::Assembler" => 0,
     "Pod::Weaver::Plugin::WikiDoc" => 0,
+    "Pod::Weaver::Section::Contributors" => "0.001",
     "Pod::Weaver::Section::Support" => "1.001",
     "Pod::Wordlist::hanekomu" => "1.121370",
     "Test::Portability::Files" => "0.06",
@@ -70,7 +72,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.041",
+  "VERSION" => "0.042",
   "test" => {
     "TESTS" => "t/*.t"
   }

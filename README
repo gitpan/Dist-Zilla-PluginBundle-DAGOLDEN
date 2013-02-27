@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.041
+    version 0.042
 
 SYNOPSIS
        # in dist.ini
@@ -16,6 +16,9 @@ DESCRIPTION
        ; version provider
        [Git::NextVersion]  ; get version from last release tag
        version_regexp = ^release-(.+)$
+ 
+       ; collect contributors list
+       [ContributorsFromGit]
  
        ; choose files to include
        [Git::GatherDir]         ; everything from git ls-files
@@ -204,6 +207,13 @@ SUPPORT
 
 AUTHOR
     David Golden <dagolden@cpan.org>
+
+CONTRIBUTORS
+    *   Christian Walde <walde.christian@googlemail.com>
+
+    *   Eric Johnson <eric.git@iijo.org>
+
+    *   Philippe Bruhat (BooK) <book@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2013 by David Golden.

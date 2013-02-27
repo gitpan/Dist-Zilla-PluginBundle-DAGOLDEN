@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.041'; # VERSION
+our $VERSION = '0.042'; # VERSION
 
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
@@ -11,6 +11,7 @@ use Pod::Weaver::Config::Assembler;
 use Pod::Weaver::Plugin::WikiDoc ();
 use Pod::Elemental::Transformer::List 0.101620 ();
 use Pod::Weaver::Section::Support 1.001        ();
+use Pod::Weaver::Section::Contributors 0.001   ();
 
 sub _exp { Pod::Weaver::Config::Assembler->expand_package( $_[0] ) }
 
@@ -70,6 +71,7 @@ sub mvp_bundle_config {
             }
         ],
         [ '@DAGOLDEN/Authors', _exp('Authors'), {} ],
+        [ '@DAGOLDEN/Contributors', _exp('Contributors'), {} ],
         [ '@DAGOLDEN/Legal',   _exp('Legal'),   {} ],
         [ '@DAGOLDEN/List', _exp('-Transformer'), { 'transformer' => 'List' } ],
       );
@@ -100,7 +102,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.041
+version 0.042
 
 =head1 DESCRIPTION
 
@@ -119,6 +121,8 @@ following weaver.ini:
    repository_link = both
    repository_content = ... stuff ...
  
+   [Contributors]
+ 
    [-Transformer]
    transformer = List
 
@@ -128,6 +132,32 @@ following weaver.ini:
 
 This PluginBundle is used automatically with the CE<lt>@DAGOLDENE<gt> L<Dist::Zilla>
 plugin bundle.
+
+It also has region collectors for:
+
+=over
+
+=item *
+
+construct
+
+=item *
+
+attr
+
+=item *
+
+method
+
+=item *
+
+func
+
+=item *
+
+usage
+
+=back
 
 =head1 SEE ALSO
 
@@ -147,6 +177,14 @@ L<Pod::Elemental::Transformer::List>
 
 =item *
 
+L<Pod::Section::Contributors>
+
+=item *
+
+L<Pod::Section::Support>
+
+=item *
+
 L<Dist::Zilla::Plugin::PodWeaver>
 
 =back
@@ -154,6 +192,24 @@ L<Dist::Zilla::Plugin::PodWeaver>
 =head1 AUTHOR
 
 David Golden <dagolden@cpan.org>
+
+=head1 CONTRIBUTORS
+
+=over 4
+
+=item *
+
+Christian Walde <walde.christian@googlemail.com>
+
+=item *
+
+Eric Johnson <eric.git@iijo.org>
+
+=item *
+
+Philippe Bruhat (BooK) <book@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -16,6 +16,7 @@ my @modules = qw(
   Dist::Zilla::Plugin::CheckExtraTests
   Dist::Zilla::Plugin::CheckMetaResources
   Dist::Zilla::Plugin::CheckPrereqsIndexed
+  Dist::Zilla::Plugin::ContributorsFromGit
   Dist::Zilla::Plugin::CopyFilesFromBuild
   Dist::Zilla::Plugin::Git::NextVersion
   Dist::Zilla::Plugin::InsertCopyright
@@ -49,6 +50,7 @@ my @modules = qw(
   Pod::Weaver
   Pod::Weaver::Config::Assembler
   Pod::Weaver::Plugin::WikiDoc
+  Pod::Weaver::Section::Contributors
   Pod::Weaver::Section::Support
   Pod::Wordlist::hanekomu
   Test::DZil

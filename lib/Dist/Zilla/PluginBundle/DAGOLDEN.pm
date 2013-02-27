@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.041'; # VERSION
+our $VERSION = '0.042'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -20,6 +20,7 @@ use Dist::Zilla::Plugin::CheckChangesHasContent ();
 use Dist::Zilla::Plugin::CheckExtraTests        ();
 use Dist::Zilla::Plugin::CheckMetaResources 0.001  ();
 use Dist::Zilla::Plugin::CheckPrereqsIndexed 0.002 ();
+use Dist::Zilla::Plugin::ContributorsFromGit 0.004 ();
 use Dist::Zilla::Plugin::CopyFilesFromBuild ();
 use Dist::Zilla::Plugin::Git::NextVersion   ();
 use Dist::Zilla::Plugin::InsertCopyright 0.001 ();
@@ -170,6 +171,13 @@ sub configure {
             $self->no_git
             ? 'AutoVersion'
             : [ 'Git::NextVersion' => { version_regexp => $self->version_regexp } ]
+        ),
+
+        # contributors
+        (
+            $self->no_git
+            ? ()
+            : 'ContributorsFromGit'
         ),
 
         # gather and prune
@@ -341,7 +349,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.041
+version 0.042
 
 =head1 SYNOPSIS
 
@@ -356,6 +364,9 @@ following dist.ini:
    ; version provider
    [Git::NextVersion]  ; get version from last release tag
    version_regexp = ^release-(.+)$
+ 
+   ; collect contributors list
+   [ContributorsFromGit]
  
    ; choose files to include
    [Git::GatherDir]         ; everything from git ls-files
@@ -594,6 +605,24 @@ L<https://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
 =head1 AUTHOR
 
 David Golden <dagolden@cpan.org>
+
+=head1 CONTRIBUTORS
+
+=over 4
+
+=item *
+
+Christian Walde <walde.christian@googlemail.com>
+
+=item *
+
+Eric Johnson <eric.git@iijo.org>
+
+=item *
+
+Philippe Bruhat (BooK) <book@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
