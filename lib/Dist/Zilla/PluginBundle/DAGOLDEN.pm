@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.042'; # VERSION
+our $VERSION = '0.043'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -32,6 +32,7 @@ use Dist::Zilla::Plugin::PodWeaver ();
 use Dist::Zilla::Plugin::ReadmeAnyFromPod 0.120051 ();
 use Dist::Zilla::Plugin::TaskWeaver 0.101620       ();
 use Dist::Zilla::Plugin::Test::Compile      ();
+use Dist::Zilla::Plugin::Test::MinimumVersion 2.000003 ();
 use Dist::Zilla::Plugin::Test::Perl::Critic ();
 use Dist::Zilla::Plugin::Test::PodSpelling 2.001002 ();
 use Test::Portability::Files 0.06 (); # buggy before that
@@ -211,6 +212,7 @@ sub configure {
 
         # generated t/ tests
         [ 'Test::Compile' => { fake_home => 1 } ],
+        [ 'Test::MinimumVersion' => { max_target_perl => '5.010' } ],
         'Test::ReportPrereqs',
 
         # generated xt/ tests
@@ -349,7 +351,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.042
+version 0.043
 
 =head1 SYNOPSIS
 
@@ -393,6 +395,9 @@ following dist.ini:
    ; t tests
    [Test::Compile]     ; make sure .pm files all compile
    fake_home = 1       ; fakes $ENV{HOME} just in case
+ 
+   [Test::MinimumPerl]
+   max_target_perl = 5.010
  
    [Test::ReportPrereqs] ; show prereqs in automated test output
  

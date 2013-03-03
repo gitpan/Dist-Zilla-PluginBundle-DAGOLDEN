@@ -28,6 +28,7 @@ my @modules = qw(
   Dist::Zilla::Plugin::ReadmeAnyFromPod
   Dist::Zilla::Plugin::TaskWeaver
   Dist::Zilla::Plugin::Test::Compile
+  Dist::Zilla::Plugin::Test::MinimumVersion
   Dist::Zilla::Plugin::Test::Perl::Critic
   Dist::Zilla::Plugin::Test::PodSpelling
   Dist::Zilla::Plugin::Test::Portability

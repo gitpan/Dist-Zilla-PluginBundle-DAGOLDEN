@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.042
+    version 0.043
 
 SYNOPSIS
        # in dist.ini
@@ -45,6 +45,9 @@ DESCRIPTION
        ; t tests
        [Test::Compile]     ; make sure .pm files all compile
        fake_home = 1       ; fakes $ENV{HOME} just in case
+ 
+       [Test::MinimumPerl]
+       max_target_perl = 5.010
  
        [Test::ReportPrereqs] ; show prereqs in automated test output
  
