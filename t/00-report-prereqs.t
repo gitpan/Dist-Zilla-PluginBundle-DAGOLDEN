@@ -50,6 +50,7 @@ my @modules = qw(
   Pod::Elemental::Transformer::List
   Pod::Weaver
   Pod::Weaver::Config::Assembler
+  Pod::Weaver::Plugin::Encoding
   Pod::Weaver::Plugin::WikiDoc
   Pod::Weaver::Section::Contributors
   Pod::Weaver::Section::Support

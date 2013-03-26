@@ -2,13 +2,14 @@ use strict;
 use warnings;
 
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.043'; # VERSION
+our $VERSION = '0.044'; # VERSION
 
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
 
 # Dependencies
 use Pod::Weaver::Plugin::WikiDoc ();
+use Pod::Weaver::Plugin::Encoding ();
 use Pod::Elemental::Transformer::List 0.101620 ();
 use Pod::Weaver::Section::Support 1.001        ();
 use Pod::Weaver::Section::Contributors 0.001   ();
@@ -29,6 +30,7 @@ END
 sub mvp_bundle_config {
     my @plugins;
     push @plugins, (
+        [ '@DAGOLDEN/Encoding', _exp('-Encoding'), {} ],
         [ '@DAGOLDEN/WikiDoc',  _exp('-WikiDoc'),  {} ],
         [ '@DAGOLDEN/CorePrep', _exp('@CorePrep'), {} ],
         [ '@DAGOLDEN/Name',     _exp('Name'),      {} ],
@@ -102,13 +104,15 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.043
+version 0.044
 
 =head1 DESCRIPTION
 
 This is a L<Pod::Weaver> PluginBundle.  It is roughly equivalent to the
 following weaver.ini:
 
+   [-Encoding]
+ 
    [-WikiDoc]
  
    [@Default]
