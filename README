@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.044
+    version 0.045
 
 SYNOPSIS
        # in dist.ini
@@ -36,8 +36,8 @@ DESCRIPTION
  
        ; generated files
        [License]           ; boilerplate license
-       [ReadmeFromPod]     ; from Pod (runs after PodWeaver)
-       [ReadmeAnyFromPod]  ; create README.pod in repo directory
+       [ReadmeAnyFromPod]     ; from Pod (runs after PodWeaver)
+       [ReadmeAnyFromPod / ReadmeInRoo ]  ; create README.pod in repo directory
        type = pod
        filename = README.pod
        location = root
@@ -165,6 +165,8 @@ USAGE
     *   "no_spellcheck" -- omit Test::PodSpelling tests
 
     *   "no_coverage" -- omit PodCoverage tests
+
+    *   "no_minimum_perl" -- omit Test::MinimumPerl tests
 
     *   "no_bugtracker" -- DEPRECATED
 

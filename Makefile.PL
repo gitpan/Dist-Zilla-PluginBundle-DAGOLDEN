@@ -11,17 +11,7 @@ use ExtUtils::MakeMaker 6.30;
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Dist::Zilla configuration the way DAGOLDEN does it",
   "AUTHOR" => "David Golden <dagolden\@cpan.org>",
-  "BUILD_REQUIRES" => {
-    "ExtUtils::MakeMaker" => 0,
-    "File::Find" => 0,
-    "File::Spec::Functions" => 0,
-    "File::Temp" => 0,
-    "File::pushd" => 0,
-    "List::Util" => 0,
-    "Path::Tiny" => 0,
-    "Test::DZil" => 0,
-    "Test::More" => "0.96"
-  },
+  "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
@@ -50,7 +40,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::Test::Compile" => 0,
     "Dist::Zilla::Plugin::Test::MinimumVersion" => "2.000003",
     "Dist::Zilla::Plugin::Test::Perl::Critic" => 0,
-    "Dist::Zilla::Plugin::Test::PodSpelling" => "2.001002",
+    "Dist::Zilla::Plugin::Test::PodSpelling" => "2.006000",
     "Dist::Zilla::Plugin::Test::Portability" => 0,
     "Dist::Zilla::Plugin::Test::ReportPrereqs" => 0,
     "Dist::Zilla::Plugin::Test::Version" => 0,
@@ -74,12 +64,36 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.044",
+  "TEST_REQUIRES" => {
+    "ExtUtils::MakeMaker" => 0,
+    "File::Find" => 0,
+    "File::Spec::Functions" => 0,
+    "File::Temp" => 0,
+    "File::pushd" => 0,
+    "List::Util" => 0,
+    "Path::Tiny" => 0,
+    "Test::DZil" => 0,
+    "Test::More" => "0.96"
+  },
+  "VERSION" => "0.045",
   "test" => {
     "TESTS" => "t/*.t"
   }
 );
 
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
+  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
+  for my $mod ( keys %$tr ) {
+    if ( exists $br->{$mod} ) {
+      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
+    }
+    else {
+      $br->{$mod} = $tr->{$mod};
+    }
+  }
+}
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
   my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};

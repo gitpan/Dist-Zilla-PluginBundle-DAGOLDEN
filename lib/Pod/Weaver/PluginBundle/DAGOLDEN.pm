@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.044'; # VERSION
+our $VERSION = '0.045'; # VERSION
 
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
@@ -98,13 +98,15 @@ __END__
 
 =pod
 
+=encoding utf-8
+
 =head1 NAME
 
 Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.044
+version 0.045
 
 =head1 DESCRIPTION
 

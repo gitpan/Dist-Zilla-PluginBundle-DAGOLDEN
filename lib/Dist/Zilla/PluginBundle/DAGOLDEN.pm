@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.044'; # VERSION
+our $VERSION = '0.045'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -34,7 +34,7 @@ use Dist::Zilla::Plugin::TaskWeaver 0.101620       ();
 use Dist::Zilla::Plugin::Test::Compile      ();
 use Dist::Zilla::Plugin::Test::MinimumVersion 2.000003 ();
 use Dist::Zilla::Plugin::Test::Perl::Critic ();
-use Dist::Zilla::Plugin::Test::PodSpelling 2.001002 ();
+use Dist::Zilla::Plugin::Test::PodSpelling 2.006000 (); # x_contributor support
 use Test::Portability::Files 0.06 (); # buggy before that
 use Dist::Zilla::Plugin::Test::Portability   ();
 use Dist::Zilla::Plugin::Test::ReportPrereqs ();
@@ -95,6 +95,17 @@ has no_coverage => (
     default => sub {
         exists $_[0]->payload->{no_coverage}
           ? $_[0]->payload->{no_coverage}
+          : 0;
+    },
+);
+
+has no_minimum_perl => (
+    is      => 'ro',
+    isa     => 'Bool',
+    lazy    => 1,
+    default => sub {
+        exists $_[0]->payload->{no_minimum_perl}
+          ? $_[0]->payload->{no_minimum_perl}
           : 0;
     },
 );
@@ -212,7 +223,11 @@ sub configure {
 
         # generated t/ tests
         [ 'Test::Compile' => { fake_home => 1 } ],
-        [ 'Test::MinimumVersion' => { max_target_perl => '5.010' } ],
+        (
+            $self->no_minimum_perl
+            ? ()
+            : [ 'Test::MinimumVersion' => { max_target_perl => '5.010' } ]
+        ),
         'Test::ReportPrereqs',
 
         # generated xt/ tests
@@ -345,13 +360,15 @@ __END__
 
 =pod
 
+=encoding utf-8
+
 =head1 NAME
 
 Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN does it
 
 =head1 VERSION
 
-version 0.044
+version 0.045
 
 =head1 SYNOPSIS
 
@@ -386,8 +403,8 @@ following dist.ini:
  
    ; generated files
    [License]           ; boilerplate license
-   [ReadmeFromPod]     ; from Pod (runs after PodWeaver)
-   [ReadmeAnyFromPod]  ; create README.pod in repo directory
+   [ReadmeAnyFromPod]     ; from Pod (runs after PodWeaver)
+   [ReadmeAnyFromPod / ReadmeInRoo ]  ; create README.pod in repo directory
    type = pod
    filename = README.pod
    location = root
@@ -544,6 +561,10 @@ C<<< no_spellcheck >>> -- omit Test::PodSpelling tests
 =item *
 
 C<<< no_coverage >>> -- omit PodCoverage tests
+
+=item *
+
+C<<< no_minimum_perl >>> -- omit Test::MinimumPerl tests
 
 =item *
 
