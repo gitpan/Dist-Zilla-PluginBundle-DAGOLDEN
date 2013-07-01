@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.045'; # VERSION
+our $VERSION = '0.046'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -42,6 +42,7 @@ use Dist::Zilla::Plugin::Test::Version       ();
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 with 'Dist::Zilla::Role::PluginBundle::Config::Slicer';
+with 'Dist::Zilla::Role::PluginBundle::PluginRemover';
 
 sub mvp_multivalue_args { qw/stopwords/ }
 
@@ -368,7 +369,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.045
+version 0.046
 
 =head1 SYNOPSIS
 
@@ -582,6 +583,11 @@ plugins used like this:
    [@DAGOLDEN]
    ExecDir.dir = scripts ; overrides ExecDir
 
+This PluginBundle also supports PluginRemover, so dropping a plugin is as easy as this:
+
+   [@DAGOLDEN]
+   -remove = PluginIDontWant
+
 =head1 COMMON PATTERNS
 
 =head2 use github instead of RT
@@ -643,6 +649,10 @@ Christian Walde <walde.christian@googlemail.com>
 =item *
 
 Eric Johnson <eric.git@iijo.org>
+
+=item *
+
+Karen Etheridge <ether@cpan.org>
 
 =item *
 

@@ -16,7 +16,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.131560'
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.130880'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -33,10 +33,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.045
+    version: 0.046
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.045
+    version: 0.046
 requires:
   Dist::Zilla: 4.3
   Dist::Zilla::Plugin::AutoMetaResources: 0
@@ -66,6 +66,7 @@ requires:
   Dist::Zilla::PluginBundle::Git: 1.121010
   Dist::Zilla::Role::PluginBundle::Config::Slicer: 0
   Dist::Zilla::Role::PluginBundle::Easy: 0
+  Dist::Zilla::Role::PluginBundle::PluginRemover: 0
   Moose: 0.99
   Moose::Autobox: 0
   Pod::Elemental::Transformer::List: 0.101620
@@ -86,8 +87,9 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN
   homepage: https://metacpan.org/release/Dist-Zilla-PluginBundle-DAGOLDEN
   repository: git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.045
+version: 0.046
 x_contributors:
   - 'Christian Walde <walde.christian@googlemail.com>'
   - 'Eric Johnson <eric.git@iijo.org>'
+  - 'Karen Etheridge <ether@cpan.org>'
   - 'Philippe Bruhat (BooK) <book@cpan.org>'

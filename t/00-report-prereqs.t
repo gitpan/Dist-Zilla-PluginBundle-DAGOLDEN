@@ -38,6 +38,7 @@ my @modules = qw(
   Dist::Zilla::PluginBundle::Git
   Dist::Zilla::Role::PluginBundle::Config::Slicer
   Dist::Zilla::Role::PluginBundle::Easy
+  Dist::Zilla::Role::PluginBundle::PluginRemover
   ExtUtils::MakeMaker
   File::Find
   File::Spec::Functions

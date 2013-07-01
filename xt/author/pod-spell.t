@@ -16,6 +16,7 @@ DAGOLDEN
 DAGOLDEN's
 GatherDir
 PluginBundle
+PluginRemover
 PodCoverage
 Walde
 attr
@@ -28,6 +29,9 @@ walde
 Eric
 Johnson
 eric
+Karen
+Etheridge
+ether
 Philippe
 book
 lib

@@ -48,6 +48,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::PluginBundle::Git" => "1.121010",
     "Dist::Zilla::Role::PluginBundle::Config::Slicer" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
+    "Dist::Zilla::Role::PluginBundle::PluginRemover" => 0,
     "Moose" => "0.99",
     "Moose::Autobox" => 0,
     "Pod::Elemental::Transformer::List" => "0.101620",
@@ -75,7 +76,7 @@ my %WriteMakefileArgs = (
     "Test::DZil" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.045",
+  "VERSION" => "0.046",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.045
+    version 0.046
 
 SYNOPSIS
        # in dist.ini
@@ -181,6 +181,12 @@ USAGE
        [@DAGOLDEN]
        ExecDir.dir = scripts ; overrides ExecDir
 
+    This PluginBundle also supports PluginRemover, so dropping a plugin is
+    as easy as this:
+
+       [@DAGOLDEN]
+       -remove = PluginIDontWant
+
 COMMON PATTERNS
   use github instead of RT
        [@DAGOLDEN]
@@ -217,6 +223,8 @@ CONTRIBUTORS
     *   Christian Walde <walde.christian@googlemail.com>
 
     *   Eric Johnson <eric.git@iijo.org>
+
+    *   Karen Etheridge <ether@cpan.org>
 
     *   Philippe Bruhat (BooK) <book@cpan.org>
 

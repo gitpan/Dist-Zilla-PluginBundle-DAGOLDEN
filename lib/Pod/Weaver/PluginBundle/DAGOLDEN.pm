@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.045'; # VERSION
+our $VERSION = '0.046'; # VERSION
 
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
@@ -106,7 +106,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.045
+version 0.046
 
 =head1 DESCRIPTION
 
@@ -183,11 +183,11 @@ L<Pod::Elemental::Transformer::List>
 
 =item *
 
-L<Pod::Section::Contributors>
+L<Pod::Weaver::Section::Contributors>
 
 =item *
 
-L<Pod::Section::Support>
+L<Pod::Weaver::Section::Support>
 
 =item *
 
@@ -198,24 +198,6 @@ L<Dist::Zilla::Plugin::PodWeaver>
 =head1 AUTHOR
 
 David Golden <dagolden@cpan.org>
-
-=head1 CONTRIBUTORS
-
-=over 4
-
-=item *
-
-Christian Walde <walde.christian@googlemail.com>
-
-=item *
-
-Eric Johnson <eric.git@iijo.org>
-
-=item *
-
-Philippe Bruhat (BooK) <book@cpan.org>
-
-=back
 
 =head1 COPYRIGHT AND LICENSE
 
