@@ -21,6 +21,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Dist::Zilla::PluginBundle::DAGOLDEN",
   "PREREQ_PM" => {
     "Dist::Zilla" => "4.3",
+    "Dist::Zilla::Plugin::Authority" => "1.006",
     "Dist::Zilla::Plugin::AutoMetaResources" => 0,
     "Dist::Zilla::Plugin::CheckChangesHasContent" => 0,
     "Dist::Zilla::Plugin::CheckExtraTests" => 0,
@@ -76,7 +77,7 @@ my %WriteMakefileArgs = (
     "Test::DZil" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.046",
+  "VERSION" => "0.047",
   "test" => {
     "TESTS" => "t/*.t"
   }

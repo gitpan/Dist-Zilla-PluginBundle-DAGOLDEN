@@ -11,6 +11,7 @@ use List::Util qw/max/;
 
 my @modules = qw(
   Dist::Zilla
+  Dist::Zilla::Plugin::Authority
   Dist::Zilla::Plugin::AutoMetaResources
   Dist::Zilla::Plugin::CheckChangesHasContent
   Dist::Zilla::Plugin::CheckExtraTests

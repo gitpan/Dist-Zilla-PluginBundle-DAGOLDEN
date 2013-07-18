@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.046'; # VERSION
+our $VERSION = '0.047'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -16,6 +16,7 @@ use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git 1.121010 ();
 
 use Dist::Zilla::Plugin::AutoMetaResources      ();
+use Dist::Zilla::Plugin::Authority 1.006 ();
 use Dist::Zilla::Plugin::CheckChangesHasContent ();
 use Dist::Zilla::Plugin::CheckExtraTests        ();
 use Dist::Zilla::Plugin::CheckMetaResources 0.001  ();
@@ -164,6 +165,15 @@ has git_remote => (
     },
 );
 
+has authority => (
+    is      => 'ro',
+    isa     => 'Str',
+    lazy    => 1,
+    default => sub {
+        exists $_[0]->payload->{authority} ? $_[0]->payload->{authority} : 'cpan:DAGOLDEN';
+    },
+);
+
 has no_bugtracker => ( # XXX deprecated
     is      => 'ro',
     isa     => 'Bool',
@@ -253,6 +263,11 @@ sub configure {
         'Test::Version',
 
         # metadata
+        [ 'Authority' => {
+                authority => $self->authority,
+                do_munging => 0,
+            }
+        ],
         'MinimumPerl',
         (
             $self->auto_prereq
@@ -369,7 +384,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.046
+version 0.047
 
 =head1 SYNOPSIS
 
@@ -432,6 +447,10 @@ following dist.ini:
    ; metadata
    [AutoPrereqs]       ; find prereqs from code
    skip = ^t::lib
+ 
+   [Authority]
+   authority = cpan:DAGOLDEN
+   do_munging = 0
  
    [MinimumPerl]       ; determine minimum perl version
  
@@ -542,6 +561,10 @@ testing a dist.ini without risking a real release.
 =item *
 
 C<<< weaver_config >>> -- specifies a Pod::Weaver bundle.  Defaults to @DAGOLDEN.
+
+=item *
+
+C<<< authority >>> -- specifies the x_authority field for pause.  Defaults to 'cpan:DAGOLDEN'.
 
 =item *
 

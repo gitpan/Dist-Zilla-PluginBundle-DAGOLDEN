@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.046
+    version 0.047
 
 SYNOPSIS
        # in dist.ini
@@ -64,6 +64,10 @@ DESCRIPTION
        ; metadata
        [AutoPrereqs]       ; find prereqs from code
        skip = ^t::lib
+ 
+       [Authority]
+       authority = cpan:DAGOLDEN
+       do_munging = 0
  
        [MinimumPerl]       ; determine minimum perl version
  
@@ -155,6 +159,9 @@ USAGE
 
     *   "weaver_config" -- specifies a Pod::Weaver bundle. Defaults to
         @DAGOLDEN.
+
+    *   "authority" -- specifies the x_authority field for pause. Defaults
+        to 'cpan:DAGOLDEN'.
 
     *   "stopwords" -- add stopword for Test::PodSpelling (can be repeated)
 
