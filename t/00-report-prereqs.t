@@ -41,10 +41,12 @@ my @modules = qw(
   Dist::Zilla::Role::PluginBundle::Easy
   Dist::Zilla::Role::PluginBundle::PluginRemover
   ExtUtils::MakeMaker
-  File::Find
+  File::Spec
   File::Spec::Functions
   File::Temp
   File::pushd
+  IO::Handle
+  IPC::Open3
   List::Util
   Moose
   Moose::Autobox

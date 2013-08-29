@@ -38,7 +38,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::PodWeaver" => 0,
     "Dist::Zilla::Plugin::ReadmeAnyFromPod" => "0.120051",
     "Dist::Zilla::Plugin::TaskWeaver" => "0.101620",
-    "Dist::Zilla::Plugin::Test::Compile" => 0,
+    "Dist::Zilla::Plugin::Test::Compile" => "2.022",
     "Dist::Zilla::Plugin::Test::MinimumVersion" => "2.000003",
     "Dist::Zilla::Plugin::Test::Perl::Critic" => 0,
     "Dist::Zilla::Plugin::Test::PodSpelling" => "2.006000",
@@ -68,16 +68,18 @@ my %WriteMakefileArgs = (
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
-    "File::Find" => 0,
+    "File::Spec" => 0,
     "File::Spec::Functions" => 0,
     "File::Temp" => 0,
     "File::pushd" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "List::Util" => 0,
     "Path::Tiny" => 0,
     "Test::DZil" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.047",
+  "VERSION" => "0.048",
   "test" => {
     "TESTS" => "t/*.t"
   }

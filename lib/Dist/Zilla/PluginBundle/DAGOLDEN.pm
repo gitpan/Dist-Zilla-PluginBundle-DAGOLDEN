@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.047'; # VERSION
+our $VERSION = '0.048'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -32,7 +32,7 @@ use Dist::Zilla::Plugin::OurPkgVersion 0.004 (); # TRIAL comment support
 use Dist::Zilla::Plugin::PodWeaver ();
 use Dist::Zilla::Plugin::ReadmeAnyFromPod 0.120051 ();
 use Dist::Zilla::Plugin::TaskWeaver 0.101620       ();
-use Dist::Zilla::Plugin::Test::Compile      ();
+use Dist::Zilla::Plugin::Test::Compile 2.022     ();
 use Dist::Zilla::Plugin::Test::MinimumVersion 2.000003 ();
 use Dist::Zilla::Plugin::Test::Perl::Critic ();
 use Dist::Zilla::Plugin::Test::PodSpelling 2.006000 (); # x_contributor support
@@ -384,7 +384,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.047
+version 0.048
 
 =head1 SYNOPSIS
 
