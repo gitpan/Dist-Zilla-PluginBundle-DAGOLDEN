@@ -12,7 +12,7 @@ use List::Util qw/max/;
 my @modules = qw(
   Dist::Zilla
   Dist::Zilla::Plugin::Authority
-  Dist::Zilla::Plugin::AutoMetaResources
+  Dist::Zilla::Plugin::Bugtracker
   Dist::Zilla::Plugin::CheckChangesHasContent
   Dist::Zilla::Plugin::CheckExtraTests
   Dist::Zilla::Plugin::CheckMetaResources
@@ -20,6 +20,7 @@ my @modules = qw(
   Dist::Zilla::Plugin::ContributorsFromGit
   Dist::Zilla::Plugin::CopyFilesFromBuild
   Dist::Zilla::Plugin::Git::NextVersion
+  Dist::Zilla::Plugin::GithubMeta
   Dist::Zilla::Plugin::InsertCopyright
   Dist::Zilla::Plugin::MetaNoIndex
   Dist::Zilla::Plugin::MetaProvides::Package
@@ -41,7 +42,6 @@ my @modules = qw(
   Dist::Zilla::Role::PluginBundle::Easy
   Dist::Zilla::Role::PluginBundle::PluginRemover
   ExtUtils::MakeMaker
-  File::Spec
   File::Spec::Functions
   File::Temp
   File::pushd

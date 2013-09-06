@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.048
+    version 0.049
 
 SYNOPSIS
        # in dist.ini
@@ -78,10 +78,11 @@ DESCRIPTION
        directory = corpus
        package = DB        ; just in case
  
-       [AutoMetaResources] ; set META resources
-       bugtracker.rt      = 1
-       repository.github  = user:dagolden
-       homepage           = https://metacpan.org/release/%{dist}
+       [GithubMeta]        ; set META resources
+       user = dagolden
+       remote = origin
+       remote = github
+       issues = 1
  
        [MetaProvides::Package] ; add 'provides' to META files
        meta_noindex = 1        ; respect prior no_index directives
@@ -144,26 +145,31 @@ USAGE
     *   "is_task" -- this indicates whether TaskWeaver or PodWeaver should
         be used. Default is 0.
 
+    *   "authority" -- specifies the x_authority field for pause. Defaults
+        to 'cpan:DAGOLDEN'.
+
     *   "auto_prereq" -- this indicates whether AutoPrereq should be used or
         not. Default is 1.
+
+    *   "fake_release" -- swaps FakeRelease for UploadToCPAN. Mostly useful
+        for testing a dist.ini without risking a real release.
+
+    *   "git_remote" -- where to push after release
+
+    *   "github_issues" -- whether to use github issue tracker. Defaults is
+        1.
+
+    *   "stopwords" -- add stopword for Test::PodSpelling (can be repeated)
 
     *   "tag_format" -- given to "Git::Tag". Default is 'release-%v' to be
         more robust than just the version number when parsing versions for
         "Git::NextVersion"
 
-    *   "version_regexp" -- given to "Git::NextVersion". Default is
-        '^release-(.+)$'
-
-    *   "fake_release" -- swaps FakeRelease for UploadToCPAN. Mostly useful
-        for testing a dist.ini without risking a real release.
-
     *   "weaver_config" -- specifies a Pod::Weaver bundle. Defaults to
         @DAGOLDEN.
 
-    *   "authority" -- specifies the x_authority field for pause. Defaults
-        to 'cpan:DAGOLDEN'.
-
-    *   "stopwords" -- add stopword for Test::PodSpelling (can be repeated)
+    *   "version_regexp" -- given to "Git::NextVersion". Default is
+        '^release-(.+)$'
 
     *   "no_git" -- bypass all git-dependent plugins
 
@@ -211,9 +217,8 @@ SEE ALSO
 SUPPORT
   Bugs / Feature Requests
     Please report any bugs or feature requests through the issue tracker at
-    <https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBund
-    le-DAGOLDEN>. You will be notified automatically of any progress on your
-    issue.
+    <https://github.com/dagolden/dist-zilla-pluginbundle-dagolden/issues>.
+    You will be notified automatically of any progress on your issue.
 
   Source Code
     This is open source software. The code repository is available for
@@ -221,7 +226,7 @@ SUPPORT
 
     <https://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
 
-      git clone git://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
+      git clone https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
 
 AUTHOR
     David Golden <dagolden@cpan.org>
