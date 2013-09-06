@@ -13,6 +13,7 @@ my @modules = qw(
   Dist::Zilla
   Dist::Zilla::Plugin::Authority
   Dist::Zilla::Plugin::Bugtracker
+  Dist::Zilla::Plugin::CPANFile
   Dist::Zilla::Plugin::CheckChangesHasContent
   Dist::Zilla::Plugin::CheckExtraTests
   Dist::Zilla::Plugin::CheckMetaResources

@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.049
+    version 0.050
 
 SYNOPSIS
        # in dist.ini
@@ -37,10 +37,6 @@ DESCRIPTION
        ; generated files
        [License]           ; boilerplate license
        [ReadmeAnyFromPod]     ; from Pod (runs after PodWeaver)
-       [ReadmeAnyFromPod / ReadmeInRoo ]  ; create README.pod in repo directory
-       type = pod
-       filename = README.pod
-       location = root
  
        ; t tests
        [Test::Compile]     ; make sure .pm files all compile
@@ -89,6 +85,7 @@ DESCRIPTION
  
        [MetaYAML]          ; generate META.yml (v1.4)
        [MetaJSON]          ; generate META.json (v2)
+       [CPANFile]          ; generate cpanfile
  
        ; build system
        [ExecDir]           ; include 'bin/*' as executables
@@ -98,16 +95,15 @@ DESCRIPTION
        ; manifest (after all generated files)
        [Manifest]          ; create MANIFEST
  
-       ; copy META.json back to repo dis
+       ; copy cpanfile back to repo dis
        [CopyFilesFromBuild]
-       copy = META.json
+       copy = cpanfile
  
        ; before release
        [Git::Check]        ; ensure all files checked in
        allow_dirty = dist.ini
        allow_dirty = Changes
-       allow_dirty = README.pod
-       allow_dirty = META.json
+       allow_dirty = cpanfile
  
        [CheckMetaResources]     ; ensure META has 'resources' data
        [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
