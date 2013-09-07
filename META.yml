@@ -34,10 +34,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.050
+    version: 0.051
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.050
+    version: 0.051
 requires:
   Dist::Zilla: 4.3
   Dist::Zilla::Plugin::Authority: 1.006
@@ -91,7 +91,7 @@ resources:
   bugtracker: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden/issues
   homepage: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden
   repository: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.050
+version: 0.051
 x_authority: cpan:DAGOLDEN
 x_contributors:
   - 'Christian Walde <walde.christian@googlemail.com>'

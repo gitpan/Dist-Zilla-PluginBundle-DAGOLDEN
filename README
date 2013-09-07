@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.050
+    version 0.051
 
 SYNOPSIS
        # in dist.ini
@@ -146,6 +146,9 @@ USAGE
 
     *   "auto_prereq" -- this indicates whether AutoPrereq should be used or
         not. Default is 1.
+
+    *   "darkpan" -- for private code; uses FakeRelease and fills in dummy
+        repo/bugtracker data
 
     *   "fake_release" -- swaps FakeRelease for UploadToCPAN. Mostly useful
         for testing a dist.ini without risking a real release.

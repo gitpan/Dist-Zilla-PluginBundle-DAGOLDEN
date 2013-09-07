@@ -35,7 +35,7 @@ ether
 Philippe
 book
 lib
-Pod
-Weaver
 Dist
 Zilla
+Pod
+Weaver

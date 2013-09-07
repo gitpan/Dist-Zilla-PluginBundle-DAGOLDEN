@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.050'; # VERSION
+our $VERSION = '0.051'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -185,6 +185,15 @@ has authority => (
     },
 );
 
+has darkpan => (
+    is      => 'ro',
+    isa     => 'Bool',
+    lazy    => 1,
+    default => sub {
+        exists $_[0]->payload->{darkpan} ? $_[0]->payload->{darkpan} : 0
+    },
+);
+
 has no_bugtracker => ( # XXX deprecated
     is      => 'ro',
     isa     => 'Bool',
@@ -285,19 +294,23 @@ sub configure {
             }
         ],
         [ 'MetaProvides::Package' => { meta_noindex => 1 } ], # AFTER MetaNoIndex
-        [
-            GithubMeta => {
-                user   => 'dagolden',
-                remote => [ qw(origin github) ],
-                issues => $self->github_issues,
-            }
-        ],
         (
-            ($self->github_issues && ! $self->no_git)
+            $self->darkpan
+            ? ()
+            : [
+                GithubMeta => {
+                    user   => 'dagolden',
+                    remote => [ qw(origin github) ],
+                    issues => $self->github_issues,
+                }
+              ],
+        ),
+        (
+            ( $self->github_issues && ! $self->no_git && ! $self->darkpan )
             ? ()
             : (
                 # fake out Pod::Weaver::Section::Support
-                [ 'Bugtracker' => { mailto => '' } ],
+                [ 'Bugtracker' => { mailto => '', $self->darkpan ? ( web => "http://localhost/" ) : () } ],
                 [ 'MetaResources' => { map {; "repository.$_" => "http://localhost/" } qw/url web/ } ],
               )
         ),
@@ -335,7 +348,7 @@ sub configure {
         'ConfirmRelease',                                     # core
 
         # release
-        ( $self->fake_release ? 'FakeRelease' : 'UploadToCPAN' ), # core
+        ( $self->fake_release || $self->darkpan ? 'FakeRelease' : 'UploadToCPAN' ), # core
 
         # after release
         # Note -- NextRelease is here to get the ordering right with
@@ -398,7 +411,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.050
+version 0.051
 
 =head1 SYNOPSIS
 
@@ -555,6 +568,10 @@ C<<< authority >>> -- specifies the x_authority field for pause.  Defaults to 'c
 =item *
 
 C<<< auto_prereq >>> -- this indicates whether AutoPrereq should be used or not.  Default is 1.
+
+=item *
+
+C<<< darkpan >>> -- for private code; uses FakeRelease and fills in dummy repoE<sol>bugtracker data
 
 =item *
 

@@ -1,5 +1,12 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.051     2013-09-06 23:23:48 America/New_York
+
+    [ADDED]
+
+    - Added 'darkpan' attribute to trigger FakeRelease
+      and dummy repo/bugtracker data
+
 0.050     2013-09-06 17:42:59 America/New_York
 
     [INCOMPATIBLE CHANGE]
