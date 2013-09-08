@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.052'; # VERSION
+our $VERSION = '0.053'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -299,20 +299,26 @@ sub configure {
             ? ()
             : [
                 GithubMeta => {
-                    user   => 'dagolden',
                     remote => [ qw(origin github) ],
                     issues => $self->github_issues,
                 }
               ],
         ),
         (
-            ( $self->github_issues && ! $self->no_git && ! $self->darkpan )
-            ? ()
-            : (
+            ( $self->no_git || $self->darkpan || ! $self->github_issues )
+            ? (
                 # fake out Pod::Weaver::Section::Support
                 [ 'Bugtracker' => { mailto => '', $self->darkpan ? ( web => "http://localhost/" ) : () } ],
+              )
+            : ()
+        ),
+        (
+            ( $self->no_git || $self->darkpan )
+            ? (
+                # fake out Pod::Weaver::Section::Support
                 [ 'MetaResources' => { map {; "repository.$_" => "http://localhost/" } qw/url web/ } ],
               )
+            : ()
         ),
 
         'MetaYAML',                                           # core
@@ -411,7 +417,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.052
+version 0.053
 
 =head1 SYNOPSIS
 
@@ -485,7 +491,6 @@ following dist.ini:
    package = DB        ; just in case
  
    [GithubMeta]        ; set META resources
-   user = dagolden
    remote = origin
    remote = github
    issues = 1
@@ -644,15 +649,6 @@ This PluginBundle also supports PluginRemover, so dropping a plugin is as easy a
 
    [@DAGOLDEN]
    -remove = PluginIDontWant
-
-=head1 COMMON PATTERNS
-
-=head2 use github instead of RT
-
-   [@DAGOLDEN]
-   :version = 0.32
-   AutoMetaResources.bugtracker.github = user:dagolden
-   AutoMetaResources.bugtracker.rt = 0
 
 =head1 SEE ALSO
 

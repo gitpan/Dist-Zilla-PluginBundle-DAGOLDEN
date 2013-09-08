@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.052
+    version 0.053
 
 SYNOPSIS
        # in dist.ini
@@ -75,7 +75,6 @@ DESCRIPTION
        package = DB        ; just in case
  
        [GithubMeta]        ; set META resources
-       user = dagolden
        remote = origin
        remote = github
        issues = 1
@@ -198,13 +197,6 @@ USAGE
 
        [@DAGOLDEN]
        -remove = PluginIDontWant
-
-COMMON PATTERNS
-  use github instead of RT
-       [@DAGOLDEN]
-       :version = 0.32
-       AutoMetaResources.bugtracker.github = user:dagolden
-       AutoMetaResources.bugtracker.rt = 0
 
 SEE ALSO
     *   Dist::Zilla
