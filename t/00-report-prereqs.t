@@ -59,7 +59,7 @@ my @modules = qw(
   Pod::Weaver::Plugin::WikiDoc
   Pod::Weaver::Section::Contributors
   Pod::Weaver::Section::Support
-  Pod::Wordlist::hanekomu
+  Pod::Wordlist
   Test::DZil
   Test::More
   Test::Portability::Files

@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.051'; # VERSION
+our $VERSION = '0.052'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -10,7 +10,7 @@ use Moose 0.99;
 use Moose::Autobox;
 use namespace::autoclean 0.09;
 
-use Dist::Zilla 4.3; # authordeps
+use Dist::Zilla 4.300038; # fixed MetaYML encoding
 
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git 1.121010 ();
@@ -37,7 +37,7 @@ use Dist::Zilla::Plugin::TaskWeaver 0.101620       ();
 use Dist::Zilla::Plugin::Test::Compile 2.023     ();
 use Dist::Zilla::Plugin::Test::MinimumVersion 2.000003 ();
 use Dist::Zilla::Plugin::Test::Perl::Critic ();
-use Dist::Zilla::Plugin::Test::PodSpelling 2.006000 (); # x_contributor support
+use Dist::Zilla::Plugin::Test::PodSpelling 2.006001 (); # Pod::Wordlist
 use Test::Portability::Files 0.06 (); # buggy before that
 use Dist::Zilla::Plugin::Test::Portability   ();
 use Dist::Zilla::Plugin::Test::ReportPrereqs ();
@@ -411,7 +411,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.051
+version 0.052
 
 =head1 SYNOPSIS
 
