@@ -43,6 +43,7 @@ my @modules = qw(
   Dist::Zilla::Role::PluginBundle::Easy
   Dist::Zilla::Role::PluginBundle::PluginRemover
   ExtUtils::MakeMaker
+  File::Spec
   File::Spec::Functions
   File::Temp
   File::pushd

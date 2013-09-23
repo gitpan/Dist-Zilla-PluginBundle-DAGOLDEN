@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.053'; # VERSION
+our $VERSION = '0.054'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -328,7 +328,7 @@ sub configure {
         # build system
         'ExecDir',                                            # core
         'ShareDir',                                           # core
-        'MakeMaker',                                          # core
+        [ 'MakeMaker' => { eumm_version => '6.17' } ],        # core
 
         # copy files from build back to root for inclusion in VCS
         [
@@ -417,7 +417,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.053
+version 0.054
 
 =head1 SYNOPSIS
 
@@ -506,6 +506,7 @@ following dist.ini:
    [ExecDir]           ; include 'bin/*' as executables
    [ShareDir]          ; include 'share/' for File::ShareDir
    [MakeMaker]         ; create Makefile.PL
+   eumm_version = 6.17
  
    ; manifest (after all generated files)
    [Manifest]          ; create MANIFEST
