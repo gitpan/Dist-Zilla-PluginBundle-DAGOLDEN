@@ -2,13 +2,13 @@ use strict;
 use warnings;
 
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.054'; # VERSION
+our $VERSION = '0.055'; # VERSION
 
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
 
 # Dependencies
-use Pod::Weaver::Plugin::WikiDoc ();
+use Pod::Weaver::Plugin::WikiDoc  ();
 use Pod::Weaver::Plugin::Encoding ();
 use Pod::Elemental::Transformer::List 0.101620 ();
 use Pod::Weaver::Section::Support 1.001        ();
@@ -72,9 +72,9 @@ sub mvp_bundle_config {
                 repository_content => $repo_intro
             }
         ],
-        [ '@DAGOLDEN/Authors', _exp('Authors'), {} ],
+        [ '@DAGOLDEN/Authors',      _exp('Authors'),      {} ],
         [ '@DAGOLDEN/Contributors', _exp('Contributors'), {} ],
-        [ '@DAGOLDEN/Legal',   _exp('Legal'),   {} ],
+        [ '@DAGOLDEN/Legal',        _exp('Legal'),        {} ],
         [ '@DAGOLDEN/List', _exp('-Transformer'), { 'transformer' => 'List' } ],
       );
 
@@ -106,7 +106,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.054
+version 0.055
 
 =head1 DESCRIPTION
 

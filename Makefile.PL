@@ -4,7 +4,7 @@ use warnings;
 
 use 5.008001;
 
-use ExtUtils::MakeMaker 6.30;
+use ExtUtils::MakeMaker 6.17;
 
 
 
@@ -13,7 +13,7 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "David Golden <dagolden\@cpan.org>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.30"
+    "ExtUtils::MakeMaker" => "6.17"
   },
   "DISTNAME" => "Dist-Zilla-PluginBundle-DAGOLDEN",
   "EXE_FILES" => [],
@@ -40,12 +40,12 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::PodWeaver" => 0,
     "Dist::Zilla::Plugin::ReadmeAnyFromPod" => "0.120051",
     "Dist::Zilla::Plugin::TaskWeaver" => "0.101620",
-    "Dist::Zilla::Plugin::Test::Compile" => "2.023",
+    "Dist::Zilla::Plugin::Test::Compile" => "2.036",
     "Dist::Zilla::Plugin::Test::MinimumVersion" => "2.000003",
     "Dist::Zilla::Plugin::Test::Perl::Critic" => 0,
     "Dist::Zilla::Plugin::Test::PodSpelling" => "2.006001",
     "Dist::Zilla::Plugin::Test::Portability" => 0,
-    "Dist::Zilla::Plugin::Test::ReportPrereqs" => 0,
+    "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.008",
     "Dist::Zilla::Plugin::Test::Version" => 0,
     "Dist::Zilla::PluginBundle::Filter" => 0,
     "Dist::Zilla::PluginBundle::Git" => "1.121010",
@@ -61,7 +61,7 @@ my %WriteMakefileArgs = (
     "Pod::Weaver::Plugin::WikiDoc" => 0,
     "Pod::Weaver::Section::Contributors" => "0.001",
     "Pod::Weaver::Section::Support" => "1.001",
-    "Pod::Wordlist" => "1.06",
+    "Pod::Wordlist" => "1.10",
     "Test::Portability::Files" => "0.06",
     "autodie" => "2.00",
     "namespace::autoclean" => "0.09",
@@ -70,18 +70,14 @@ my %WriteMakefileArgs = (
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
-    "File::Spec" => 0,
     "File::Spec::Functions" => 0,
-    "File::Temp" => 0,
     "File::pushd" => 0,
-    "IO::Handle" => 0,
-    "IPC::Open3" => 0,
     "List::Util" => 0,
     "Path::Tiny" => 0,
     "Test::DZil" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.054",
+  "VERSION" => "0.055",
   "test" => {
     "TESTS" => "t/*.t"
   }

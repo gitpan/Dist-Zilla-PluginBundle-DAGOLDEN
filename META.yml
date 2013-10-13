@@ -4,21 +4,17 @@ author:
   - 'David Golden <dagolden@cpan.org>'
 build_requires:
   ExtUtils::MakeMaker: 0
-  File::Spec: 0
   File::Spec::Functions: 0
-  File::Temp: 0
   File::pushd: 0
-  IO::Handle: 0
-  IPC::Open3: 0
   List::Util: 0
   Path::Tiny: 0
   Test::DZil: 0
   Test::More: 0.96
   perl: 5.008001
 configure_requires:
-  ExtUtils::MakeMaker: 6.30
+  ExtUtils::MakeMaker: 6.17
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300039, CPAN::Meta::Converter version 2.132660'
+generated_by: 'Dist::Zilla version 4.300039, CPAN::Meta::Converter version 2.132830'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -35,10 +31,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: 0.054
+    version: 0.055
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: 0.054
+    version: 0.055
 requires:
   Dist::Zilla: 4.300038
   Dist::Zilla::Plugin::Authority: 1.006
@@ -60,12 +56,12 @@ requires:
   Dist::Zilla::Plugin::PodWeaver: 0
   Dist::Zilla::Plugin::ReadmeAnyFromPod: 0.120051
   Dist::Zilla::Plugin::TaskWeaver: 0.101620
-  Dist::Zilla::Plugin::Test::Compile: 2.023
+  Dist::Zilla::Plugin::Test::Compile: 2.036
   Dist::Zilla::Plugin::Test::MinimumVersion: 2.000003
   Dist::Zilla::Plugin::Test::Perl::Critic: 0
   Dist::Zilla::Plugin::Test::PodSpelling: 2.006001
   Dist::Zilla::Plugin::Test::Portability: 0
-  Dist::Zilla::Plugin::Test::ReportPrereqs: 0
+  Dist::Zilla::Plugin::Test::ReportPrereqs: 0.008
   Dist::Zilla::Plugin::Test::Version: 0
   Dist::Zilla::PluginBundle::Filter: 0
   Dist::Zilla::PluginBundle::Git: 1.121010
@@ -81,7 +77,7 @@ requires:
   Pod::Weaver::Plugin::WikiDoc: 0
   Pod::Weaver::Section::Contributors: 0.001
   Pod::Weaver::Section::Support: 1.001
-  Pod::Wordlist: 1.06
+  Pod::Wordlist: 1.10
   Test::Portability::Files: 0.06
   autodie: 2.00
   namespace::autoclean: 0.09
@@ -92,7 +88,7 @@ resources:
   bugtracker: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden/issues
   homepage: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden
   repository: https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
-version: 0.054
+version: 0.055
 x_authority: cpan:DAGOLDEN
 x_contributors:
   - 'Christian Walde <walde.christian@googlemail.com>'

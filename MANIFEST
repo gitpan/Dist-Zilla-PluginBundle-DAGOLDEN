@@ -13,9 +13,11 @@ cpanfile
 dist.ini
 lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
 lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-t/00-compile.t
+perlcritic.rc
 t/00-report-prereqs.t
 t/dagolden.t
+tidyall.ini
+xt/author/00-compile.t
 xt/author/critic.t
 xt/author/pod-spell.t
 xt/release/distmeta.t
