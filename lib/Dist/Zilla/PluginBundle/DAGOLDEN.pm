@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.055'; # VERSION
+our $VERSION = '0.056'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -427,242 +427,243 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.055
+version 0.056
 
 =head1 SYNOPSIS
 
-   # in dist.ini
-   [@DAGOLDEN]
+  # in dist.ini
+  [@DAGOLDEN]
 
 =head1 DESCRIPTION
 
 This is a L<Dist::Zilla> PluginBundle.  It is roughly equivalent to the
 following dist.ini:
 
-   ; version provider
-   [Git::NextVersion]  ; get version from last release tag
-   version_regexp = ^release-(.+)$
- 
-   ; collect contributors list
-   [ContributorsFromGit]
- 
-   ; choose files to include
-   [Git::GatherDir]         ; everything from git ls-files
-   exclude_filename = README.pod   ; skip this generated file
-   exclude_filename = META.json    ; skip this generated file
- 
-   [PruneCruft]        ; default stuff to skip
-   [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
- 
-   ; file modifications
-   [OurPkgVersion]     ; add $VERSION = ... to all files
-   [InsertCopyright    ; add copyright at "# COPYRIGHT"
-   [PodWeaver]         ; generate Pod
-   config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
- 
-   ; generated files
-   [License]           ; boilerplate license
-   [ReadmeAnyFromPod]     ; from Pod (runs after PodWeaver)
- 
-   ; t tests
-   [Test::MinimumPerl]
-   max_target_perl = 5.010
-   [Test::ReportPrereqs] ; show prereqs in automated test output
- 
-   ; xt tests
-   [Test::PodSpelling] ; xt/author/pod-spell.t
-   [Test::Perl::Critic]; xt/author/critic.t
-   [MetaTests]         ; xt/release/meta-yaml.t
-   [PodSyntaxTests]    ; xt/release/pod-syntax.t
-   [PodCoverageTests]  ; xt/release/pod-coverage.t
-   [Test::Portability] ; xt/release/portability.t (of file name)
-   options = test_one_dot = 0
-   [Test::Version]     ; xt/release/test-version.t
-   [Test::Compile]     ; make sure .pm files all compile
-   fake_home = 1       ; fakes $ENV{HOME} just in case
-   xt_mode = 1         ; puts files in xt, not t
- 
-   ; metadata
-   [AutoPrereqs]       ; find prereqs from code
-   skip = ^t::lib
- 
-   [Authority]
-   authority = cpan:DAGOLDEN
-   do_munging = 0
- 
-   [MinimumPerl]       ; determine minimum perl version
- 
-   [MetaNoIndex]       ; sets 'no_index' in META
-   directory = t
-   directory = xt
-   directory = examples
-   directory = corpus
-   package = DB        ; just in case
- 
-   [GithubMeta]        ; set META resources
-   remote = origin
-   remote = github
-   issues = 1
- 
-   [MetaProvides::Package] ; add 'provides' to META files
-   meta_noindex = 1        ; respect prior no_index directives
- 
-   [MetaYAML]          ; generate META.yml (v1.4)
-   [MetaJSON]          ; generate META.json (v2)
-   [CPANFile]          ; generate cpanfile
- 
-   ; build system
-   [ExecDir]           ; include 'bin/*' as executables
-   [ShareDir]          ; include 'share/' for File::ShareDir
-   [MakeMaker]         ; create Makefile.PL
-   eumm_version = 6.17
- 
-   ; manifest (after all generated files)
-   [Manifest]          ; create MANIFEST
- 
-   ; copy cpanfile back to repo dis
-   [CopyFilesFromBuild]
-   copy = cpanfile
- 
-   ; before release
-   [Git::Check]        ; ensure all files checked in
-   allow_dirty = dist.ini
-   allow_dirty = Changes
-   allow_dirty = cpanfile
- 
-   [CheckMetaResources]     ; ensure META has 'resources' data
-   [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
-   [CheckChangesHasContent] ; ensure Changes has been updated
-   [CheckExtraTests]   ; ensure xt/ tests pass
-   [TestRelease]       ; ensure t/ tests pass
-   [ConfirmRelease]    ; prompt before uploading
- 
-   ; releaser
-   [UploadToCPAN]      ; uploads to CPAN
- 
-   ; after release
-   [Git::Commit / Commit_Dirty_Files] ; commit Changes (as released)
- 
-   [Git::Tag]          ; tag repo with custom tag
-   tag_format = release-%v
- 
-   ; NextRelease acts *during* pre-release to write $VERSION and
-   ; timestamp to Changes and  *after* release to add a new {{$NEXT}}
-   ; section, so to act at the right time after release, it must actually
-   ; come after Commit_Dirty_Files but before Commit_Changes in the
-   ; dist.ini.  It will still act during pre-release as usual
- 
-   [NextRelease]
- 
-   [Git::Commit / Commit_Changes] ; commit Changes (for new dev)
- 
-   [Git::Push]         ; push repo to remote
-   push_to = origin
+  ; version provider
+  [Git::NextVersion]  ; get version from last release tag
+  version_regexp = ^release-(.+)$
 
-=for stopwords autoprereq dagolden fakerelease pluginbundle podweaver
-taskweaver uploadtocpan dist ini
+  ; collect contributors list
+  [ContributorsFromGit]
 
-=for Pod::Coverage configure mvp_multivalue_args
+  ; choose files to include
+  [Git::GatherDir]         ; everything from git ls-files
+  exclude_filename = README.pod   ; skip this generated file
+  exclude_filename = META.json    ; skip this generated file
+
+  [PruneCruft]        ; default stuff to skip
+  [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
+
+  ; file modifications
+  [OurPkgVersion]     ; add $VERSION = ... to all files
+  [InsertCopyright    ; add copyright at "# COPYRIGHT"
+  [PodWeaver]         ; generate Pod
+  config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
+
+  ; generated files
+  [License]           ; boilerplate license
+  [ReadmeAnyFromPod]     ; from Pod (runs after PodWeaver)
+
+  ; t tests
+  [Test::ReportPrereqs]   ; show prereqs in automated test output
+
+  ; xt tests
+  [Test::MinimumVersion]  ; xt/release/minimum-version.t
+  max_target_perl = 5.010 ; don't use syntax/features past 5.10
+  [Test::PodSpelling] ; xt/author/pod-spell.t
+  [Test::Perl::Critic]; xt/author/critic.t
+  [MetaTests]         ; xt/release/meta-yaml.t
+  [PodSyntaxTests]    ; xt/release/pod-syntax.t
+  [PodCoverageTests]  ; xt/release/pod-coverage.t
+  [Test::Portability] ; xt/release/portability.t (of file name)
+  options = test_one_dot = 0
+  [Test::Version]     ; xt/release/test-version.t
+  [Test::Compile]     ; xt/author/00-compile.t
+  fake_home = 1       ; fakes $ENV{HOME} just in case
+  xt_mode = 1         ; make sure all files compile
+
+  ; metadata
+  [AutoPrereqs]       ; find prereqs from code
+  skip = ^t::lib
+
+  [Authority]
+  authority = cpan:DAGOLDEN
+  do_munging = 0
+
+  [MinimumPerl]       ; determine minimum perl version
+
+  [MetaNoIndex]       ; sets 'no_index' in META
+  directory = t
+  directory = xt
+  directory = examples
+  directory = corpus
+  package = DB        ; just in case
+
+  [GithubMeta]        ; set META resources
+  remote = origin
+  remote = github
+  issues = 1
+
+  [MetaProvides::Package] ; add 'provides' to META files
+  meta_noindex = 1        ; respect prior no_index directives
+
+  [MetaYAML]          ; generate META.yml (v1.4)
+  [MetaJSON]          ; generate META.json (v2)
+  [CPANFile]          ; generate cpanfile
+
+  ; build system
+  [ExecDir]           ; include 'bin/*' as executables
+  [ShareDir]          ; include 'share/' for File::ShareDir
+  [MakeMaker]         ; create Makefile.PL
+  eumm_version = 6.17
+
+  ; manifest (after all generated files)
+  [Manifest]          ; create MANIFEST
+
+  ; copy cpanfile back to repo dis
+  [CopyFilesFromBuild]
+  copy = cpanfile
+
+  ; before release
+  [Git::Check]        ; ensure all files checked in
+  allow_dirty = dist.ini
+  allow_dirty = Changes
+  allow_dirty = cpanfile
+
+  [CheckMetaResources]     ; ensure META has 'resources' data
+  [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
+  [CheckChangesHasContent] ; ensure Changes has been updated
+  [CheckExtraTests]   ; ensure xt/ tests pass
+  [TestRelease]       ; ensure t/ tests pass
+  [ConfirmRelease]    ; prompt before uploading
+
+  ; releaser
+  [UploadToCPAN]      ; uploads to CPAN
+
+  ; after release
+  [Git::Commit / Commit_Dirty_Files] ; commit Changes (as released)
+
+  [Git::Tag]          ; tag repo with custom tag
+  tag_format = release-%v
+
+  ; NextRelease acts *during* pre-release to write $VERSION and
+  ; timestamp to Changes and  *after* release to add a new {{$NEXT}}
+  ; section, so to act at the right time after release, it must actually
+  ; come after Commit_Dirty_Files but before Commit_Changes in the
+  ; dist.ini.  It will still act during pre-release as usual
+
+  [NextRelease]
+
+  [Git::Commit / Commit_Changes] ; commit Changes (for new dev)
+
+  [Git::Push]         ; push repo to remote
+  push_to = origin
 
 =head1 USAGE
 
 To use this PluginBundle, just add it to your dist.ini.  You can provide
 the following options:
 
-=over
+=over 4
 
 =item *
 
-C<<< is_task >>> -- this indicates whether TaskWeaver or PodWeaver should be used.
+C<is_task> — this indicates whether C<TaskWeaver> or C<PodWeaver> should be used.
+
 Default is 0.
 
 =item *
 
-C<<< authority >>> -- specifies the x_authority field for pause.  Defaults to 'cpan:DAGOLDEN'.
+C<authority> — specifies the C<x_authority> field for pause.  Defaults to 'cpan:DAGOLDEN'.
 
 =item *
 
-C<<< auto_prereq >>> -- this indicates whether AutoPrereq should be used or not.  Default is 1.
+C<auto_prereq> — this indicates whether C<AutoPrereqs> should be used or not.  Default is 1.
 
 =item *
 
-C<<< darkpan >>> -- for private code; uses FakeRelease and fills in dummy repoE<sol>bugtracker data
+C<darkpan> — for private code; uses C<FakeRelease> and fills in dummy repo/bugtracker data
 
 =item *
 
-C<<< fake_release >>> -- swaps FakeRelease for UploadToCPAN. Mostly useful for testing a dist.ini without risking a real release.
+C<fake_release> — swaps C<FakeRelease> for C<UploadToCPAN>. Mostly useful for testing a dist.ini without risking a real release.
 
 =item *
 
-C<<< git_remote >>> -- where to push after release
+C<git_remote> — where to push after release
 
 =item *
 
-C<<< github_issues >>> -- whether to use github issue tracker. Defaults is 1.
+C<github_issues> — whether to use github issue tracker. Defaults is 1.
 
 =item *
 
-C<<< stopwords >>> -- add stopword for Test::PodSpelling (can be repeated)
+C<stopwords> — add stopword for C<Test::PodSpelling> (can be repeated)
 
 =item *
 
-C<<< tag_format >>> -- given to C<<< Git::Tag >>>.  Default is 'release-%v' to be more
+C<tag_format> — given to C<Git::Tag>.  Default is 'release-%v' to be more
+
 robust than just the version number when parsing versions for
-C<<< Git::NextVersion >>>
+L<Git::NextVersion>
 
 =item *
 
-C<<< weaver_config >>> -- specifies a Pod::Weaver bundle.  Defaults to @DAGOLDEN.
+C<weaver_config> — specifies a L<Pod::Weaver> bundle.  Defaults to @DAGOLDEN.
 
 =item *
 
-C<<< version_regexp >>> -- given to C<<< Git::NextVersion >>>.  Default
+C<version_regexp> — given to L<Git::NextVersion>.  Default
+
 is '^release-(.+)$'
 
 =item *
 
-C<<< no_git >>> -- bypass all git-dependent plugins
+C<no_git> — bypass all git-dependent plugins
 
 =item *
 
-C<<< no_critic >>> -- omit Test::Perl::Critic tests
+C<no_critic> — omit C<Test::Perl::Critic> tests
 
 =item *
 
-C<<< no_spellcheck >>> -- omit Test::PodSpelling tests
+C<no_spellcheck> — omit C<Test::PodSpelling> tests
 
 =item *
 
-C<<< no_coverage >>> -- omit PodCoverage tests
+C<no_coverage> — omit PodCoverage tests
 
 =item *
 
-C<<< no_minimum_perl >>> -- omit Test::MinimumPerl tests
+C<no_minimum_perl> — omit C<Test::MinimumVersion> tests
 
 =item *
 
-C<<< no_bugtracker >>> -- DEPRECATED
+C<no_bugtracker> — DEPRECATED
 
 =back
 
-When running without git, CE<lt>GatherDirE<gt> is used instead of CE<lt>Git::GatherDirE<gt>,
-CE<lt>AutoVersionE<gt> is used instead of CE<lt>Git::NextVersionE<gt>, and all git check and
+When running without git, C<GatherDir> is used instead of C<Git::GatherDir>,
+C<AutoVersion> is used instead of C<Git::NextVersion>, and all git check and
 commit operations are disabled.
 
-This PluginBundle now supports ConfigSlicer, so you can pass in options to the
+This PluginBundle now supports C<ConfigSlicer>, so you can pass in options to the
 plugins used like this:
 
-   [@DAGOLDEN]
-   ExecDir.dir = scripts ; overrides ExecDir
+  [@DAGOLDEN]
+  Test::MinimumVersion.max_target_perl = 5.014
+  ExecDir.dir = scripts
 
-This PluginBundle also supports PluginRemover, so dropping a plugin is as easy as this:
+This PluginBundle also supports C<PluginRemover>, so dropping a plugin is as easy as this:
 
-   [@DAGOLDEN]
-   -remove = PluginIDontWant
+  [@DAGOLDEN]
+  -remove = Test::Portability
+
+=for Pod::Coverage configure mvp_multivalue_args
 
 =head1 SEE ALSO
 
-=over
+=over 4
 
 =item *
 
@@ -685,7 +686,7 @@ L<Dist::Zilla::Plugin::TaskWeaver>
 =head2 Bugs / Feature Requests
 
 Please report any bugs or feature requests through the issue tracker
-at L<https://github.com/dagolden/dist-zilla-pluginbundle-dagolden/issues>.
+at L<https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN/issues>.
 You will be notified automatically of any progress on your issue.
 
 =head2 Source Code
@@ -693,9 +694,9 @@ You will be notified automatically of any progress on your issue.
 This is open source software.  The code repository is available for
 public review and contribution under the terms of the license.
 
-L<https://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
+L<https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN>
 
-  git clone https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
+  git clone https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN.git
 
 =head1 AUTHOR
 

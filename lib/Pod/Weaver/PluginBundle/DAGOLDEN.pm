@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.055'; # VERSION
+our $VERSION = '0.056'; # VERSION
 
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
@@ -39,17 +39,17 @@ sub mvp_bundle_config {
         [ '@DAGOLDEN/Prelude',     _exp('Region'),  { region_name => 'prelude' } ],
         [ '@DAGOLDEN/Synopsis',    _exp('Generic'), { header      => 'SYNOPSIS' } ],
         [ '@DAGOLDEN/Description', _exp('Generic'), { header      => 'DESCRIPTION' } ],
+        [ '@DAGOLDEN/Usage',       _exp('Generic'), { header      => 'USAGE' } ],
         [ '@DAGOLDEN/Overview',    _exp('Generic'), { header      => 'OVERVIEW' } ],
-
-        [ '@DAGOLDEN/Stability', _exp('Generic'), { header => 'STABILITY' } ],
+        [ '@DAGOLDEN/Stability',   _exp('Generic'), { header      => 'STABILITY' } ],
     );
 
     for my $plugin (
-        [ 'Usage',        _exp('Collect'), { command => 'usage' } ],
-        [ 'Functions',    _exp('Collect'), { command => 'func' } ],
+        [ 'Requirements', _exp('Collect'), { command => 'requires' } ],
         [ 'Attributes',   _exp('Collect'), { command => 'attr' } ],
         [ 'Constructors', _exp('Collect'), { command => 'construct' } ],
         [ 'Methods',      _exp('Collect'), { command => 'method' } ],
+        [ 'Functions',    _exp('Collect'), { command => 'func' } ],
       )
     {
         $plugin->[2]{header} = uc $plugin->[0];
@@ -106,42 +106,44 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.055
+version 0.056
 
 =head1 DESCRIPTION
 
 This is a L<Pod::Weaver> PluginBundle.  It is roughly equivalent to the
 following weaver.ini:
 
-   [-Encoding]
- 
-   [-WikiDoc]
- 
-   [@Default]
- 
-   [Support]
-   perldoc = 0
-   websites = none
-   bugs = metadata
-   bugs_content = ... stuff (web only, email omitted) ...
-   repository_link = both
-   repository_content = ... stuff ...
- 
-   [Contributors]
- 
-   [-Transformer]
-   transformer = List
+  [-Encoding]
 
-=for Pod::Coverage mvp_bundle_config
+  [-WikiDoc]
+
+  [@Default]
+
+  [Support]
+  perldoc = 0
+  websites = none
+  bugs = metadata
+  bugs_content = ... stuff (web only, email omitted) ...
+  repository_link = both
+  repository_content = ... stuff ...
+
+  [Contributors]
+
+  [-Transformer]
+  transformer = List
 
 =head1 USAGE
 
-This PluginBundle is used automatically with the CE<lt>@DAGOLDENE<gt> L<Dist::Zilla>
+This PluginBundle is used automatically with the C<@DAGOLDEN> L<Dist::Zilla>
 plugin bundle.
 
 It also has region collectors for:
 
-=over
+=over 4
+
+=item *
+
+requires
 
 =item *
 
@@ -159,15 +161,13 @@ method
 
 func
 
-=item *
-
-usage
-
 =back
+
+=for Pod::Coverage mvp_bundle_config
 
 =head1 SEE ALSO
 
-=over
+=over 4
 
 =item *
 
