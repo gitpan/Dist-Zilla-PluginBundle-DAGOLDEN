@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.056'; # VERSION
+our $VERSION = '0.057'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -10,7 +10,7 @@ use Moose 0.99;
 use Moose::Autobox;
 use namespace::autoclean 0.09;
 
-use Dist::Zilla 4.300038; # fixed MetaYML encoding
+use Dist::Zilla 5; # Number 5 is ALIVE!
 
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git 1.121010 ();
@@ -32,7 +32,7 @@ use Dist::Zilla::Plugin::MetaProvides::Package 1.14 (); # hides private packages
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::OurPkgVersion 0.004 ();        # TRIAL comment support
 use Dist::Zilla::Plugin::PodWeaver ();
-use Dist::Zilla::Plugin::ReadmeAnyFromPod 0.120051     ();
+use Dist::Zilla::Plugin::ReadmeFromPod 0.19            (); # for dzil v5
 use Dist::Zilla::Plugin::TaskWeaver 0.101620           ();
 use Dist::Zilla::Plugin::Test::Compile 2.036           (); # various features
 use Dist::Zilla::Plugin::Test::MinimumVersion 2.000003 ();
@@ -248,8 +248,8 @@ sub configure {
         ),
 
         # generated distribution files
-        'ReadmeAnyFromPod', # in build dir
-        'License',          # core
+        'ReadmeFromPod', # in build dir
+        'License',       # core
 
         # generated t/ tests
         [
@@ -419,7 +419,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -427,7 +427,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.056
+version 0.057
 
 =head1 SYNOPSIS
 
@@ -462,7 +462,7 @@ following dist.ini:
 
   ; generated files
   [License]           ; boilerplate license
-  [ReadmeAnyFromPod]     ; from Pod (runs after PodWeaver)
+  [ReadmeFromPod]     ; from Pod (runs after PodWeaver)
 
   ; t tests
   [Test::ReportPrereqs]   ; show prereqs in automated test output

@@ -1,5 +1,17 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.057     2013-10-20 14:15:20 America/New_York
+
+    [INCOMPATIBLE CHANGES]
+
+    - Requires v5 of Dist::Zilla and v4 of Pod::Weaver (currently
+      only available as -TRIAL distributions)
+
+    - Uses new SingleEncoding weaver plugin
+
+    - Switches to ReadmeFromPod; currently needs 0.19_01 for dzil v5
+      compatibility
+
 0.056     2013-10-15 19:27:21 America/New_York
 
     [ADDED]
