@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.057'; # VERSION
+our $VERSION = '0.058'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -18,7 +18,7 @@ use Dist::Zilla::PluginBundle::Git 1.121010 ();
 use Dist::Zilla::Plugin::Authority 1.006  ();
 use Dist::Zilla::Plugin::Bugtracker 1.110 ();
 use Dist::Zilla::Plugin::CheckChangesHasContent ();
-use Dist::Zilla::Plugin::CheckExtraTests        ();
+use Dist::Zilla::Plugin::RunExtraTests          ();
 use Dist::Zilla::Plugin::CheckMetaResources 0.001  ();
 use Dist::Zilla::Plugin::CheckPrereqsIndexed 0.002 ();
 use Dist::Zilla::Plugin::ContributorsFromGit 0.004 ();
@@ -31,7 +31,8 @@ use Dist::Zilla::Plugin::MetaNoIndex ();
 use Dist::Zilla::Plugin::MetaProvides::Package 1.14 (); # hides private packages
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::OurPkgVersion 0.004 ();        # TRIAL comment support
-use Dist::Zilla::Plugin::PodWeaver ();
+use Dist::Zilla::Plugin::PodWeaver           ();
+use Dist::Zilla::Plugin::Prereqs::AuthorDeps ();
 use Dist::Zilla::Plugin::ReadmeFromPod 0.19            (); # for dzil v5
 use Dist::Zilla::Plugin::TaskWeaver 0.101620           ();
 use Dist::Zilla::Plugin::Test::Compile 2.036           (); # various features
@@ -335,6 +336,7 @@ sub configure {
             : ()
         ),
 
+        'Prereqs::AuthorDeps',
         'MetaYAML', # core
         'MetaJSON', # core
         'CPANFile',
@@ -359,7 +361,7 @@ sub configure {
         'CheckMetaResources',
         'CheckPrereqsIndexed',
         'CheckChangesHasContent',
-        'CheckExtraTests',
+        'RunExtraTests',
         'TestRelease',                                 # core
         'ConfirmRelease',                              # core
 
@@ -427,7 +429,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.057
+version 0.058
 
 =head1 SYNOPSIS
 
@@ -507,9 +509,10 @@ following dist.ini:
   [MetaProvides::Package] ; add 'provides' to META files
   meta_noindex = 1        ; respect prior no_index directives
 
-  [MetaYAML]          ; generate META.yml (v1.4)
-  [MetaJSON]          ; generate META.json (v2)
-  [CPANFile]          ; generate cpanfile
+  [Prereqs::AuthorDeps]   ; add authordeps as develop/requires
+  [MetaYAML]              ; generate META.yml (v1.4)
+  [MetaJSON]              ; generate META.json (v2)
+  [CPANFile]              ; generate cpanfile
 
   ; build system
   [ExecDir]           ; include 'bin/*' as executables

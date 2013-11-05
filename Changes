@@ -1,5 +1,15 @@
 Revision history for Dist-Zilla-PluginBundle-DAGOLDEN
 
+0.058     2013-11-04 21:05:24 America/New_York
+
+    [ADDED]
+
+    - Added Prereqs::AuthorDeps
+
+    [CHANGED]
+
+    - Swap in RunExtraTests instead of CheckExtraTests
+
 0.057     2013-10-20 14:15:20 America/New_York
 
     [INCOMPATIBLE CHANGES]

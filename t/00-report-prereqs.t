@@ -19,7 +19,6 @@ my @modules = qw(
   Dist::Zilla::Plugin::Bugtracker
   Dist::Zilla::Plugin::CPANFile
   Dist::Zilla::Plugin::CheckChangesHasContent
-  Dist::Zilla::Plugin::CheckExtraTests
   Dist::Zilla::Plugin::CheckMetaResources
   Dist::Zilla::Plugin::CheckPrereqsIndexed
   Dist::Zilla::Plugin::ContributorsFromGit
@@ -32,7 +31,9 @@ my @modules = qw(
   Dist::Zilla::Plugin::MinimumPerl
   Dist::Zilla::Plugin::OurPkgVersion
   Dist::Zilla::Plugin::PodWeaver
+  Dist::Zilla::Plugin::Prereqs::AuthorDeps
   Dist::Zilla::Plugin::ReadmeFromPod
+  Dist::Zilla::Plugin::RunExtraTests
   Dist::Zilla::Plugin::TaskWeaver
   Dist::Zilla::Plugin::Test::Compile
   Dist::Zilla::Plugin::Test::MinimumVersion
