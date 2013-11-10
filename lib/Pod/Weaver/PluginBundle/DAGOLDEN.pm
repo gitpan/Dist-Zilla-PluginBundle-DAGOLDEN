@@ -2,15 +2,14 @@ use strict;
 use warnings;
 
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.058'; # VERSION
+our $VERSION = '0.059'; # VERSION
 
 use Pod::Weaver 4; # he played knick-knack on my door
 use Pod::Weaver::Config::Assembler;
 
 # Dependencies
-use Pod::Weaver::Plugin::WikiDoc  ();
-use Pod::Weaver::Plugin::Encoding ();
-use Pod::Elemental::Transformer::List 0.101620 ();
+use Pod::Weaver::Plugin::WikiDoc ();
+use Pod::Elemental::Transformer::List 0.102000 ();
 use Pod::Weaver::Section::Support 1.001        ();
 use Pod::Weaver::Section::Contributors 0.001   ();
 
@@ -106,14 +105,12 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.058
+version 0.059
 
 =head1 DESCRIPTION
 
 This is a L<Pod::Weaver> PluginBundle.  It is roughly equivalent to the
 following weaver.ini:
-
-  [-Encoding]
 
   [-WikiDoc]
 

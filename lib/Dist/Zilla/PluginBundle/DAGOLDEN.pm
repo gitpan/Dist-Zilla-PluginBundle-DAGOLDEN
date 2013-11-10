@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.058'; # VERSION
+our $VERSION = '0.059'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -31,8 +31,9 @@ use Dist::Zilla::Plugin::MetaNoIndex ();
 use Dist::Zilla::Plugin::MetaProvides::Package 1.14 (); # hides private packages
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::OurPkgVersion 0.004 ();        # TRIAL comment support
-use Dist::Zilla::Plugin::PodWeaver           ();
-use Dist::Zilla::Plugin::Prereqs::AuthorDeps ();
+use Dist::Zilla::Plugin::PodWeaver ();
+use Dist::Zilla::Plugin::PromptIfStale 0.011           ();
+use Dist::Zilla::Plugin::Prereqs::AuthorDeps           ();
 use Dist::Zilla::Plugin::ReadmeFromPod 0.19            (); # for dzil v5
 use Dist::Zilla::Plugin::TaskWeaver 0.101620           ();
 use Dist::Zilla::Plugin::Test::Compile 2.036           (); # various features
@@ -346,11 +347,19 @@ sub configure {
         'ShareDir', # core
         [ 'MakeMaker' => { eumm_version => '6.17' } ], # core
 
+        # are we up to date?
+        [
+            'PromptIfStale' => {
+                modules           => [qw/Dist::Zilla Dist::Zilla::PluginBundle::DAGOLDEN/],
+                check_all_plugins => 1,
+            }
+        ],
+
         # copy files from build back to root for inclusion in VCS
         [ CopyFilesFromBuild => { copy => 'cpanfile', } ],
 
         # manifest -- must come after all generated files
-        'Manifest',                                    # core
+        'Manifest', # core
 
         # before release
         (
@@ -362,8 +371,8 @@ sub configure {
         'CheckPrereqsIndexed',
         'CheckChangesHasContent',
         'RunExtraTests',
-        'TestRelease',                                 # core
-        'ConfirmRelease',                              # core
+        'TestRelease',    # core
+        'ConfirmRelease', # core
 
         # release
         ( $self->fake_release || $self->darkpan ? 'FakeRelease' : 'UploadToCPAN' ), # core
@@ -429,7 +438,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.058
+version 0.059
 
 =head1 SYNOPSIS
 
@@ -528,6 +537,12 @@ following dist.ini:
   copy = cpanfile
 
   ; before release
+
+  [PromptIfStale]     ; check if our build tools are out of date
+  module = Dist::Zilla
+  module = Dist::Zilla::PluginBundle::DAGOLDEN
+  check_all_plugins = 1
+
   [Git::Check]        ; ensure all files checked in
   allow_dirty = dist.ini
   allow_dirty = Changes
@@ -724,6 +739,10 @@ Karen Etheridge <ether@cpan.org>
 =item *
 
 Philippe Bruhat (BooK) <book@cpan.org>
+
+=item *
+
+Sergey Romanov <complefor@rambler.ru>
 
 =back
 

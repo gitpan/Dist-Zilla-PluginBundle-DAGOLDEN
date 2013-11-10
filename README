@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.058
+    version 0.059
 
 SYNOPSIS
       # in dist.ini
@@ -100,6 +100,12 @@ DESCRIPTION
       copy = cpanfile
 
       ; before release
+
+      [PromptIfStale]     ; check if our build tools are out of date
+      module = Dist::Zilla
+      module = Dist::Zilla::PluginBundle::DAGOLDEN
+      check_all_plugins = 1
+
       [Git::Check]        ; ensure all files checked in
       allow_dirty = dist.ini
       allow_dirty = Changes
@@ -236,6 +242,8 @@ CONTRIBUTORS
     *   Karen Etheridge <ether@cpan.org>
 
     *   Philippe Bruhat (BooK) <book@cpan.org>
+
+    *   Sergey Romanov <complefor@rambler.ru>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2013 by David Golden.

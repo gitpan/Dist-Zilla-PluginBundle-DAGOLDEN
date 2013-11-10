@@ -4,7 +4,7 @@
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.005, CPAN::Meta::Converter version 2.132830",
+   "generated_by" : "Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.132830",
    "license" : [
       "apache_2_0"
    ],
@@ -32,7 +32,7 @@
       },
       "develop" : {
          "requires" : {
-            "Dist::Zilla" : "5.005",
+            "Dist::Zilla" : "5.006",
             "Dist::Zilla::Plugin::Bootstrap::lib" : "0",
             "Dist::Zilla::Plugin::Prereqs" : "0",
             "Dist::Zilla::PluginBundle::DAGOLDEN" : "0",
@@ -67,6 +67,7 @@
             "Dist::Zilla::Plugin::OurPkgVersion" : "0.004",
             "Dist::Zilla::Plugin::PodWeaver" : "0",
             "Dist::Zilla::Plugin::Prereqs::AuthorDeps" : "0",
+            "Dist::Zilla::Plugin::PromptIfStale" : "0.011",
             "Dist::Zilla::Plugin::ReadmeFromPod" : "0.19",
             "Dist::Zilla::Plugin::RunExtraTests" : "0",
             "Dist::Zilla::Plugin::TaskWeaver" : "0.101620",
@@ -84,10 +85,9 @@
             "Dist::Zilla::Role::PluginBundle::PluginRemover" : "0",
             "Moose" : "0.99",
             "Moose::Autobox" : "0",
-            "Pod::Elemental::Transformer::List" : "0.101620",
+            "Pod::Elemental::Transformer::List" : "0.102000",
             "Pod::Weaver" : "4",
             "Pod::Weaver::Config::Assembler" : "0",
-            "Pod::Weaver::Plugin::Encoding" : "0",
             "Pod::Weaver::Plugin::WikiDoc" : "0",
             "Pod::Weaver::Section::Contributors" : "0.001",
             "Pod::Weaver::Section::Support" : "1.001",
@@ -120,11 +120,11 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.058"
+         "version" : "0.059"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.058"
+         "version" : "0.059"
       }
    },
    "release_status" : "stable",
@@ -139,13 +139,14 @@
          "web" : "https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN"
       }
    },
-   "version" : "0.058",
+   "version" : "0.059",
    "x_authority" : "cpan:DAGOLDEN",
    "x_contributors" : [
       "Christian Walde <walde.christian@googlemail.com>",
       "Eric Johnson <eric.git@iijo.org>",
       "Karen Etheridge <ether@cpan.org>",
-      "Philippe Bruhat (BooK) <book@cpan.org>"
+      "Philippe Bruhat (BooK) <book@cpan.org>",
+      "Sergey Romanov <complefor@rambler.ru>"
    ]
 }
 
