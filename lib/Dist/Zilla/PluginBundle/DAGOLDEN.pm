@@ -2,7 +2,8 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
-our $VERSION = '0.059'; # VERSION
+# ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
+our $VERSION = '0.060'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -246,7 +247,13 @@ sub configure {
         (
             $self->is_task
             ? 'TaskWeaver'
-            : [ 'PodWeaver' => { config_plugin => $self->weaver_config } ]
+            : [
+                'PodWeaver' => {
+                    config_plugin      => $self->weaver_config,
+                    replacer           => 'replace_with_comment',
+                    post_code_replacer => 'replace_with_nothing',
+                }
+            ]
         ),
 
         # generated distribution files
@@ -415,11 +422,10 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-# ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 #
 # This file is part of Dist-Zilla-PluginBundle-DAGOLDEN
 #
-# This software is Copyright (c) 2013 by David Golden.
+# This software is Copyright (c) 2014 by David Golden.
 #
 # This is free software, licensed under:
 #
@@ -438,7 +444,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.059
+version 0.060
 
 =head1 SYNOPSIS
 
@@ -470,6 +476,8 @@ following dist.ini:
   [InsertCopyright    ; add copyright at "# COPYRIGHT"
   [PodWeaver]         ; generate Pod
   config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
+  replacer = replace_with_comment
+  post_code_replacer = replace_with_nothing
 
   ; generated files
   [License]           ; boilerplate license
@@ -748,7 +756,7 @@ Sergey Romanov <complefor@rambler.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2013 by David Golden.
+This software is Copyright (c) 2014 by David Golden.
 
 This is free software, licensed under:
 
