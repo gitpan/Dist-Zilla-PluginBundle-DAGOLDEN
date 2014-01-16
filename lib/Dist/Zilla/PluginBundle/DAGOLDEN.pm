@@ -3,7 +3,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
-our $VERSION = '0.060'; # VERSION
+our $VERSION = '0.061'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -444,7 +444,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.060
+version 0.061
 
 =head1 SYNOPSIS
 
