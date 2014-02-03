@@ -3,7 +3,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
-our $VERSION = '0.061'; # VERSION
+our $VERSION = '0.062'; # VERSION
 
 # Dependencies
 use autodie 2.00;
@@ -54,10 +54,10 @@ sub mvp_multivalue_args { qw/stopwords/ }
 
 has stopwords => (
     is      => 'ro',
-    isa     => 'ArrayRef',
+    isa     => 'Maybe[ArrayRef]',
     lazy    => 1,
     default => sub {
-        exists $_[0]->payload->{stopwords} ? $_[0]->payload->{stopwords} : [];
+        exists $_[0]->payload->{stopwords} ? $_[0]->payload->{stopwords} : undef;
     },
 );
 
@@ -277,7 +277,7 @@ sub configure {
         # generated xt/ tests
         (
             $self->no_spellcheck ? ()
-            : [ 'Test::PodSpelling' => { stopwords => $self->stopwords } ]
+            : [ 'Test::PodSpelling' => $self->stopwords ? { stopwords => $self->stopwords } : () ]
         ),
         (
             $self->no_critic ? ()
@@ -444,7 +444,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.061
+version 0.062
 
 =head1 SYNOPSIS
 

@@ -78,9 +78,10 @@ my %WriteMakefileArgs = (
     "List::Util" => 0,
     "Path::Tiny" => 0,
     "Test::DZil" => 0,
-    "Test::More" => "0.96"
+    "Test::More" => "0.96",
+    "version" => 0
   },
-  "VERSION" => "0.061",
+  "VERSION" => "0.062",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -143,6 +144,7 @@ my %FallbackPrereqs = (
   "autodie" => "2.00",
   "namespace::autoclean" => "0.09",
   "strict" => 0,
+  "version" => 0,
   "warnings" => 0
 );
 
