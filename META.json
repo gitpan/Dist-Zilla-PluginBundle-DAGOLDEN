@@ -63,7 +63,7 @@
             "Dist::Zilla::Plugin::InsertCopyright" : "0.001",
             "Dist::Zilla::Plugin::MetaNoIndex" : "0",
             "Dist::Zilla::Plugin::MetaProvides::Package" : "1.14",
-            "Dist::Zilla::Plugin::MinimumPerl" : "0",
+            "Dist::Zilla::Plugin::MinimumPerlFast" : "0",
             "Dist::Zilla::Plugin::OurPkgVersion" : "0.004",
             "Dist::Zilla::Plugin::PodWeaver" : "0",
             "Dist::Zilla::Plugin::Prereqs::AuthorDeps" : "0",
@@ -120,11 +120,11 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.063"
+         "version" : "0.064"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.063"
+         "version" : "0.064"
       }
    },
    "release_status" : "stable",
@@ -139,7 +139,7 @@
          "web" : "https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN"
       }
    },
-   "version" : "0.063",
+   "version" : "0.064",
    "x_authority" : "cpan:DAGOLDEN",
    "x_contributors" : [
       "Christian Walde <walde.christian@googlemail.com>",

@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.063
+    version 0.064
 
 SYNOPSIS
       # in dist.ini
@@ -66,7 +66,7 @@ DESCRIPTION
       authority = cpan:DAGOLDEN
       do_munging = 0
 
-      [MinimumPerl]       ; determine minimum perl version
+      [MinimumPerlFast]   ; determine minimum perl version
 
       [MetaNoIndex]       ; sets 'no_index' in META
       directory = t
@@ -147,54 +147,55 @@ USAGE
     To use this PluginBundle, just add it to your dist.ini. You can provide
     the following options:
 
-    *   "is_task" — this indicates whether "TaskWeaver" or "PodWeaver"
+    *   "is_task" â this indicates whether "TaskWeaver" or "PodWeaver"
         should be used.
 
         Default is 0.
 
-    *   "authority" — specifies the "x_authority" field for pause. Defaults
-        to 'cpan:DAGOLDEN'.
+    *   "authority" â specifies the "x_authority" field for pause.
+        Defaults to 'cpan:DAGOLDEN'.
 
-    *   "auto_prereq" — this indicates whether "AutoPrereqs" should be used
-        or not. Default is 1.
+    *   "auto_prereq" â this indicates whether "AutoPrereqs" should be
+        used or not. Default is 1.
 
-    *   "darkpan" — for private code; uses "FakeRelease" and fills in dummy
-        repo/bugtracker data
+    *   "darkpan" â for private code; uses "FakeRelease" and fills in
+        dummy repo/bugtracker data
 
-    *   "fake_release" — swaps "FakeRelease" for "UploadToCPAN". Mostly
+    *   "fake_release" â swaps "FakeRelease" for "UploadToCPAN". Mostly
         useful for testing a dist.ini without risking a real release.
 
-    *   "git_remote" — where to push after release
+    *   "git_remote" â where to push after release
 
-    *   "github_issues" — whether to use github issue tracker. Defaults is
+    *   "github_issues" â whether to use github issue tracker. Defaults is
         1.
 
-    *   "stopwords" — add stopword for "Test::PodSpelling" (can be repeated)
+    *   "stopwords" â add stopword for "Test::PodSpelling" (can be
+        repeated)
 
-    *   "tag_format" — given to "Git::Tag". Default is 'release-%v' to be
+    *   "tag_format" â given to "Git::Tag". Default is 'release-%v' to be
         more
 
         robust than just the version number when parsing versions for
         Git::NextVersion
 
-    *   "weaver_config" — specifies a Pod::Weaver bundle. Defaults to
+    *   "weaver_config" â specifies a Pod::Weaver bundle. Defaults to
         @DAGOLDEN.
 
-    *   "version_regexp" — given to Git::NextVersion. Default
+    *   "version_regexp" â given to Git::NextVersion. Default
 
         is '^release-(.+)$'
 
-    *   "no_git" — bypass all git-dependent plugins
+    *   "no_git" â bypass all git-dependent plugins
 
-    *   "no_critic" — omit "Test::Perl::Critic" tests
+    *   "no_critic" â omit "Test::Perl::Critic" tests
 
-    *   "no_spellcheck" — omit "Test::PodSpelling" tests
+    *   "no_spellcheck" â omit "Test::PodSpelling" tests
 
-    *   "no_coverage" — omit PodCoverage tests
+    *   "no_coverage" â omit PodCoverage tests
 
-    *   "no_minimum_perl" — omit "Test::MinimumVersion" tests
+    *   "no_minimum_perl" â omit "Test::MinimumVersion" tests
 
-    *   "no_bugtracker" — DEPRECATED
+    *   "no_bugtracker" â DEPRECATED
 
     When running without git, "GatherDir" is used instead of
     "Git::GatherDir", "AutoVersion" is used instead of "Git::NextVersion",
