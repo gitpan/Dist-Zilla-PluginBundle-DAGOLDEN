@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.062
+    version 0.063
 
 SYNOPSIS
       # in dist.ini
@@ -93,6 +93,7 @@ DESCRIPTION
       [ShareDir]          ; include 'share/' for File::ShareDir
       [MakeMaker]         ; create Makefile.PL
       eumm_version = 6.17
+      default_jobs = 9
 
       ; manifest (after all generated files)
       [Manifest]          ; create MANIFEST

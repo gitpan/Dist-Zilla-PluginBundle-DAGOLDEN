@@ -50,7 +50,7 @@ my $static_prereqs = do { my $x = {
                       },
        'develop' => {
                       'requires' => {
-                                      'Dist::Zilla' => '5.012',
+                                      'Dist::Zilla' => '5.014',
                                       'Dist::Zilla::Plugin::Bootstrap::lib' => '0',
                                       'Dist::Zilla::Plugin::Prereqs' => '0',
                                       'Dist::Zilla::PluginBundle::DAGOLDEN' => '0',
@@ -67,7 +67,7 @@ my $static_prereqs = do { my $x = {
                     },
        'runtime' => {
                       'requires' => {
-                                      'Dist::Zilla' => '5',
+                                      'Dist::Zilla' => '5.014',
                                       'Dist::Zilla::Plugin::Authority' => '1.006',
                                       'Dist::Zilla::Plugin::Bugtracker' => '1.110',
                                       'Dist::Zilla::Plugin::CPANFile' => '0',
@@ -102,7 +102,6 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Role::PluginBundle::Easy' => '0',
                                       'Dist::Zilla::Role::PluginBundle::PluginRemover' => '0',
                                       'Moose' => '0.99',
-                                      'Moose::Autobox' => '0',
                                       'Pod::Elemental::PerlMunger' => '0.200001',
                                       'Pod::Elemental::Transformer::List' => '0.102000',
                                       'Pod::Weaver' => '4',
@@ -112,7 +111,6 @@ my $static_prereqs = do { my $x = {
                                       'Pod::Weaver::Section::Support' => '1.001',
                                       'Pod::Wordlist' => '1.10',
                                       'Test::Portability::Files' => '0.06',
-                                      'autodie' => '2.00',
                                       'namespace::autoclean' => '0.09',
                                       'perl' => '5.008001',
                                       'strict' => '0',

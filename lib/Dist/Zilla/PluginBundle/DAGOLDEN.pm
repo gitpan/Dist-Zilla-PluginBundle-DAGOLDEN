@@ -3,15 +3,13 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
-our $VERSION = '0.062'; # VERSION
+our $VERSION = '0.063'; # VERSION
 
 # Dependencies
-use autodie 2.00;
 use Moose 0.99;
-use Moose::Autobox;
 use namespace::autoclean 0.09;
 
-use Dist::Zilla 5; # Number 5 is ALIVE!
+use Dist::Zilla 5.014; # default_jobs
 
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git 1.121010 ();
@@ -46,9 +44,11 @@ use Dist::Zilla::Plugin::Test::Portability ();
 use Dist::Zilla::Plugin::Test::ReportPrereqs 0.008 ();     # warn on unsatisfied
 use Dist::Zilla::Plugin::Test::Version ();
 
-with 'Dist::Zilla::Role::PluginBundle::Easy';
-with 'Dist::Zilla::Role::PluginBundle::Config::Slicer';
-with 'Dist::Zilla::Role::PluginBundle::PluginRemover';
+with qw(
+  Dist::Zilla::Role::PluginBundle::Easy
+  Dist::Zilla::Role::PluginBundle::Config::Slicer
+  Dist::Zilla::Role::PluginBundle::PluginRemover
+);
 
 sub mvp_multivalue_args { qw/stopwords/ }
 
@@ -277,7 +277,9 @@ sub configure {
         # generated xt/ tests
         (
             $self->no_spellcheck ? ()
-            : [ 'Test::PodSpelling' => $self->stopwords ? { stopwords => $self->stopwords } : () ]
+            : [
+                'Test::PodSpelling' => $self->stopwords ? { stopwords => $self->stopwords } : ()
+            ]
         ),
         (
             $self->no_critic ? ()
@@ -352,7 +354,7 @@ sub configure {
         # build system
         'ExecDir',  # core
         'ShareDir', # core
-        [ 'MakeMaker' => { eumm_version => '6.17' } ], # core
+        [ 'MakeMaker' => { eumm_version => '6.17', default_jobs => 9 } ], # core
 
         # are we up to date?
         [
@@ -444,7 +446,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.062
+version 0.063
 
 =head1 SYNOPSIS
 
@@ -536,6 +538,7 @@ following dist.ini:
   [ShareDir]          ; include 'share/' for File::ShareDir
   [MakeMaker]         ; create Makefile.PL
   eumm_version = 6.17
+  default_jobs = 9
 
   ; manifest (after all generated files)
   [Manifest]          ; create MANIFEST
