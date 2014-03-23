@@ -3,7 +3,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
-our $VERSION = '0.064'; # VERSION
+our $VERSION = '0.065'; # VERSION
 
 # Dependencies
 use Moose 0.99;
@@ -379,7 +379,7 @@ sub configure {
         'CheckMetaResources',
         'CheckPrereqsIndexed',
         'CheckChangesHasContent',
-        'RunExtraTests',
+        [ 'RunExtraTests' => { default_jobs => 9 } ],
         'TestRelease',    # core
         'ConfirmRelease', # core
 
@@ -446,7 +446,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.064
+version 0.065
 
 =head1 SYNOPSIS
 
@@ -562,7 +562,10 @@ following dist.ini:
   [CheckMetaResources]     ; ensure META has 'resources' data
   [CheckPrereqsIndexed]    ; ensure prereqs are on CPAN
   [CheckChangesHasContent] ; ensure Changes has been updated
-  [CheckExtraTests]   ; ensure xt/ tests pass
+
+  [RunExtraTests]   ; ensure xt/ tests pass
+  default_jobs = 9
+
   [TestRelease]       ; ensure t/ tests pass
   [ConfirmRelease]    ; prompt before uploading
 
@@ -597,78 +600,78 @@ the following options:
 
 =item *
 
-C<is_task> â this indicates whether C<TaskWeaver> or C<PodWeaver> should be used.
+C<is_task> — this indicates whether C<TaskWeaver> or C<PodWeaver> should be used.
 
 Default is 0.
 
 =item *
 
-C<authority> â specifies the C<x_authority> field for pause.  Defaults to 'cpan:DAGOLDEN'.
+C<authority> — specifies the C<x_authority> field for pause.  Defaults to 'cpan:DAGOLDEN'.
 
 =item *
 
-C<auto_prereq> â this indicates whether C<AutoPrereqs> should be used or not.  Default is 1.
+C<auto_prereq> — this indicates whether C<AutoPrereqs> should be used or not.  Default is 1.
 
 =item *
 
-C<darkpan> â for private code; uses C<FakeRelease> and fills in dummy repo/bugtracker data
+C<darkpan> — for private code; uses C<FakeRelease> and fills in dummy repo/bugtracker data
 
 =item *
 
-C<fake_release> â swaps C<FakeRelease> for C<UploadToCPAN>. Mostly useful for testing a dist.ini without risking a real release.
+C<fake_release> — swaps C<FakeRelease> for C<UploadToCPAN>. Mostly useful for testing a dist.ini without risking a real release.
 
 =item *
 
-C<git_remote> â where to push after release
+C<git_remote> — where to push after release
 
 =item *
 
-C<github_issues> â whether to use github issue tracker. Defaults is 1.
+C<github_issues> — whether to use github issue tracker. Defaults is 1.
 
 =item *
 
-C<stopwords> â add stopword for C<Test::PodSpelling> (can be repeated)
+C<stopwords> — add stopword for C<Test::PodSpelling> (can be repeated)
 
 =item *
 
-C<tag_format> â given to C<Git::Tag>.  Default is 'release-%v' to be more
+C<tag_format> — given to C<Git::Tag>.  Default is 'release-%v' to be more
 
 robust than just the version number when parsing versions for
 L<Git::NextVersion>
 
 =item *
 
-C<weaver_config> â specifies a L<Pod::Weaver> bundle.  Defaults to @DAGOLDEN.
+C<weaver_config> — specifies a L<Pod::Weaver> bundle.  Defaults to @DAGOLDEN.
 
 =item *
 
-C<version_regexp> â given to L<Git::NextVersion>.  Default
+C<version_regexp> — given to L<Git::NextVersion>.  Default
 
 is '^release-(.+)$'
 
 =item *
 
-C<no_git> â bypass all git-dependent plugins
+C<no_git> — bypass all git-dependent plugins
 
 =item *
 
-C<no_critic> â omit C<Test::Perl::Critic> tests
+C<no_critic> — omit C<Test::Perl::Critic> tests
 
 =item *
 
-C<no_spellcheck> â omit C<Test::PodSpelling> tests
+C<no_spellcheck> — omit C<Test::PodSpelling> tests
 
 =item *
 
-C<no_coverage> â omit PodCoverage tests
+C<no_coverage> — omit PodCoverage tests
 
 =item *
 
-C<no_minimum_perl> â omit C<Test::MinimumVersion> tests
+C<no_minimum_perl> — omit C<Test::MinimumVersion> tests
 
 =item *
 
-C<no_bugtracker> â DEPRECATED
+C<no_bugtracker> — DEPRECATED
 
 =back
 
