@@ -32,10 +32,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: '0.065'
+    version: '0.066'
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: '0.065'
+    version: '0.066'
 requires:
   Dist::Zilla: '5.014'
   Dist::Zilla::Plugin::Authority: '1.006'
@@ -51,7 +51,7 @@ requires:
   Dist::Zilla::Plugin::InsertCopyright: '0.001'
   Dist::Zilla::Plugin::MetaNoIndex: '0'
   Dist::Zilla::Plugin::MetaProvides::Package: '1.14'
-  Dist::Zilla::Plugin::MinimumPerlFast: '0'
+  Dist::Zilla::Plugin::MinimumPerl: '0'
   Dist::Zilla::Plugin::OurPkgVersion: '0.004'
   Dist::Zilla::Plugin::PodWeaver: '0'
   Dist::Zilla::Plugin::Prereqs::AuthorDeps: '0'
@@ -89,7 +89,7 @@ resources:
   bugtracker: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN/issues
   homepage: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN
   repository: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN.git
-version: '0.065'
+version: '0.066'
 x_authority: cpan:DAGOLDEN
 x_contributors:
   - 'Christian Walde <walde.christian@googlemail.com>'

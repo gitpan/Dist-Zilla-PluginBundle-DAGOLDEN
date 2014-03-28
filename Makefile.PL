@@ -35,7 +35,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::InsertCopyright" => "0.001",
     "Dist::Zilla::Plugin::MetaNoIndex" => 0,
     "Dist::Zilla::Plugin::MetaProvides::Package" => "1.14",
-    "Dist::Zilla::Plugin::MinimumPerlFast" => 0,
+    "Dist::Zilla::Plugin::MinimumPerl" => 0,
     "Dist::Zilla::Plugin::OurPkgVersion" => "0.004",
     "Dist::Zilla::Plugin::PodWeaver" => 0,
     "Dist::Zilla::Plugin::Prereqs::AuthorDeps" => 0,
@@ -79,7 +79,7 @@ my %WriteMakefileArgs = (
     "Test::More" => "0.96",
     "version" => 0
   },
-  "VERSION" => "0.065",
+  "VERSION" => "0.066",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -101,7 +101,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::InsertCopyright" => "0.001",
   "Dist::Zilla::Plugin::MetaNoIndex" => 0,
   "Dist::Zilla::Plugin::MetaProvides::Package" => "1.14",
-  "Dist::Zilla::Plugin::MinimumPerlFast" => 0,
+  "Dist::Zilla::Plugin::MinimumPerl" => 0,
   "Dist::Zilla::Plugin::OurPkgVersion" => "0.004",
   "Dist::Zilla::Plugin::PodWeaver" => 0,
   "Dist::Zilla::Plugin::Prereqs::AuthorDeps" => 0,

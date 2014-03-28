@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.065
+    version 0.066
 
 SYNOPSIS
       # in dist.ini
@@ -23,7 +23,9 @@ DESCRIPTION
       ; choose files to include
       [Git::GatherDir]         ; everything from git ls-files
       exclude_filename = README.pod   ; skip this generated file
+      exclude_filename = README.mkdn  ; skip this generated file
       exclude_filename = META.json    ; skip this generated file
+      exclude_filename = cpanfile     ; skip this generated file
 
       [PruneCruft]        ; default stuff to skip
       [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
@@ -66,7 +68,7 @@ DESCRIPTION
       authority = cpan:DAGOLDEN
       do_munging = 0
 
-      [MinimumPerlFast]   ; determine minimum perl version
+      [MinimumPerl]   ; determine minimum perl version
 
       [MetaNoIndex]       ; sets 'no_index' in META
       directory = t

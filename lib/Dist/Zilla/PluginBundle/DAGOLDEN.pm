@@ -3,7 +3,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
-our $VERSION = '0.065'; # VERSION
+our $VERSION = '0.066'; # VERSION
 
 # Dependencies
 use Moose 0.99;
@@ -28,7 +28,7 @@ use Dist::Zilla::Plugin::GithubMeta 0.36       ();
 use Dist::Zilla::Plugin::InsertCopyright 0.001 ();
 use Dist::Zilla::Plugin::MetaNoIndex ();
 use Dist::Zilla::Plugin::MetaProvides::Package 1.14 (); # hides private packages
-use Dist::Zilla::Plugin::MinimumPerlFast ();
+use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::OurPkgVersion 0.004 ();        # TRIAL comment support
 use Dist::Zilla::Plugin::PodWeaver ();
 use Dist::Zilla::Plugin::PromptIfStale 0.011           ();
@@ -302,7 +302,7 @@ sub configure {
                 do_munging => 0,
             }
         ],
-        'MinimumPerlFast',
+        'MinimumPerl',
         (
             $self->auto_prereq
             ? [ 'AutoPrereqs' => { skip => "^t::lib" } ]
@@ -446,7 +446,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.065
+version 0.066
 
 =head1 SYNOPSIS
 
@@ -468,7 +468,9 @@ following dist.ini:
   ; choose files to include
   [Git::GatherDir]         ; everything from git ls-files
   exclude_filename = README.pod   ; skip this generated file
+  exclude_filename = README.mkdn  ; skip this generated file
   exclude_filename = META.json    ; skip this generated file
+  exclude_filename = cpanfile     ; skip this generated file
 
   [PruneCruft]        ; default stuff to skip
   [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
@@ -511,7 +513,7 @@ following dist.ini:
   authority = cpan:DAGOLDEN
   do_munging = 0
 
-  [MinimumPerlFast]   ; determine minimum perl version
+  [MinimumPerl]   ; determine minimum perl version
 
   [MetaNoIndex]       ; sets 'no_index' in META
   directory = t
