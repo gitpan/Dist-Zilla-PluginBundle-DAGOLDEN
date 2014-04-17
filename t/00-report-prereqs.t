@@ -50,7 +50,7 @@ my $static_prereqs = do { my $x = {
                       },
        'develop' => {
                       'requires' => {
-                                      'Dist::Zilla' => '5.014',
+                                      'Dist::Zilla' => '5.015',
                                       'Dist::Zilla::Plugin::Bootstrap::lib' => '0',
                                       'Dist::Zilla::Plugin::Prereqs' => '0',
                                       'Dist::Zilla::PluginBundle::DAGOLDEN' => '0',
@@ -76,6 +76,7 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Plugin::CheckPrereqsIndexed' => '0.002',
                                       'Dist::Zilla::Plugin::ContributorsFromGit' => '0.004',
                                       'Dist::Zilla::Plugin::CopyFilesFromBuild' => '0',
+                                      'Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch' => '0',
                                       'Dist::Zilla::Plugin::Git::NextVersion' => '0',
                                       'Dist::Zilla::Plugin::GithubMeta' => '0.36',
                                       'Dist::Zilla::Plugin::InsertCopyright' => '0.001',

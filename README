@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.066
+    version 0.067
 
 SYNOPSIS
       # in dist.ini
@@ -110,6 +110,8 @@ DESCRIPTION
       module = Dist::Zilla
       module = Dist::Zilla::PluginBundle::DAGOLDEN
       check_all_plugins = 1
+
+      [Git::CheckFor::CorrectBranch] ; ensure on master branch
 
       [Git::Check]        ; ensure all files checked in
       allow_dirty = dist.ini

@@ -3,7 +3,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
-our $VERSION = '0.066'; # VERSION
+our $VERSION = '0.067'; # VERSION
 
 # Dependencies
 use Moose 0.99;
@@ -21,9 +21,10 @@ use Dist::Zilla::Plugin::RunExtraTests          ();
 use Dist::Zilla::Plugin::CheckMetaResources 0.001  ();
 use Dist::Zilla::Plugin::CheckPrereqsIndexed 0.002 ();
 use Dist::Zilla::Plugin::ContributorsFromGit 0.004 ();
-use Dist::Zilla::Plugin::CopyFilesFromBuild ();
-use Dist::Zilla::Plugin::CPANFile           ();
-use Dist::Zilla::Plugin::Git::NextVersion   ();
+use Dist::Zilla::Plugin::CopyFilesFromBuild           ();
+use Dist::Zilla::Plugin::CPANFile                     ();
+use Dist::Zilla::Plugin::Git::NextVersion             ();
+use Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch ();
 use Dist::Zilla::Plugin::GithubMeta 0.36       ();
 use Dist::Zilla::Plugin::InsertCopyright 0.001 ();
 use Dist::Zilla::Plugin::MetaNoIndex ();
@@ -371,6 +372,7 @@ sub configure {
         'Manifest', # core
 
         # before release
+        'Git::CheckFor::CorrectBranch',
         (
             $self->no_git
             ? ()
@@ -446,7 +448,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.066
+version 0.067
 
 =head1 SYNOPSIS
 
@@ -555,6 +557,8 @@ following dist.ini:
   module = Dist::Zilla
   module = Dist::Zilla::PluginBundle::DAGOLDEN
   check_all_plugins = 1
+
+  [Git::CheckFor::CorrectBranch] ; ensure on master branch
 
   [Git::Check]        ; ensure all files checked in
   allow_dirty = dist.ini
