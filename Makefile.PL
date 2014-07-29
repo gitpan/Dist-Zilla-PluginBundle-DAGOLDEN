@@ -48,7 +48,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::Test::Perl::Critic" => 0,
     "Dist::Zilla::Plugin::Test::PodSpelling" => "2.006001",
     "Dist::Zilla::Plugin::Test::Portability" => 0,
-    "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.015",
+    "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.016",
     "Dist::Zilla::Plugin::Test::Version" => 0,
     "Dist::Zilla::PluginBundle::Filter" => 0,
     "Dist::Zilla::PluginBundle::Git" => "1.121010",
@@ -80,7 +80,7 @@ my %WriteMakefileArgs = (
     "Test::DZil" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.068",
+  "VERSION" => "0.069",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -116,7 +116,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::Test::Perl::Critic" => 0,
   "Dist::Zilla::Plugin::Test::PodSpelling" => "2.006001",
   "Dist::Zilla::Plugin::Test::Portability" => 0,
-  "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.015",
+  "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.016",
   "Dist::Zilla::Plugin::Test::Version" => 0,
   "Dist::Zilla::PluginBundle::Filter" => 0,
   "Dist::Zilla::PluginBundle::Git" => "1.121010",
