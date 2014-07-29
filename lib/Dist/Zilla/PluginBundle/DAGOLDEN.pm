@@ -3,7 +3,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
-our $VERSION = '0.067'; # VERSION
+our $VERSION = '0.068'; # VERSION
 
 # Dependencies
 use Moose 0.99;
@@ -42,7 +42,7 @@ use Dist::Zilla::Plugin::Test::Perl::Critic ();
 use Dist::Zilla::Plugin::Test::PodSpelling 2.006001 ();    # Pod::Wordlist
 use Test::Portability::Files 0.06                   ();    # buggy before that
 use Dist::Zilla::Plugin::Test::Portability ();
-use Dist::Zilla::Plugin::Test::ReportPrereqs 0.008 ();     # warn on unsatisfied
+use Dist::Zilla::Plugin::Test::ReportPrereqs 0.015 (); # better reporting & bug fixes
 use Dist::Zilla::Plugin::Test::Version ();
 
 with qw(
@@ -448,7 +448,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.067
+version 0.068
 
 =head1 SYNOPSIS
 

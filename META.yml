@@ -4,18 +4,19 @@ author:
   - 'David Golden <dagolden@cpan.org>'
 build_requires:
   ExtUtils::MakeMaker: '0'
+  File::Spec: '0'
   File::Spec::Functions: '0'
   File::pushd: '0'
   List::Util: '0'
   Path::Tiny: '0'
+  Scalar::Util: '0'
   Test::DZil: '0'
   Test::More: '0.96'
   perl: '5.008001'
-  version: '0'
 configure_requires:
   ExtUtils::MakeMaker: '6.17'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.015, CPAN::Meta::Converter version 2.140640'
+generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -32,10 +33,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: '0.067'
+    version: '0.068'
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: '0.067'
+    version: '0.068'
 requires:
   Dist::Zilla: '5.014'
   Dist::Zilla::Plugin::Authority: '1.006'
@@ -65,7 +66,7 @@ requires:
   Dist::Zilla::Plugin::Test::Perl::Critic: '0'
   Dist::Zilla::Plugin::Test::PodSpelling: '2.006001'
   Dist::Zilla::Plugin::Test::Portability: '0'
-  Dist::Zilla::Plugin::Test::ReportPrereqs: '0.008'
+  Dist::Zilla::Plugin::Test::ReportPrereqs: '0.015'
   Dist::Zilla::Plugin::Test::Version: '0'
   Dist::Zilla::PluginBundle::Filter: '0'
   Dist::Zilla::PluginBundle::Git: '1.121010'
@@ -90,7 +91,7 @@ resources:
   bugtracker: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN/issues
   homepage: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN
   repository: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN.git
-version: '0.067'
+version: '0.068'
 x_authority: cpan:DAGOLDEN
 x_contributors:
   - 'Christian Walde <walde.christian@googlemail.com>'
