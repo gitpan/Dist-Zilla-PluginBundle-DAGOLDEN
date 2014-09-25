@@ -3,7 +3,8 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
-our $VERSION = '0.069'; # VERSION
+
+our $VERSION = '0.070';
 
 # Dependencies
 use Moose 0.99;
@@ -20,7 +21,7 @@ use Dist::Zilla::Plugin::CheckChangesHasContent ();
 use Dist::Zilla::Plugin::RunExtraTests          ();
 use Dist::Zilla::Plugin::CheckMetaResources 0.001  ();
 use Dist::Zilla::Plugin::CheckPrereqsIndexed 0.002 ();
-use Dist::Zilla::Plugin::ContributorsFromGit 0.004 ();
+use Dist::Zilla::Plugin::Git::Contributors 0.007   ();
 use Dist::Zilla::Plugin::CopyFilesFromBuild           ();
 use Dist::Zilla::Plugin::CPANFile                     ();
 use Dist::Zilla::Plugin::Git::NextVersion             ();
@@ -30,8 +31,7 @@ use Dist::Zilla::Plugin::InsertCopyright 0.001 ();
 use Dist::Zilla::Plugin::MetaNoIndex ();
 use Dist::Zilla::Plugin::MetaProvides::Package 1.14 (); # hides private packages
 use Dist::Zilla::Plugin::MinimumPerl ();
-use Dist::Zilla::Plugin::OurPkgVersion 0.004 ();        # TRIAL comment support
-use Dist::Zilla::Plugin::PodWeaver ();
+use Dist::Zilla::Plugin::PodWeaver   ();
 use Dist::Zilla::Plugin::PromptIfStale 0.011           ();
 use Dist::Zilla::Plugin::Prereqs::AuthorDeps           ();
 use Dist::Zilla::Plugin::ReadmeFromPod 0.19            (); # for dzil v5
@@ -205,6 +205,13 @@ has no_bugtracker => ( # XXX deprecated
     default => 0,
 );
 
+has auto_version => (
+    is      => 'ro',
+    isa     => 'Bool',
+    lazy    => 1,
+    default => sub { $_[0]->payload->{auto_version} },
+);
+
 sub configure {
     my $self = shift;
 
@@ -214,17 +221,13 @@ sub configure {
     $self->add_plugins(
 
         # version number
-        (
-            $self->no_git
-            ? 'AutoVersion'
-            : [ 'Git::NextVersion' => { version_regexp => $self->version_regexp } ]
-        ),
+        ( $self->auto_version ? 'AutoVersion' : 'RewriteVersion' ),
 
         # contributors
         (
             $self->no_git
             ? ()
-            : 'ContributorsFromGit'
+            : 'Git::Contributors'
         ),
 
         # gather and prune
@@ -243,7 +246,7 @@ sub configure {
         'ManifestSkip', # core
 
         # file munging
-        'OurPkgVersion',
+        ( $self->auto_version ? 'PkgVersion' : () ),
         'InsertCopyright',
         (
             $self->is_task
@@ -372,11 +375,13 @@ sub configure {
         'Manifest', # core
 
         # before release
-        'Git::CheckFor::CorrectBranch',
         (
-            $self->no_git
-            ? ()
-            : [ 'Git::Check' => { allow_dirty => [qw/dist.ini Changes cpanfile/] } ]
+            $self->no_git ? ()
+            : ('Git::CheckFor::CorrectBranch')
+        ),
+        (
+            $self->no_git ? ()
+            : [ 'Git::Check' => { allow_dirty => undef } ]
         ),
         'CheckMetaResources',
         'CheckPrereqsIndexed',
@@ -396,24 +401,23 @@ sub configure {
         (
             $self->no_git
             ? ()
-            : (
-                [
-                    'Git::Commit' => 'Commit_Dirty_Files' =>
-                      { allow_dirty => [qw/dist.ini Changes cpanfile/] }
-                ],
-                [ 'Git::Tag' => { tag_format => $self->tag_format } ],
-            )
+            : ( [ 'Git::Tag' => { tag_format => $self->tag_format } ], )
         ),
 
         # bumps Changes
         'NextRelease', # core (also munges files)
 
+        # bumps $VERSION, maybe
+        ( $self->auto_version ? () : 'BumpVersionAfterRelease' ),
+
         (
             $self->no_git
             ? ()
             : (
-                [ 'Git::Commit' => 'Commit_Changes' => { commit_msg => "bump Changes" } ],
-
+                [
+                    'Git::Commit' => 'Commit_Changes' =>
+                      { commit_msg => "record release timestamp in Changes" }
+                ],
                 [ 'Git::Push' => { push_to => \@push_to } ],
             )
         ),
@@ -448,7 +452,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.069
+version 0.070
 
 =head1 SYNOPSIS
 
@@ -461,11 +465,10 @@ This is a L<Dist::Zilla> PluginBundle.  It is roughly equivalent to the
 following dist.ini:
 
   ; version provider
-  [Git::NextVersion]  ; get version from last release tag
-  version_regexp = ^release-(.+)$
+  [RewriteVersion] ; also munges
 
   ; collect contributors list
-  [ContributorsFromGit]
+  [Git::Contributors]
 
   ; choose files to include
   [Git::GatherDir]         ; everything from git ls-files
@@ -478,7 +481,6 @@ following dist.ini:
   [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
 
   ; file modifications
-  [OurPkgVersion]     ; add $VERSION = ... to all files
   [InsertCopyright    ; add copyright at "# COPYRIGHT"
   [PodWeaver]         ; generate Pod
   config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
@@ -591,6 +593,7 @@ following dist.ini:
   ; dist.ini.  It will still act during pre-release as usual
 
   [NextRelease]
+  [BumpVersionAfterRelease]
 
   [Git::Commit / Commit_Changes] ; commit Changes (for new dev)
 
@@ -617,6 +620,8 @@ C<authority> — specifies the C<x_authority> field for pause.  Defaults to 'cpa
 =item *
 
 C<auto_prereq> — this indicates whether C<AutoPrereqs> should be used or not.  Default is 1.
+
+# C<auto_version> - this indicates whether C<AutoVersion> should be used or not. Default is 0.
 
 =item *
 
@@ -681,9 +686,12 @@ C<no_bugtracker> — DEPRECATED
 
 =back
 
-When running without git, C<GatherDir> is used instead of C<Git::GatherDir>,
-C<AutoVersion> is used instead of C<Git::NextVersion>, and all git check and
-commit operations are disabled.
+When running without git, C<GatherDir> is used instead of C<Git::GatherDir>.
+and all git check and commit operations are disabled.
+
+By default, versions are taken/rewritten in the source file using C<RewriteVersion>
+and C<BumpVersionAfterRelease>. If the C<auto_version> option is true, the version
+is set by C<AutoVersion> and munged with C<PkgVersion>.
 
 This PluginBundle now supports C<ConfigSlicer>, so you can pass in options to the
 plugins used like this:
@@ -741,6 +749,8 @@ L<https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN>
 David Golden <dagolden@cpan.org>
 
 =head1 CONTRIBUTORS
+
+=for stopwords Christian Walde Eric Johnson Karen Etheridge Philippe Bruhat (BooK) Sergey Romanov
 
 =over 4
 

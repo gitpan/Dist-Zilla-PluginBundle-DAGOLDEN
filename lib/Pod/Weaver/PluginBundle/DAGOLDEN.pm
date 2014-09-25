@@ -2,7 +2,8 @@ use strict;
 use warnings;
 
 package Pod::Weaver::PluginBundle::DAGOLDEN;
-our $VERSION = '0.069'; # VERSION
+
+our $VERSION = '0.070';
 
 use Pod::Weaver 4; # he played knick-knack on my door
 use Pod::Weaver::Config::Assembler;
@@ -12,7 +13,7 @@ use Pod::Weaver::Plugin::WikiDoc ();
 use Pod::Elemental::Transformer::List 0.102000 ();
 use Pod::Elemental::PerlMunger 0.200001        (); # replace with comment support
 use Pod::Weaver::Section::Support 1.001        ();
-use Pod::Weaver::Section::Contributors 0.001   ();
+use Pod::Weaver::Section::Contributors 0.008   ();
 
 sub _exp { Pod::Weaver::Config::Assembler->expand_package( $_[0] ) }
 
@@ -106,7 +107,7 @@ Pod::Weaver::PluginBundle::DAGOLDEN - DAGOLDEN's default Pod::Weaver config
 
 =head1 VERSION
 
-version 0.069
+version 0.070
 
 =head1 DESCRIPTION
 

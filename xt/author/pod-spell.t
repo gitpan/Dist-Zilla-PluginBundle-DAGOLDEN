@@ -39,7 +39,7 @@ Sergey
 Romanov
 complefor
 lib
-Dist
-Zilla
 Pod
 Weaver
+Dist
+Zilla

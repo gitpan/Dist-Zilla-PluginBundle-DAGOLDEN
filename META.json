@@ -4,7 +4,7 @@
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060",
+   "generated_by" : "Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.140640",
    "license" : [
       "apache_2_0"
    ],
@@ -57,16 +57,15 @@
             "Dist::Zilla::Plugin::CheckChangesHasContent" : "0",
             "Dist::Zilla::Plugin::CheckMetaResources" : "0.001",
             "Dist::Zilla::Plugin::CheckPrereqsIndexed" : "0.002",
-            "Dist::Zilla::Plugin::ContributorsFromGit" : "0.004",
             "Dist::Zilla::Plugin::CopyFilesFromBuild" : "0",
             "Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch" : "0",
+            "Dist::Zilla::Plugin::Git::Contributors" : "0.007",
             "Dist::Zilla::Plugin::Git::NextVersion" : "0",
             "Dist::Zilla::Plugin::GithubMeta" : "0.36",
             "Dist::Zilla::Plugin::InsertCopyright" : "0.001",
             "Dist::Zilla::Plugin::MetaNoIndex" : "0",
             "Dist::Zilla::Plugin::MetaProvides::Package" : "1.14",
             "Dist::Zilla::Plugin::MinimumPerl" : "0",
-            "Dist::Zilla::Plugin::OurPkgVersion" : "0.004",
             "Dist::Zilla::Plugin::PodWeaver" : "0",
             "Dist::Zilla::Plugin::Prereqs::AuthorDeps" : "0",
             "Dist::Zilla::Plugin::PromptIfStale" : "0.011",
@@ -91,7 +90,7 @@
             "Pod::Weaver" : "4",
             "Pod::Weaver::Config::Assembler" : "0",
             "Pod::Weaver::Plugin::WikiDoc" : "0",
-            "Pod::Weaver::Section::Contributors" : "0.001",
+            "Pod::Weaver::Section::Contributors" : "0.008",
             "Pod::Weaver::Section::Support" : "1.001",
             "Pod::Wordlist" : "1.10",
             "Test::Portability::Files" : "0.06",
@@ -108,11 +107,8 @@
          "requires" : {
             "ExtUtils::MakeMaker" : "0",
             "File::Spec" : "0",
-            "File::Spec::Functions" : "0",
             "File::pushd" : "0",
-            "List::Util" : "0",
             "Path::Tiny" : "0",
-            "Scalar::Util" : "0",
             "Test::DZil" : "0",
             "Test::More" : "0.96",
             "perl" : "5.008001"
@@ -122,11 +118,11 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.069"
+         "version" : "0.070"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
-         "version" : "0.069"
+         "version" : "0.070"
       }
    },
    "release_status" : "stable",
@@ -141,7 +137,7 @@
          "web" : "https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN"
       }
    },
-   "version" : "0.069",
+   "version" : "0.070",
    "x_authority" : "cpan:DAGOLDEN",
    "x_contributors" : [
       "Christian Walde <walde.christian@googlemail.com>",

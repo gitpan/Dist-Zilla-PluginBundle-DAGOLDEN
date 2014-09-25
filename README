@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.069
+    version 0.070
 
 SYNOPSIS
       # in dist.ini
@@ -14,11 +14,10 @@ DESCRIPTION
     following dist.ini:
 
       ; version provider
-      [Git::NextVersion]  ; get version from last release tag
-      version_regexp = ^release-(.+)$
+      [RewriteVersion] ; also munges
 
       ; collect contributors list
-      [ContributorsFromGit]
+      [Git::Contributors]
 
       ; choose files to include
       [Git::GatherDir]         ; everything from git ls-files
@@ -31,7 +30,6 @@ DESCRIPTION
       [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
 
       ; file modifications
-      [OurPkgVersion]     ; add $VERSION = ... to all files
       [InsertCopyright    ; add copyright at "# COPYRIGHT"
       [PodWeaver]         ; generate Pod
       config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
@@ -144,6 +142,7 @@ DESCRIPTION
       ; dist.ini.  It will still act during pre-release as usual
 
       [NextRelease]
+      [BumpVersionAfterRelease]
 
       [Git::Commit / Commit_Changes] ; commit Changes (for new dev)
 
@@ -164,6 +163,9 @@ USAGE
 
     *   "auto_prereq" — this indicates whether "AutoPrereqs" should be used
         or not. Default is 1.
+
+        # "auto_version" - this indicates whether "AutoVersion" should be
+        used or not. Default is 0.
 
     *   "darkpan" — for private code; uses "FakeRelease" and fills in dummy
         repo/bugtracker data
@@ -204,8 +206,12 @@ USAGE
     *   "no_bugtracker" — DEPRECATED
 
     When running without git, "GatherDir" is used instead of
-    "Git::GatherDir", "AutoVersion" is used instead of "Git::NextVersion",
-    and all git check and commit operations are disabled.
+    "Git::GatherDir". and all git check and commit operations are disabled.
+
+    By default, versions are taken/rewritten in the source file using
+    "RewriteVersion" and "BumpVersionAfterRelease". If the "auto_version"
+    option is true, the version is set by "AutoVersion" and munged with
+    "PkgVersion".
 
     This PluginBundle now supports "ConfigSlicer", so you can pass in
     options to the plugins used like this:
