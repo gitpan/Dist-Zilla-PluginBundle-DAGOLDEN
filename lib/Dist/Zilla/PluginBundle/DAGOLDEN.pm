@@ -4,7 +4,7 @@ use warnings;
 package Dist::Zilla::PluginBundle::DAGOLDEN;
 # ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
 
-our $VERSION = '0.070';
+our $VERSION = '0.071';
 
 # Dependencies
 use Moose 0.99;
@@ -17,8 +17,9 @@ use Dist::Zilla::PluginBundle::Git 1.121010 ();
 
 use Dist::Zilla::Plugin::Authority 1.006  ();
 use Dist::Zilla::Plugin::Bugtracker 1.110 ();
-use Dist::Zilla::Plugin::CheckChangesHasContent ();
-use Dist::Zilla::Plugin::RunExtraTests          ();
+use Dist::Zilla::Plugin::BumpVersionAfterRelease ();
+use Dist::Zilla::Plugin::CheckChangesHasContent  ();
+use Dist::Zilla::Plugin::RunExtraTests           ();
 use Dist::Zilla::Plugin::CheckMetaResources 0.001  ();
 use Dist::Zilla::Plugin::CheckPrereqsIndexed 0.002 ();
 use Dist::Zilla::Plugin::Git::Contributors 0.007   ();
@@ -32,8 +33,9 @@ use Dist::Zilla::Plugin::MetaNoIndex ();
 use Dist::Zilla::Plugin::MetaProvides::Package 1.14 (); # hides private packages
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::PodWeaver   ();
-use Dist::Zilla::Plugin::PromptIfStale 0.011           ();
-use Dist::Zilla::Plugin::Prereqs::AuthorDeps           ();
+use Dist::Zilla::Plugin::PromptIfStale 0.011 ();
+use Dist::Zilla::Plugin::Prereqs::AuthorDeps ();
+use Dist::Zilla::Plugin::RewriteVersion ();
 use Dist::Zilla::Plugin::ReadmeFromPod 0.19            (); # for dzil v5
 use Dist::Zilla::Plugin::TaskWeaver 0.101620           ();
 use Dist::Zilla::Plugin::Test::Compile 2.036           (); # various features
@@ -233,13 +235,10 @@ sub configure {
         # gather and prune
         (
             $self->no_git
-            ? [
-                'GatherDir' =>
-                  { exclude_filename => [qw/README.pod README.mkdn META.json cpanfile/] }
+            ? [ 'GatherDir' => { exclude_filename => [qw/README.mkdn cpanfile Makefile.PL/] }
               ] # core
             : [
-                'Git::GatherDir' =>
-                  { exclude_filename => [qw/README.pod README.mkdn META.json cpanfile/] }
+                'Git::GatherDir' => { exclude_filename => [qw/README.mkdn cpanfile Makefile.PL/] }
             ]
         ),
         'PruneCruft',   # core
@@ -368,8 +367,11 @@ sub configure {
             }
         ],
 
-        # copy files from build back to root for inclusion in VCS
-        [ CopyFilesFromBuild => { copy => 'cpanfile', } ],
+        # copy files from build back to root for inclusion in VCS;
+        # for auto_version we want cpanfile.  For embedded version we want Makefile.PL
+        [
+            CopyFilesFromBuild => { copy => $self->auto_version ? 'cpanfile' : 'Makefile.PL' }
+        ],
 
         # manifest -- must come after all generated files
         'Manifest', # core
@@ -415,8 +417,7 @@ sub configure {
             ? ()
             : (
                 [
-                    'Git::Commit' => 'Commit_Changes' =>
-                      { commit_msg => "record release timestamp in Changes" }
+                    'Git::Commit' => 'Commit_Changes' => { commit_msg => "commit post-release changes" }
                 ],
                 [ 'Git::Push' => { push_to => \@push_to } ],
             )
@@ -452,7 +453,7 @@ Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN
 
 =head1 VERSION
 
-version 0.070
+version 0.071
 
 =head1 SYNOPSIS
 
@@ -551,7 +552,7 @@ following dist.ini:
 
   ; copy cpanfile back to repo dis
   [CopyFilesFromBuild]
-  copy = cpanfile
+  copy = Makefile.PL
 
   ; before release
 
@@ -691,7 +692,9 @@ and all git check and commit operations are disabled.
 
 By default, versions are taken/rewritten in the source file using C<RewriteVersion>
 and C<BumpVersionAfterRelease>. If the C<auto_version> option is true, the version
-is set by C<AutoVersion> and munged with C<PkgVersion>.
+is set by C<AutoVersion> and munged with C<PkgVersion>.  For C<auto_version> the
+generated C<cpanfile> is copied to the repo on build; otherwise, C<Makefile.PL> is
+copied.
 
 This PluginBundle now supports C<ConfigSlicer>, so you can pass in options to the
 plugins used like this:

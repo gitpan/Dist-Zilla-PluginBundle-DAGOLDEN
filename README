@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.070
+    version 0.071
 
 SYNOPSIS
       # in dist.ini
@@ -100,7 +100,7 @@ DESCRIPTION
 
       ; copy cpanfile back to repo dis
       [CopyFilesFromBuild]
-      copy = cpanfile
+      copy = Makefile.PL
 
       ; before release
 
@@ -211,7 +211,8 @@ USAGE
     By default, versions are taken/rewritten in the source file using
     "RewriteVersion" and "BumpVersionAfterRelease". If the "auto_version"
     option is true, the version is set by "AutoVersion" and munged with
-    "PkgVersion".
+    "PkgVersion". For "auto_version" the generated "cpanfile" is copied to
+    the repo on build; otherwise, "Makefile.PL" is copied.
 
     This PluginBundle now supports "ConfigSlicer", so you can pass in
     options to the plugins used like this:
