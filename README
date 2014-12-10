@@ -3,7 +3,7 @@ NAME
     DAGOLDEN does it
 
 VERSION
-    version 0.072
+    version 0.073
 
 SYNOPSIS
       # in dist.ini
@@ -38,7 +38,7 @@ DESCRIPTION
 
       ; generated files
       [License]           ; boilerplate license
-      [ReadmeFromPod]     ; from Pod (runs after PodWeaver)
+      [Pod2Readme]        ; from Pod (runs after PodWeaver)
 
       ; t tests
       [Test::ReportPrereqs]   ; show prereqs in automated test output

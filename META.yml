@@ -12,8 +12,9 @@ build_requires:
   perl: '5.008001'
 configure_requires:
   ExtUtils::MakeMaker: '6.17'
+  perl: '5.006'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142690'
+generated_by: 'Dist::Zilla version 5.027, CPAN::Meta::Converter version 2.142690'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,10 +31,10 @@ no_index:
 provides:
   Dist::Zilla::PluginBundle::DAGOLDEN:
     file: lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm
-    version: '0.072'
+    version: '0.073'
   Pod::Weaver::PluginBundle::DAGOLDEN:
     file: lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm
-    version: '0.072'
+    version: '0.073'
 requires:
   Dist::Zilla: '5.014'
   Dist::Zilla::Plugin::Authority: '1.006'
@@ -52,10 +53,10 @@ requires:
   Dist::Zilla::Plugin::MetaNoIndex: '0'
   Dist::Zilla::Plugin::MetaProvides::Package: '1.14'
   Dist::Zilla::Plugin::MinimumPerl: '0'
+  Dist::Zilla::Plugin::Pod2Readme: '0'
   Dist::Zilla::Plugin::PodWeaver: '0'
   Dist::Zilla::Plugin::Prereqs::AuthorDeps: '0'
   Dist::Zilla::Plugin::PromptIfStale: '0.011'
-  Dist::Zilla::Plugin::ReadmeFromPod: '0.19'
   Dist::Zilla::Plugin::RewriteVersion: '0'
   Dist::Zilla::Plugin::RunExtraTests: '0'
   Dist::Zilla::Plugin::TaskWeaver: '0.101620'
@@ -89,7 +90,7 @@ resources:
   bugtracker: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN/issues
   homepage: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN
   repository: https://github.com/dagolden/Dist-Zilla-PluginBundle-DAGOLDEN.git
-version: '0.072'
+version: '0.073'
 x_authority: cpan:DAGOLDEN
 x_contributors:
   - 'Christian Walde <walde.christian@googlemail.com>'
